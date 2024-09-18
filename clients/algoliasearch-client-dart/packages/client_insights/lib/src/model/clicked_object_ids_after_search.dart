@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'clicked_object_ids_after_search.g.dart';
 
 @JsonSerializable()
-final class ClickedObjectIDsAfterSearch {
+final class ClickedObjectIDsAfterSearch{
   /// Returns a new [ClickedObjectIDsAfterSearch] instance.
   const ClickedObjectIDsAfterSearch({
     required this.eventName,
@@ -17,73 +17,90 @@ final class ClickedObjectIDsAfterSearch {
     required this.positions,
     required this.queryID,
     required this.userToken,
-    this.authenticatedUserToken,
-    this.timestamp,
+     this.authenticatedUserToken,
+     this.timestamp,
   });
 
-  /// Event name, up to 64 ASCII characters.  Consider naming events consistently—for example, by adopting Segment's [object-action](https://segment.com/academy/collecting-data/naming-conventions-for-clean-data/#the-object-action-framework) framework.
+      /// Event name, up to 64 ASCII characters.  Consider naming events consistently—for example, by adopting Segment's [object-action](https://segment.com/academy/collecting-data/naming-conventions-for-clean-data/#the-object-action-framework) framework. 
   @JsonKey(name: r'eventName')
   final String eventName;
+
+
 
   @JsonKey(name: r'eventType')
   final ClickEvent eventType;
 
-  /// Index name (case-sensitive) to which the event's items belong.
+
+
+      /// Index name (case-sensitive) to which the event's items belong.
   @JsonKey(name: r'index')
   final String index;
 
-  /// Object IDs of the records that are part of the event.
+
+
+      /// Object IDs of the records that are part of the event.
   @JsonKey(name: r'objectIDs')
   final List<String> objectIDs;
 
-  /// Position of the clicked item the search results.  You must provide 1 `position` for each `objectID`.
+
+
+      /// Position of the clicked item the search results.  You must provide 1 `position` for each `objectID`. 
   @JsonKey(name: r'positions')
   final List<int> positions;
 
-  /// Unique identifier for a search query.  The query ID is required for events related to search or browse requests. If you add `clickAnalytics: true` as a search request parameter, the query ID is included in the API response.
+
+
+      /// Unique identifier for a search query.  The query ID is required for events related to search or browse requests. If you add `clickAnalytics: true` as a search request parameter, the query ID is included in the API response. 
   @JsonKey(name: r'queryID')
   final String queryID;
 
-  /// Anonymous or pseudonymous user identifier.  Don't use personally identifiable information in user tokens. For more information, see [User token](https://www.algolia.com/doc/guides/sending-events/concepts/usertoken/).
+
+
+      /// Anonymous or pseudonymous user identifier.  Don't use personally identifiable information in user tokens. For more information, see [User token](https://www.algolia.com/doc/guides/sending-events/concepts/usertoken/). 
   @JsonKey(name: r'userToken')
   final String userToken;
 
-  /// Identifier for authenticated users.  When the user signs in, you can get an identifier from your system and send it as `authenticatedUserToken`. This lets you keep using the `userToken` from before the user signed in, while providing a reliable way to identify users across sessions. Don't use personally identifiable information in user tokens. For more information, see [User token](https://www.algolia.com/doc/guides/sending-events/concepts/usertoken/).
+
+
+      /// Identifier for authenticated users.  When the user signs in, you can get an identifier from your system and send it as `authenticatedUserToken`. This lets you keep using the `userToken` from before the user signed in, while providing a reliable way to identify users across sessions. Don't use personally identifiable information in user tokens. For more information, see [User token](https://www.algolia.com/doc/guides/sending-events/concepts/usertoken/). 
   @JsonKey(name: r'authenticatedUserToken')
   final String? authenticatedUserToken;
 
-  /// Timestamp of the event, measured in milliseconds since the Unix epoch. By default, the Insights API uses the time it receives an event as its timestamp.
+
+
+      /// Timestamp of the event, measured in milliseconds since the Unix epoch. By default, the Insights API uses the time it receives an event as its timestamp. 
   @JsonKey(name: r'timestamp')
   final int? timestamp;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ClickedObjectIDsAfterSearch &&
-          other.eventName == eventName &&
-          other.eventType == eventType &&
-          other.index == index &&
-          other.objectIDs == objectIDs &&
-          other.positions == positions &&
-          other.queryID == queryID &&
-          other.userToken == userToken &&
-          other.authenticatedUserToken == authenticatedUserToken &&
-          other.timestamp == timestamp;
+  bool operator ==(Object other) => identical(this, other) || other is ClickedObjectIDsAfterSearch &&
+     other.eventName == eventName &&
+     other.eventType == eventType &&
+     other.index == index &&
+     other.objectIDs == objectIDs &&
+     other.positions == positions &&
+     other.queryID == queryID &&
+     other.userToken == userToken &&
+     other.authenticatedUserToken == authenticatedUserToken &&
+     other.timestamp == timestamp
+    ;
 
   @override
   int get hashCode =>
-      eventName.hashCode +
-      eventType.hashCode +
-      index.hashCode +
-      objectIDs.hashCode +
-      positions.hashCode +
-      queryID.hashCode +
-      userToken.hashCode +
-      authenticatedUserToken.hashCode +
-      timestamp.hashCode;
+    eventName.hashCode +
+    eventType.hashCode +
+    index.hashCode +
+    objectIDs.hashCode +
+    positions.hashCode +
+    queryID.hashCode +
+    userToken.hashCode +
+    authenticatedUserToken.hashCode +
+    timestamp.hashCode
+    ;
 
-  factory ClickedObjectIDsAfterSearch.fromJson(Map<String, dynamic> json) =>
-      _$ClickedObjectIDsAfterSearchFromJson(json);
+  factory ClickedObjectIDsAfterSearch.fromJson(Map<String, dynamic> json) => _$ClickedObjectIDsAfterSearchFromJson(json);
 
   Map<String, dynamic> toJson() => _$ClickedObjectIDsAfterSearchToJson(this);
 
@@ -91,4 +108,7 @@ final class ClickedObjectIDsAfterSearch {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

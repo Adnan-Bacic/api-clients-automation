@@ -8,31 +8,36 @@ import 'package:json_annotation/json_annotation.dart';
 part 'rendering_content.g.dart';
 
 @JsonSerializable()
-final class RenderingContent {
+final class RenderingContent{
   /// Returns a new [RenderingContent] instance.
   const RenderingContent({
-    this.facetOrdering,
-    this.redirect,
+     this.facetOrdering,
+     this.redirect,
   });
 
   @JsonKey(name: r'facetOrdering')
   final FacetOrdering? facetOrdering;
 
+
+
   @JsonKey(name: r'redirect')
   final RedirectURL? redirect;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is RenderingContent &&
-          other.facetOrdering == facetOrdering &&
-          other.redirect == redirect;
+
 
   @override
-  int get hashCode => facetOrdering.hashCode + redirect.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is RenderingContent &&
+     other.facetOrdering == facetOrdering &&
+     other.redirect == redirect
+    ;
 
-  factory RenderingContent.fromJson(Map<String, dynamic> json) =>
-      _$RenderingContentFromJson(json);
+  @override
+  int get hashCode =>
+    facetOrdering.hashCode +
+    redirect.hashCode
+    ;
+
+  factory RenderingContent.fromJson(Map<String, dynamic> json) => _$RenderingContentFromJson(json);
 
   Map<String, dynamic> toJson() => _$RenderingContentToJson(this);
 
@@ -40,4 +45,7 @@ final class RenderingContent {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

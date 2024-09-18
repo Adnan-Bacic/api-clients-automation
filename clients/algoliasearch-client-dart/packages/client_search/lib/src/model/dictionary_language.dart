@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'dictionary_language.g.dart';
 
 @JsonSerializable()
-final class DictionaryLanguage {
+final class DictionaryLanguage{
   /// Returns a new [DictionaryLanguage] instance.
   const DictionaryLanguage({
-    this.nbCustomEntries,
+     this.nbCustomEntries,
   });
 
-  /// Number of custom dictionary entries.
+      /// Number of custom dictionary entries.
   @JsonKey(name: r'nbCustomEntries')
   final int? nbCustomEntries;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DictionaryLanguage && other.nbCustomEntries == nbCustomEntries;
+
 
   @override
-  int get hashCode => nbCustomEntries.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is DictionaryLanguage &&
+     other.nbCustomEntries == nbCustomEntries
+    ;
 
-  factory DictionaryLanguage.fromJson(Map<String, dynamic> json) =>
-      _$DictionaryLanguageFromJson(json);
+  @override
+  int get hashCode =>
+    nbCustomEntries.hashCode
+    ;
+
+  factory DictionaryLanguage.fromJson(Map<String, dynamic> json) => _$DictionaryLanguageFromJson(json);
 
   Map<String, dynamic> toJson() => _$DictionaryLanguageToJson(this);
 
@@ -33,4 +36,7 @@ final class DictionaryLanguage {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_user_ids_response.g.dart';
 
 @JsonSerializable()
-final class SearchUserIdsResponse {
+final class SearchUserIdsResponse{
   /// Returns a new [SearchUserIdsResponse] instance.
   const SearchUserIdsResponse({
     required this.hits,
@@ -17,49 +17,58 @@ final class SearchUserIdsResponse {
     required this.updatedAt,
   });
 
-  /// User objects that match the query.
+      /// User objects that match the query.
   @JsonKey(name: r'hits')
   final List<UserHit> hits;
 
-  /// Number of results (hits).
+
+
+      /// Number of results (hits).
   @JsonKey(name: r'nbHits')
   final int nbHits;
 
-  /// Page of search results to retrieve.
-  // minimum: 0
+
+
+      /// Page of search results to retrieve.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int page;
 
-  /// Maximum number of hits per page.
-  // minimum: 1
-  // maximum: 1000
+
+
+      /// Maximum number of hits per page.
+          // minimum: 1
+          // maximum: 1000
   @JsonKey(name: r'hitsPerPage')
   final int hitsPerPage;
 
-  /// Date and time when the object was updated, in RFC 3339 format.
+
+
+      /// Date and time when the object was updated, in RFC 3339 format.
   @JsonKey(name: r'updatedAt')
   final String updatedAt;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchUserIdsResponse &&
-          other.hits == hits &&
-          other.nbHits == nbHits &&
-          other.page == page &&
-          other.hitsPerPage == hitsPerPage &&
-          other.updatedAt == updatedAt;
+  bool operator ==(Object other) => identical(this, other) || other is SearchUserIdsResponse &&
+     other.hits == hits &&
+     other.nbHits == nbHits &&
+     other.page == page &&
+     other.hitsPerPage == hitsPerPage &&
+     other.updatedAt == updatedAt
+    ;
 
   @override
   int get hashCode =>
-      hits.hashCode +
-      nbHits.hashCode +
-      page.hashCode +
-      hitsPerPage.hashCode +
-      updatedAt.hashCode;
+    hits.hashCode +
+    nbHits.hashCode +
+    page.hashCode +
+    hitsPerPage.hashCode +
+    updatedAt.hashCode
+    ;
 
-  factory SearchUserIdsResponse.fromJson(Map<String, dynamic> json) =>
-      _$SearchUserIdsResponseFromJson(json);
+  factory SearchUserIdsResponse.fromJson(Map<String, dynamic> json) => _$SearchUserIdsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchUserIdsResponseToJson(this);
 
@@ -67,4 +76,7 @@ final class SearchUserIdsResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

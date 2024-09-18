@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'trending_facet_hit.g.dart';
 
 @JsonSerializable()
-final class TrendingFacetHit {
+final class TrendingFacetHit{
   /// Returns a new [TrendingFacetHit] instance.
   const TrendingFacetHit({
     required this.score,
@@ -14,33 +14,41 @@ final class TrendingFacetHit {
     required this.facetValue,
   });
 
-  /// Recommendation score.
-  // minimum: 0
-  // maximum: 100
+      /// Recommendation score.
+          // minimum: 0
+          // maximum: 100
   @JsonKey(name: r'_score')
   final double score;
 
-  /// Facet attribute. To be used in combination with `facetValue`. If specified, only recommendations matching the facet filter will be returned.
+
+
+      /// Facet attribute. To be used in combination with `facetValue`. If specified, only recommendations matching the facet filter will be returned. 
   @JsonKey(name: r'facetName')
   final String facetName;
 
-  /// Facet value. To be used in combination with `facetName`. If specified, only recommendations matching the facet filter will be returned.
+
+
+      /// Facet value. To be used in combination with `facetName`. If specified, only recommendations matching the facet filter will be returned. 
   @JsonKey(name: r'facetValue')
   final String facetValue;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TrendingFacetHit &&
-          other.score == score &&
-          other.facetName == facetName &&
-          other.facetValue == facetValue;
+
 
   @override
-  int get hashCode => score.hashCode + facetName.hashCode + facetValue.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is TrendingFacetHit &&
+     other.score == score &&
+     other.facetName == facetName &&
+     other.facetValue == facetValue
+    ;
 
-  factory TrendingFacetHit.fromJson(Map<String, dynamic> json) =>
-      _$TrendingFacetHitFromJson(json);
+  @override
+  int get hashCode =>
+    score.hashCode +
+    facetName.hashCode +
+    facetValue.hashCode
+    ;
+
+  factory TrendingFacetHit.fromJson(Map<String, dynamic> json) => _$TrendingFacetHitFromJson(json);
 
   Map<String, dynamic> toJson() => _$TrendingFacetHitToJson(this);
 
@@ -48,4 +56,7 @@ final class TrendingFacetHit {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

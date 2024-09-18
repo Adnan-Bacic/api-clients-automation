@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_dictionary_entries_response.g.dart';
 
 @JsonSerializable()
-final class SearchDictionaryEntriesResponse {
+final class SearchDictionaryEntriesResponse{
   /// Returns a new [SearchDictionaryEntriesResponse] instance.
   const SearchDictionaryEntriesResponse({
     required this.hits,
@@ -16,44 +16,56 @@ final class SearchDictionaryEntriesResponse {
     required this.nbPages,
   });
 
-  /// Dictionary entries matching the search criteria.
+      /// Dictionary entries matching the search criteria.
   @JsonKey(name: r'hits')
   final List<DictionaryEntry> hits;
 
-  /// Requested page of the API response.
-  // minimum: 0
+
+
+      /// Requested page of the API response.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int page;
 
-  /// Number of results (hits).
+
+
+      /// Number of results (hits).
   @JsonKey(name: r'nbHits')
   final int nbHits;
 
-  /// Number of pages of results.
+
+
+      /// Number of pages of results.
   @JsonKey(name: r'nbPages')
   final int nbPages;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchDictionaryEntriesResponse &&
-          other.hits == hits &&
-          other.page == page &&
-          other.nbHits == nbHits &&
-          other.nbPages == nbPages;
+  bool operator ==(Object other) => identical(this, other) || other is SearchDictionaryEntriesResponse &&
+     other.hits == hits &&
+     other.page == page &&
+     other.nbHits == nbHits &&
+     other.nbPages == nbPages
+    ;
 
   @override
   int get hashCode =>
-      hits.hashCode + page.hashCode + nbHits.hashCode + nbPages.hashCode;
+    hits.hashCode +
+    page.hashCode +
+    nbHits.hashCode +
+    nbPages.hashCode
+    ;
 
-  factory SearchDictionaryEntriesResponse.fromJson(Map<String, dynamic> json) =>
-      _$SearchDictionaryEntriesResponseFromJson(json);
+  factory SearchDictionaryEntriesResponse.fromJson(Map<String, dynamic> json) => _$SearchDictionaryEntriesResponseFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$SearchDictionaryEntriesResponseToJson(this);
+  Map<String, dynamic> toJson() => _$SearchDictionaryEntriesResponseToJson(this);
 
   @override
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -7,48 +7,55 @@ import 'package:json_annotation/json_annotation.dart';
 part 'highlight_result_option.g.dart';
 
 @JsonSerializable()
-final class HighlightResultOption {
+final class HighlightResultOption{
   /// Returns a new [HighlightResultOption] instance.
   const HighlightResultOption({
     required this.value,
     required this.matchLevel,
     required this.matchedWords,
-    this.fullyHighlighted,
+     this.fullyHighlighted,
   });
 
-  /// Highlighted attribute value, including HTML tags.
+      /// Highlighted attribute value, including HTML tags.
   @JsonKey(name: r'value')
   final String value;
+
+
 
   @JsonKey(name: r'matchLevel')
   final MatchLevel matchLevel;
 
-  /// List of matched words from the search query.
+
+
+      /// List of matched words from the search query.
   @JsonKey(name: r'matchedWords')
   final List<String> matchedWords;
 
-  /// Whether the entire attribute value is highlighted.
+
+
+      /// Whether the entire attribute value is highlighted.
   @JsonKey(name: r'fullyHighlighted')
   final bool? fullyHighlighted;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HighlightResultOption &&
-          other.value == value &&
-          other.matchLevel == matchLevel &&
-          other.matchedWords == matchedWords &&
-          other.fullyHighlighted == fullyHighlighted;
+  bool operator ==(Object other) => identical(this, other) || other is HighlightResultOption &&
+     other.value == value &&
+     other.matchLevel == matchLevel &&
+     other.matchedWords == matchedWords &&
+     other.fullyHighlighted == fullyHighlighted
+    ;
 
   @override
   int get hashCode =>
-      value.hashCode +
-      matchLevel.hashCode +
-      matchedWords.hashCode +
-      fullyHighlighted.hashCode;
+    value.hashCode +
+    matchLevel.hashCode +
+    matchedWords.hashCode +
+    fullyHighlighted.hashCode
+    ;
 
-  factory HighlightResultOption.fromJson(Map<String, dynamic> json) =>
-      _$HighlightResultOptionFromJson(json);
+  factory HighlightResultOption.fromJson(Map<String, dynamic> json) => _$HighlightResultOptionFromJson(json);
 
   Map<String, dynamic> toJson() => _$HighlightResultOptionToJson(this);
 
@@ -56,4 +63,7 @@ final class HighlightResultOption {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

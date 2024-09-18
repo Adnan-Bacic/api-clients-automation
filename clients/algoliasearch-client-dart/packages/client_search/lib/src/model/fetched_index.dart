@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'fetched_index.g.dart';
 
 @JsonSerializable()
-final class FetchedIndex {
+final class FetchedIndex{
   /// Returns a new [FetchedIndex] instance.
   const FetchedIndex({
     required this.name,
@@ -18,93 +18,116 @@ final class FetchedIndex {
     required this.lastBuildTimeS,
     required this.numberOfPendingTasks,
     required this.pendingTask,
-    this.primary,
-    this.replicas,
-    this.virtual,
+     this.primary,
+     this.replicas,
+     this.virtual,
   });
 
-  /// Index name.
+      /// Index name.
   @JsonKey(name: r'name')
   final String name;
 
-  /// Index creation date. An empty string means that the index has no records.
+
+
+      /// Index creation date. An empty string means that the index has no records.
   @JsonKey(name: r'createdAt')
   final String createdAt;
 
-  /// Date and time when the object was updated, in RFC 3339 format.
+
+
+      /// Date and time when the object was updated, in RFC 3339 format.
   @JsonKey(name: r'updatedAt')
   final String updatedAt;
 
-  /// Number of records contained in the index.
+
+
+      /// Number of records contained in the index.
   @JsonKey(name: r'entries')
   final int entries;
 
-  /// Number of bytes of the index in minified format.
+
+
+      /// Number of bytes of the index in minified format.
   @JsonKey(name: r'dataSize')
   final int dataSize;
 
-  /// Number of bytes of the index binary file.
+
+
+      /// Number of bytes of the index binary file.
   @JsonKey(name: r'fileSize')
   final int fileSize;
 
-  /// Last build time.
+
+
+      /// Last build time.
   @JsonKey(name: r'lastBuildTimeS')
   final int lastBuildTimeS;
 
-  /// Number of pending indexing operations. This value is deprecated and should not be used.
+
+
+      /// Number of pending indexing operations. This value is deprecated and should not be used.
   @JsonKey(name: r'numberOfPendingTasks')
   final int numberOfPendingTasks;
 
-  /// A boolean which says whether the index has pending tasks. This value is deprecated and should not be used.
+
+
+      /// A boolean which says whether the index has pending tasks. This value is deprecated and should not be used.
   @JsonKey(name: r'pendingTask')
   final bool pendingTask;
 
-  /// Only present if the index is a replica. Contains the name of the related primary index.
+
+
+      /// Only present if the index is a replica. Contains the name of the related primary index.
   @JsonKey(name: r'primary')
   final String? primary;
 
-  /// Only present if the index is a primary index with replicas. Contains the names of all linked replicas.
+
+
+      /// Only present if the index is a primary index with replicas. Contains the names of all linked replicas.
   @JsonKey(name: r'replicas')
   final List<String>? replicas;
 
-  /// Only present if the index is a [virtual replica](https://www.algolia.com/doc/guides/managing-results/refine-results/sorting/how-to/sort-an-index-alphabetically/#virtual-replicas).
+
+
+      /// Only present if the index is a [virtual replica](https://www.algolia.com/doc/guides/managing-results/refine-results/sorting/how-to/sort-an-index-alphabetically/#virtual-replicas).
   @JsonKey(name: r'virtual')
   final bool? virtual;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FetchedIndex &&
-          other.name == name &&
-          other.createdAt == createdAt &&
-          other.updatedAt == updatedAt &&
-          other.entries == entries &&
-          other.dataSize == dataSize &&
-          other.fileSize == fileSize &&
-          other.lastBuildTimeS == lastBuildTimeS &&
-          other.numberOfPendingTasks == numberOfPendingTasks &&
-          other.pendingTask == pendingTask &&
-          other.primary == primary &&
-          other.replicas == replicas &&
-          other.virtual == virtual;
+  bool operator ==(Object other) => identical(this, other) || other is FetchedIndex &&
+     other.name == name &&
+     other.createdAt == createdAt &&
+     other.updatedAt == updatedAt &&
+     other.entries == entries &&
+     other.dataSize == dataSize &&
+     other.fileSize == fileSize &&
+     other.lastBuildTimeS == lastBuildTimeS &&
+     other.numberOfPendingTasks == numberOfPendingTasks &&
+     other.pendingTask == pendingTask &&
+     other.primary == primary &&
+     other.replicas == replicas &&
+     other.virtual == virtual
+    ;
 
   @override
   int get hashCode =>
-      name.hashCode +
-      createdAt.hashCode +
-      updatedAt.hashCode +
-      entries.hashCode +
-      dataSize.hashCode +
-      fileSize.hashCode +
-      lastBuildTimeS.hashCode +
-      numberOfPendingTasks.hashCode +
-      pendingTask.hashCode +
-      primary.hashCode +
-      replicas.hashCode +
-      virtual.hashCode;
+    name.hashCode +
+    createdAt.hashCode +
+    updatedAt.hashCode +
+    entries.hashCode +
+    dataSize.hashCode +
+    fileSize.hashCode +
+    lastBuildTimeS.hashCode +
+    numberOfPendingTasks.hashCode +
+    pendingTask.hashCode +
+    primary.hashCode +
+    replicas.hashCode +
+    virtual.hashCode
+    ;
 
-  factory FetchedIndex.fromJson(Map<String, dynamic> json) =>
-      _$FetchedIndexFromJson(json);
+  factory FetchedIndex.fromJson(Map<String, dynamic> json) => _$FetchedIndexFromJson(json);
 
   Map<String, dynamic> toJson() => _$FetchedIndexToJson(this);
 
@@ -112,4 +135,7 @@ final class FetchedIndex {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

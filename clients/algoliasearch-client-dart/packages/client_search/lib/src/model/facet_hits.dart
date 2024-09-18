@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'facet_hits.g.dart';
 
 @JsonSerializable()
-final class FacetHits {
+final class FacetHits{
   /// Returns a new [FacetHits] instance.
   const FacetHits({
     required this.value,
@@ -14,31 +14,39 @@ final class FacetHits {
     required this.count,
   });
 
-  /// Facet value.
+      /// Facet value.
   @JsonKey(name: r'value')
   final String value;
 
-  /// Highlighted attribute value, including HTML tags.
+
+
+      /// Highlighted attribute value, including HTML tags.
   @JsonKey(name: r'highlighted')
   final String highlighted;
 
-  /// Number of records with this facet value. [The count may be approximated](https://support.algolia.com/hc/en-us/articles/4406975248145-Why-are-my-facet-and-hit-counts-not-accurate-).
+
+
+      /// Number of records with this facet value. [The count may be approximated](https://support.algolia.com/hc/en-us/articles/4406975248145-Why-are-my-facet-and-hit-counts-not-accurate-).
   @JsonKey(name: r'count')
   final int count;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FacetHits &&
-          other.value == value &&
-          other.highlighted == highlighted &&
-          other.count == count;
+
 
   @override
-  int get hashCode => value.hashCode + highlighted.hashCode + count.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is FacetHits &&
+     other.value == value &&
+     other.highlighted == highlighted &&
+     other.count == count
+    ;
 
-  factory FacetHits.fromJson(Map<String, dynamic> json) =>
-      _$FacetHitsFromJson(json);
+  @override
+  int get hashCode =>
+    value.hashCode +
+    highlighted.hashCode +
+    count.hashCode
+    ;
+
+  factory FacetHits.fromJson(Map<String, dynamic> json) => _$FacetHitsFromJson(json);
 
   Map<String, dynamic> toJson() => _$FacetHitsToJson(this);
 
@@ -46,4 +54,7 @@ final class FacetHits {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

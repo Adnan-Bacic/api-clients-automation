@@ -2,6 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
+
 @JsonEnum(valueField: 'raw')
 enum DictionaryType {
   plurals(r'plurals'),
@@ -23,3 +24,4 @@ enum DictionaryType {
   @override
   String toString() => raw.toString();
 }
+

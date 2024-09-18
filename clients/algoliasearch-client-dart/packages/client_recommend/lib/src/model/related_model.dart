@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
-/// Related products or similar content model.  This model recommends items that are similar to the item with the ID `objectID`. Similarity is determined from the user interactions and attributes.
+/// Related products or similar content model.  This model recommends items that are similar to the item with the ID `objectID`. Similarity is determined from the user interactions and attributes. 
 @JsonEnum(valueField: 'raw')
 enum RelatedModel {
   relatedProducts(r'related-products');
@@ -22,3 +22,4 @@ enum RelatedModel {
   @override
   String toString() => raw.toString();
 }
+

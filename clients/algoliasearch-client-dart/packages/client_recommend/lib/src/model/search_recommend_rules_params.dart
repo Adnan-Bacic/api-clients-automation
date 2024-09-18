@@ -6,82 +6,97 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_recommend_rules_params.g.dart';
 
 @JsonSerializable()
-final class SearchRecommendRulesParams {
+final class SearchRecommendRulesParams{
   /// Returns a new [SearchRecommendRulesParams] instance.
   const SearchRecommendRulesParams({
-    this.query,
-    this.context,
-    this.page,
-    this.hitsPerPage,
-    this.enabled,
-    this.filters,
-    this.facets,
-    this.maxValuesPerFacet,
+     this.query,
+     this.context,
+     this.page,
+     this.hitsPerPage,
+     this.enabled,
+     this.filters,
+     this.facets,
+     this.maxValuesPerFacet,
   });
 
-  /// Search query.
+      /// Search query.
   @JsonKey(name: r'query')
   final String? query;
 
-  /// Only search for rules with matching context.
+
+
+      /// Only search for rules with matching context.
   @JsonKey(name: r'context')
   final String? context;
 
-  /// Requested page of the API response.
-  // minimum: 0
+
+
+      /// Requested page of the API response.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int? page;
 
-  /// Maximum number of hits per page.
-  // minimum: 1
-  // maximum: 1000
+
+
+      /// Maximum number of hits per page.
+          // minimum: 1
+          // maximum: 1000
   @JsonKey(name: r'hitsPerPage')
   final int? hitsPerPage;
 
-  /// Whether to only show rules where the value of their `enabled` property matches this parameter. If absent, show all rules, regardless of their `enabled` property.
+
+
+      /// Whether to only show rules where the value of their `enabled` property matches this parameter. If absent, show all rules, regardless of their `enabled` property. 
   @JsonKey(name: r'enabled')
   final bool? enabled;
 
-  /// Filter expression. This only searches for rules matching the filter expression.
+
+
+      /// Filter expression. This only searches for rules matching the filter expression.
   @JsonKey(name: r'filters')
   final String? filters;
 
-  /// Include facets and facet values in the response. Use `['*']` to include all facets.
+
+
+      /// Include facets and facet values in the response. Use `['*']` to include all facets.
   @JsonKey(name: r'facets')
   final List<String>? facets;
 
-  /// Maximum number of values to return for each facet.
-  // minimum: 1
-  // maximum: 1000
+
+
+      /// Maximum number of values to return for each facet.
+          // minimum: 1
+          // maximum: 1000
   @JsonKey(name: r'maxValuesPerFacet')
   final int? maxValuesPerFacet;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchRecommendRulesParams &&
-          other.query == query &&
-          other.context == context &&
-          other.page == page &&
-          other.hitsPerPage == hitsPerPage &&
-          other.enabled == enabled &&
-          other.filters == filters &&
-          other.facets == facets &&
-          other.maxValuesPerFacet == maxValuesPerFacet;
+  bool operator ==(Object other) => identical(this, other) || other is SearchRecommendRulesParams &&
+     other.query == query &&
+     other.context == context &&
+     other.page == page &&
+     other.hitsPerPage == hitsPerPage &&
+     other.enabled == enabled &&
+     other.filters == filters &&
+     other.facets == facets &&
+     other.maxValuesPerFacet == maxValuesPerFacet
+    ;
 
   @override
   int get hashCode =>
-      query.hashCode +
-      context.hashCode +
-      page.hashCode +
-      hitsPerPage.hashCode +
-      enabled.hashCode +
-      filters.hashCode +
-      facets.hashCode +
-      maxValuesPerFacet.hashCode;
+    query.hashCode +
+    context.hashCode +
+    page.hashCode +
+    hitsPerPage.hashCode +
+    enabled.hashCode +
+    filters.hashCode +
+    facets.hashCode +
+    maxValuesPerFacet.hashCode
+    ;
 
-  factory SearchRecommendRulesParams.fromJson(Map<String, dynamic> json) =>
-      _$SearchRecommendRulesParamsFromJson(json);
+  factory SearchRecommendRulesParams.fromJson(Map<String, dynamic> json) => _$SearchRecommendRulesParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchRecommendRulesParamsToJson(this);
 
@@ -89,4 +104,7 @@ final class SearchRecommendRulesParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

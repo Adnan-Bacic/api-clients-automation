@@ -2,6 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
+
 @JsonEnum(valueField: 'raw')
 enum AdvancedSyntaxFeatures {
   exactPhrase(r'exactPhrase'),
@@ -22,3 +23,4 @@ enum AdvancedSyntaxFeatures {
   @override
   String toString() => raw.toString();
 }
+

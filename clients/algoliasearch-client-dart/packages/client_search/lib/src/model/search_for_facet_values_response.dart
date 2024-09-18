@@ -7,42 +7,47 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_for_facet_values_response.g.dart';
 
 @JsonSerializable()
-final class SearchForFacetValuesResponse {
+final class SearchForFacetValuesResponse{
   /// Returns a new [SearchForFacetValuesResponse] instance.
   const SearchForFacetValuesResponse({
     required this.facetHits,
     required this.exhaustiveFacetsCount,
-    this.processingTimeMS,
+     this.processingTimeMS,
   });
 
-  /// Matching facet values.
+      /// Matching facet values.
   @JsonKey(name: r'facetHits')
   final List<FacetHits> facetHits;
 
-  /// Whether the facet count is exhaustive (true) or approximate (false). For more information, see [Why are my facet and hit counts not accurate](https://support.algolia.com/hc/en-us/articles/4406975248145-Why-are-my-facet-and-hit-counts-not-accurate-).
+
+
+      /// Whether the facet count is exhaustive (true) or approximate (false). For more information, see [Why are my facet and hit counts not accurate](https://support.algolia.com/hc/en-us/articles/4406975248145-Why-are-my-facet-and-hit-counts-not-accurate-). 
   @JsonKey(name: r'exhaustiveFacetsCount')
   final bool exhaustiveFacetsCount;
 
-  /// Time the server took to process the request, in milliseconds.
+
+
+      /// Time the server took to process the request, in milliseconds.
   @JsonKey(name: r'processingTimeMS')
   final int? processingTimeMS;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchForFacetValuesResponse &&
-          other.facetHits == facetHits &&
-          other.exhaustiveFacetsCount == exhaustiveFacetsCount &&
-          other.processingTimeMS == processingTimeMS;
+  bool operator ==(Object other) => identical(this, other) || other is SearchForFacetValuesResponse &&
+     other.facetHits == facetHits &&
+     other.exhaustiveFacetsCount == exhaustiveFacetsCount &&
+     other.processingTimeMS == processingTimeMS
+    ;
 
   @override
   int get hashCode =>
-      facetHits.hashCode +
-      exhaustiveFacetsCount.hashCode +
-      processingTimeMS.hashCode;
+    facetHits.hashCode +
+    exhaustiveFacetsCount.hashCode +
+    processingTimeMS.hashCode
+    ;
 
-  factory SearchForFacetValuesResponse.fromJson(Map<String, dynamic> json) =>
-      _$SearchForFacetValuesResponseFromJson(json);
+  factory SearchForFacetValuesResponse.fromJson(Map<String, dynamic> json) => _$SearchForFacetValuesResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchForFacetValuesResponseToJson(this);
 
@@ -50,4 +55,7 @@ final class SearchForFacetValuesResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

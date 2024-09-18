@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'rule_metadata.g.dart';
 
 @JsonSerializable()
-final class RuleMetadata {
+final class RuleMetadata{
   /// Returns a new [RuleMetadata] instance.
   const RuleMetadata({
-    this.lastUpdate,
+     this.lastUpdate,
   });
 
-  /// Date and time when the object was updated, in RFC 3339 format.
+      /// Date and time when the object was updated, in RFC 3339 format.
   @JsonKey(name: r'lastUpdate')
   final String? lastUpdate;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is RuleMetadata && other.lastUpdate == lastUpdate;
+
 
   @override
-  int get hashCode => lastUpdate.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is RuleMetadata &&
+     other.lastUpdate == lastUpdate
+    ;
 
-  factory RuleMetadata.fromJson(Map<String, dynamic> json) =>
-      _$RuleMetadataFromJson(json);
+  @override
+  int get hashCode =>
+    lastUpdate.hashCode
+    ;
+
+  factory RuleMetadata.fromJson(Map<String, dynamic> json) => _$RuleMetadataFromJson(json);
 
   Map<String, dynamic> toJson() => _$RuleMetadataToJson(this);
 
@@ -33,4 +36,7 @@ final class RuleMetadata {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

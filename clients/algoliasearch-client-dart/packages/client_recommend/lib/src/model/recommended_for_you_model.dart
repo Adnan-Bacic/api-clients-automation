@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
-/// \"Recommened for you\" model.
+/// \"Recommened for you\" model. 
 @JsonEnum(valueField: 'raw')
 enum RecommendedForYouModel {
   recommendedForYou(r'recommended-for-you');
@@ -22,3 +22,4 @@ enum RecommendedForYouModel {
   @override
   String toString() => raw.toString();
 }
+

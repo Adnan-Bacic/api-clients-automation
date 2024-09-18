@@ -6,52 +6,59 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_user_ids_params.g.dart';
 
 @JsonSerializable()
-final class SearchUserIdsParams {
+final class SearchUserIdsParams{
   /// Returns a new [SearchUserIdsParams] instance.
   const SearchUserIdsParams({
     required this.query,
-    this.clusterName,
-    this.page,
-    this.hitsPerPage,
+     this.clusterName,
+     this.page,
+     this.hitsPerPage,
   });
 
-  /// Query to search. The search is a prefix search with [typo tolerance](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/typo-tolerance/) enabled. An empty query will retrieve all users.
+      /// Query to search. The search is a prefix search with [typo tolerance](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/typo-tolerance/) enabled. An empty query will retrieve all users.
   @JsonKey(name: r'query')
   final String query;
 
-  /// Cluster name.
+
+
+      /// Cluster name.
   @JsonKey(name: r'clusterName')
   final String? clusterName;
 
-  /// Page of search results to retrieve.
-  // minimum: 0
+
+
+      /// Page of search results to retrieve.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int? page;
 
-  /// Number of hits per page.
-  // minimum: 1
-  // maximum: 1000
+
+
+      /// Number of hits per page.
+          // minimum: 1
+          // maximum: 1000
   @JsonKey(name: r'hitsPerPage')
   final int? hitsPerPage;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchUserIdsParams &&
-          other.query == query &&
-          other.clusterName == clusterName &&
-          other.page == page &&
-          other.hitsPerPage == hitsPerPage;
+  bool operator ==(Object other) => identical(this, other) || other is SearchUserIdsParams &&
+     other.query == query &&
+     other.clusterName == clusterName &&
+     other.page == page &&
+     other.hitsPerPage == hitsPerPage
+    ;
 
   @override
   int get hashCode =>
-      query.hashCode +
-      clusterName.hashCode +
-      page.hashCode +
-      hitsPerPage.hashCode;
+    query.hashCode +
+    clusterName.hashCode +
+    page.hashCode +
+    hitsPerPage.hashCode
+    ;
 
-  factory SearchUserIdsParams.fromJson(Map<String, dynamic> json) =>
-      _$SearchUserIdsParamsFromJson(json);
+  factory SearchUserIdsParams.fromJson(Map<String, dynamic> json) => _$SearchUserIdsParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchUserIdsParamsToJson(this);
 
@@ -59,4 +66,7 @@ final class SearchUserIdsParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_task_response.g.dart';
 
 @JsonSerializable()
-final class GetTaskResponse {
+final class GetTaskResponse{
   /// Returns a new [GetTaskResponse] instance.
   const GetTaskResponse({
     required this.status,
@@ -16,16 +16,19 @@ final class GetTaskResponse {
   @JsonKey(name: r'status')
   final TaskStatus status;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetTaskResponse && other.status == status;
+
 
   @override
-  int get hashCode => status.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is GetTaskResponse &&
+     other.status == status
+    ;
 
-  factory GetTaskResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetTaskResponseFromJson(json);
+  @override
+  int get hashCode =>
+    status.hashCode
+    ;
+
+  factory GetTaskResponse.fromJson(Map<String, dynamic> json) => _$GetTaskResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetTaskResponseToJson(this);
 
@@ -33,4 +36,7 @@ final class GetTaskResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

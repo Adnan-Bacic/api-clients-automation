@@ -6,49 +6,59 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_pagination.g.dart';
 
 @JsonSerializable()
-final class SearchPagination {
+final class SearchPagination{
   /// Returns a new [SearchPagination] instance.
   const SearchPagination({
-    this.page,
-    this.nbHits,
-    this.nbPages,
-    this.hitsPerPage,
+     this.page,
+     this.nbHits,
+     this.nbPages,
+     this.hitsPerPage,
   });
 
-  /// Page of search results to retrieve.
-  // minimum: 0
+      /// Page of search results to retrieve.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int? page;
 
-  /// Number of results (hits).
+
+
+      /// Number of results (hits).
   @JsonKey(name: r'nbHits')
   final int? nbHits;
 
-  /// Number of pages of results.
+
+
+      /// Number of pages of results.
   @JsonKey(name: r'nbPages')
   final int? nbPages;
 
-  /// Number of hits per page.
-  // minimum: 1
-  // maximum: 1000
+
+
+      /// Number of hits per page.
+          // minimum: 1
+          // maximum: 1000
   @JsonKey(name: r'hitsPerPage')
   final int? hitsPerPage;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchPagination &&
-          other.page == page &&
-          other.nbHits == nbHits &&
-          other.nbPages == nbPages &&
-          other.hitsPerPage == hitsPerPage;
+  bool operator ==(Object other) => identical(this, other) || other is SearchPagination &&
+     other.page == page &&
+     other.nbHits == nbHits &&
+     other.nbPages == nbPages &&
+     other.hitsPerPage == hitsPerPage
+    ;
 
   @override
   int get hashCode =>
-      page.hashCode + nbHits.hashCode + nbPages.hashCode + hitsPerPage.hashCode;
+    page.hashCode +
+    nbHits.hashCode +
+    nbPages.hashCode +
+    hitsPerPage.hashCode
+    ;
 
-  factory SearchPagination.fromJson(Map<String, dynamic> json) =>
-      _$SearchPaginationFromJson(json);
+  factory SearchPagination.fromJson(Map<String, dynamic> json) => _$SearchPaginationFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchPaginationToJson(this);
 
@@ -56,4 +66,7 @@ final class SearchPagination {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

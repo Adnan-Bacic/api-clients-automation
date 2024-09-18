@@ -23,3 +23,4 @@ enum OperationType {
   @override
   String toString() => raw.toString();
 }
+

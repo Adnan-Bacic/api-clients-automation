@@ -9,59 +9,71 @@ import 'package:json_annotation/json_annotation.dart';
 part 'rule.g.dart';
 
 @JsonSerializable()
-final class Rule {
+final class Rule{
   /// Returns a new [Rule] instance.
   const Rule({
     required this.objectID,
-    this.conditions,
-    this.consequence,
-    this.description,
-    this.enabled,
-    this.validity,
+     this.conditions,
+     this.consequence,
+     this.description,
+     this.enabled,
+     this.validity,
   });
 
-  /// Unique identifier of a rule object.
+      /// Unique identifier of a rule object.
   @JsonKey(name: r'objectID')
   final String objectID;
 
-  /// Conditions that trigger a rule.  Some consequences require specific conditions or don't require any condition. For more information, see [Conditions](https://www.algolia.com/doc/guides/managing-results/rules/rules-overview/#conditions).
+
+
+      /// Conditions that trigger a rule.  Some consequences require specific conditions or don't require any condition. For more information, see [Conditions](https://www.algolia.com/doc/guides/managing-results/rules/rules-overview/#conditions). 
   @JsonKey(name: r'conditions')
   final List<Condition>? conditions;
+
+
 
   @JsonKey(name: r'consequence')
   final Consequence? consequence;
 
-  /// Description of the rule's purpose to help you distinguish between different rules.
+
+
+      /// Description of the rule's purpose to help you distinguish between different rules.
   @JsonKey(name: r'description')
   final String? description;
 
-  /// Whether the rule is active.
+
+
+      /// Whether the rule is active.
   @JsonKey(name: r'enabled')
   final bool? enabled;
 
-  /// Time periods when the rule is active.
+
+
+      /// Time periods when the rule is active.
   @JsonKey(name: r'validity')
   final List<TimeRange>? validity;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Rule &&
-          other.objectID == objectID &&
-          other.conditions == conditions &&
-          other.consequence == consequence &&
-          other.description == description &&
-          other.enabled == enabled &&
-          other.validity == validity;
+  bool operator ==(Object other) => identical(this, other) || other is Rule &&
+     other.objectID == objectID &&
+     other.conditions == conditions &&
+     other.consequence == consequence &&
+     other.description == description &&
+     other.enabled == enabled &&
+     other.validity == validity
+    ;
 
   @override
   int get hashCode =>
-      objectID.hashCode +
-      conditions.hashCode +
-      consequence.hashCode +
-      description.hashCode +
-      enabled.hashCode +
-      validity.hashCode;
+    objectID.hashCode +
+    conditions.hashCode +
+    consequence.hashCode +
+    description.hashCode +
+    enabled.hashCode +
+    validity.hashCode
+    ;
 
   factory Rule.fromJson(Map<String, dynamic> json) => _$RuleFromJson(json);
 
@@ -71,4 +83,7 @@ final class Rule {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

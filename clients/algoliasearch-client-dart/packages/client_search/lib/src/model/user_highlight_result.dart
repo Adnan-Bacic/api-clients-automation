@@ -6,43 +6,48 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user_highlight_result.g.dart';
 
 @JsonSerializable()
-final class UserHighlightResult {
+final class UserHighlightResult{
   /// Returns a new [UserHighlightResult] instance.
   const UserHighlightResult({
     required this.userID,
     required this.clusterName,
   });
 
-  /// One of types:
-  /// - [List<HighlightResultOption>]
-  /// - [List<Map<String, HighlightResult>>]
-  /// - [List<List<HighlightResult>>]
-  /// - [HighlightResultOption]
-  /// - [Map<String, HighlightResult>]
+     /// One of types: 
+     /// - [List<HighlightResultOption>]
+     /// - [List<Map<String, HighlightResult>>]
+     /// - [List<List<HighlightResult>>]
+     /// - [HighlightResultOption]
+     /// - [Map<String, HighlightResult>]
   @JsonKey(name: r'userID')
   final dynamic userID;
 
-  /// One of types:
-  /// - [List<HighlightResultOption>]
-  /// - [List<Map<String, HighlightResult>>]
-  /// - [List<List<HighlightResult>>]
-  /// - [HighlightResultOption]
-  /// - [Map<String, HighlightResult>]
+
+
+     /// One of types: 
+     /// - [List<HighlightResultOption>]
+     /// - [List<Map<String, HighlightResult>>]
+     /// - [List<List<HighlightResult>>]
+     /// - [HighlightResultOption]
+     /// - [Map<String, HighlightResult>]
   @JsonKey(name: r'clusterName')
   final dynamic clusterName;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UserHighlightResult &&
-          other.userID == userID &&
-          other.clusterName == clusterName;
+
 
   @override
-  int get hashCode => userID.hashCode + clusterName.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is UserHighlightResult &&
+     other.userID == userID &&
+     other.clusterName == clusterName
+    ;
 
-  factory UserHighlightResult.fromJson(Map<String, dynamic> json) =>
-      _$UserHighlightResultFromJson(json);
+  @override
+  int get hashCode =>
+    userID.hashCode +
+    clusterName.hashCode
+    ;
+
+  factory UserHighlightResult.fromJson(Map<String, dynamic> json) => _$UserHighlightResultFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserHighlightResultToJson(this);
 
@@ -50,4 +55,7 @@ final class UserHighlightResult {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

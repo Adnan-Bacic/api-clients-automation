@@ -2,6 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
+
 @JsonEnum(valueField: 'raw')
 enum PurchaseEvent {
   purchase(r'purchase');
@@ -21,3 +22,4 @@ enum PurchaseEvent {
   @override
   String toString() => raw.toString();
 }
+

@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'with_primary.g.dart';
 
 @JsonSerializable()
-final class WithPrimary {
+final class WithPrimary{
   /// Returns a new [WithPrimary] instance.
   const WithPrimary({
-    this.primary,
+     this.primary,
   });
 
-  /// Replica indices only: the name of the primary index for this replica.
+      /// Replica indices only: the name of the primary index for this replica. 
   @JsonKey(name: r'primary')
   final String? primary;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is WithPrimary && other.primary == primary;
+
 
   @override
-  int get hashCode => primary.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is WithPrimary &&
+     other.primary == primary
+    ;
 
-  factory WithPrimary.fromJson(Map<String, dynamic> json) =>
-      _$WithPrimaryFromJson(json);
+  @override
+  int get hashCode =>
+    primary.hashCode
+    ;
+
+  factory WithPrimary.fromJson(Map<String, dynamic> json) => _$WithPrimaryFromJson(json);
 
   Map<String, dynamic> toJson() => _$WithPrimaryToJson(this);
 
@@ -33,4 +36,7 @@ final class WithPrimary {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

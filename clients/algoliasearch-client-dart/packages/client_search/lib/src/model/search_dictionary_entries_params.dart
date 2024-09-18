@@ -7,48 +7,58 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_dictionary_entries_params.g.dart';
 
 @JsonSerializable()
-final class SearchDictionaryEntriesParams {
+final class SearchDictionaryEntriesParams{
   /// Returns a new [SearchDictionaryEntriesParams] instance.
   const SearchDictionaryEntriesParams({
     required this.query,
-    this.page,
-    this.hitsPerPage,
-    this.language,
+     this.page,
+     this.hitsPerPage,
+     this.language,
   });
 
-  /// Search query.
+      /// Search query.
   @JsonKey(name: r'query')
   final String query;
 
-  /// Page of search results to retrieve.
-  // minimum: 0
+
+
+      /// Page of search results to retrieve.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int? page;
 
-  /// Number of hits per page.
-  // minimum: 1
-  // maximum: 1000
+
+
+      /// Number of hits per page.
+          // minimum: 1
+          // maximum: 1000
   @JsonKey(name: r'hitsPerPage')
   final int? hitsPerPage;
+
+
 
   @JsonKey(name: r'language')
   final SupportedLanguage? language;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchDictionaryEntriesParams &&
-          other.query == query &&
-          other.page == page &&
-          other.hitsPerPage == hitsPerPage &&
-          other.language == language;
+  bool operator ==(Object other) => identical(this, other) || other is SearchDictionaryEntriesParams &&
+     other.query == query &&
+     other.page == page &&
+     other.hitsPerPage == hitsPerPage &&
+     other.language == language
+    ;
 
   @override
   int get hashCode =>
-      query.hashCode + page.hashCode + hitsPerPage.hashCode + language.hashCode;
+    query.hashCode +
+    page.hashCode +
+    hitsPerPage.hashCode +
+    language.hashCode
+    ;
 
-  factory SearchDictionaryEntriesParams.fromJson(Map<String, dynamic> json) =>
-      _$SearchDictionaryEntriesParamsFromJson(json);
+  factory SearchDictionaryEntriesParams.fromJson(Map<String, dynamic> json) => _$SearchDictionaryEntriesParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchDictionaryEntriesParamsToJson(this);
 
@@ -56,4 +66,7 @@ final class SearchDictionaryEntriesParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

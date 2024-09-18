@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'auto_facet_filter.g.dart';
 
 @JsonSerializable()
-final class AutoFacetFilter {
+final class AutoFacetFilter{
   /// Returns a new [AutoFacetFilter] instance.
   const AutoFacetFilter({
-    this.facet,
-    this.negative,
+     this.facet,
+     this.negative,
   });
 
-  /// Facet attribute.
+      /// Facet attribute.
   @JsonKey(name: r'facet')
   final String? facet;
 
-  /// Whether the filter is negative. If true, recommendations must not have the same value for the `facet` attribute. If false, recommendations must have the same value for the `facet` attribute.
+
+
+      /// Whether the filter is negative. If true, recommendations must not have the same value for the `facet` attribute. If false, recommendations must have the same value for the `facet` attribute. 
   @JsonKey(name: r'negative')
   final bool? negative;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AutoFacetFilter &&
-          other.facet == facet &&
-          other.negative == negative;
+
 
   @override
-  int get hashCode => facet.hashCode + negative.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is AutoFacetFilter &&
+     other.facet == facet &&
+     other.negative == negative
+    ;
 
-  factory AutoFacetFilter.fromJson(Map<String, dynamic> json) =>
-      _$AutoFacetFilterFromJson(json);
+  @override
+  int get hashCode =>
+    facet.hashCode +
+    negative.hashCode
+    ;
+
+  factory AutoFacetFilter.fromJson(Map<String, dynamic> json) => _$AutoFacetFilterFromJson(json);
 
   Map<String, dynamic> toJson() => _$AutoFacetFilterToJson(this);
 
@@ -40,4 +45,7 @@ final class AutoFacetFilter {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

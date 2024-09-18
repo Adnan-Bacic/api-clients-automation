@@ -2,6 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
+
 @JsonEnum(valueField: 'raw')
 enum LogType {
   all(r'all'),
@@ -24,3 +25,4 @@ enum LogType {
   @override
   String toString() => raw.toString();
 }
+

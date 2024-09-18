@@ -9,38 +9,46 @@ import 'package:json_annotation/json_annotation.dart';
 part 'consequence.g.dart';
 
 @JsonSerializable()
-final class Consequence {
+final class Consequence{
   /// Returns a new [Consequence] instance.
   const Consequence({
-    this.hide,
-    this.promote,
-    this.params,
+     this.hide,
+     this.promote,
+     this.params,
   });
 
-  /// Exclude items from recommendations.
+      /// Exclude items from recommendations.
   @JsonKey(name: r'hide')
   final List<HideConsequenceObject>? hide;
 
-  /// Place items at specific positions in the list of recommendations.
+
+
+      /// Place items at specific positions in the list of recommendations.
   @JsonKey(name: r'promote')
   final List<PromoteConsequenceObject>? promote;
+
+
 
   @JsonKey(name: r'params')
   final ParamsConsequence? params;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Consequence &&
-          other.hide == hide &&
-          other.promote == promote &&
-          other.params == params;
+
 
   @override
-  int get hashCode => hide.hashCode + promote.hashCode + params.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Consequence &&
+     other.hide == hide &&
+     other.promote == promote &&
+     other.params == params
+    ;
 
-  factory Consequence.fromJson(Map<String, dynamic> json) =>
-      _$ConsequenceFromJson(json);
+  @override
+  int get hashCode =>
+    hide.hashCode +
+    promote.hashCode +
+    params.hashCode
+    ;
+
+  factory Consequence.fromJson(Map<String, dynamic> json) => _$ConsequenceFromJson(json);
 
   Map<String, dynamic> toJson() => _$ConsequenceToJson(this);
 
@@ -48,4 +56,7 @@ final class Consequence {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch_params.g.dart';
 
 @JsonSerializable()
-final class BatchParams {
+final class BatchParams{
   /// Returns a new [BatchParams] instance.
   const BatchParams({
     required this.requests,
@@ -16,16 +16,19 @@ final class BatchParams {
   @JsonKey(name: r'requests')
   final List<MultipleBatchRequest> requests;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BatchParams && other.requests == requests;
+
 
   @override
-  int get hashCode => requests.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is BatchParams &&
+     other.requests == requests
+    ;
 
-  factory BatchParams.fromJson(Map<String, dynamic> json) =>
-      _$BatchParamsFromJson(json);
+  @override
+  int get hashCode =>
+    requests.hashCode
+    ;
+
+  factory BatchParams.fromJson(Map<String, dynamic> json) => _$BatchParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$BatchParamsToJson(this);
 
@@ -33,4 +36,7 @@ final class BatchParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

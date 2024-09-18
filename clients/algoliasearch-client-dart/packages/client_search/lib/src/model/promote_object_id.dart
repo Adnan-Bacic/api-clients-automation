@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'promote_object_id.g.dart';
 
 @JsonSerializable()
-final class PromoteObjectID {
+final class PromoteObjectID{
   /// Returns a new [PromoteObjectID] instance.
   const PromoteObjectID({
     required this.objectID,
     required this.position,
   });
 
-  /// Unique record identifier.
+      /// Unique record identifier.
   @JsonKey(name: r'objectID')
   final String objectID;
 
-  /// Position in the search results where you want to show the promoted records.
+
+
+      /// Position in the search results where you want to show the promoted records.
   @JsonKey(name: r'position')
   final int position;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PromoteObjectID &&
-          other.objectID == objectID &&
-          other.position == position;
+
 
   @override
-  int get hashCode => objectID.hashCode + position.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is PromoteObjectID &&
+     other.objectID == objectID &&
+     other.position == position
+    ;
 
-  factory PromoteObjectID.fromJson(Map<String, dynamic> json) =>
-      _$PromoteObjectIDFromJson(json);
+  @override
+  int get hashCode =>
+    objectID.hashCode +
+    position.hashCode
+    ;
+
+  factory PromoteObjectID.fromJson(Map<String, dynamic> json) => _$PromoteObjectIDFromJson(json);
 
   Map<String, dynamic> toJson() => _$PromoteObjectIDToJson(this);
 
@@ -40,4 +45,7 @@ final class PromoteObjectID {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -7,76 +7,91 @@ import 'package:json_annotation/json_annotation.dart';
 part 'synonym_hit.g.dart';
 
 @JsonSerializable()
-final class SynonymHit {
+final class SynonymHit{
   /// Returns a new [SynonymHit] instance.
   const SynonymHit({
     required this.objectID,
     required this.type,
-    this.synonyms,
-    this.input,
-    this.word,
-    this.corrections,
-    this.placeholder,
-    this.replacements,
+     this.synonyms,
+     this.input,
+     this.word,
+     this.corrections,
+     this.placeholder,
+     this.replacements,
   });
 
-  /// Unique identifier of a synonym object.
+      /// Unique identifier of a synonym object.
   @JsonKey(name: r'objectID')
   final String objectID;
+
+
 
   @JsonKey(name: r'type')
   final SynonymType type;
 
-  /// Words or phrases considered equivalent.
+
+
+      /// Words or phrases considered equivalent.
   @JsonKey(name: r'synonyms')
   final List<String>? synonyms;
 
-  /// Word or phrase to appear in query strings (for [`onewaysynonym`s](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/one-way-synonyms/)).
+
+
+      /// Word or phrase to appear in query strings (for [`onewaysynonym`s](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/one-way-synonyms/)).
   @JsonKey(name: r'input')
   final String? input;
 
-  /// Word or phrase to appear in query strings (for [`altcorrection1` and `altcorrection2`](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/synonyms-alternative-corrections/)).
+
+
+      /// Word or phrase to appear in query strings (for [`altcorrection1` and `altcorrection2`](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/synonyms-alternative-corrections/)).
   @JsonKey(name: r'word')
   final String? word;
 
-  /// Words to be matched in records.
+
+
+      /// Words to be matched in records.
   @JsonKey(name: r'corrections')
   final List<String>? corrections;
 
-  /// [Placeholder token](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/synonyms-placeholders/) to be put inside records.
+
+
+      /// [Placeholder token](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/synonyms-placeholders/) to be put inside records. 
   @JsonKey(name: r'placeholder')
   final String? placeholder;
 
-  /// Query words that will match the [placeholder token](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/synonyms-placeholders/).
+
+
+      /// Query words that will match the [placeholder token](https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/in-depth/synonyms-placeholders/).
   @JsonKey(name: r'replacements')
   final List<String>? replacements;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SynonymHit &&
-          other.objectID == objectID &&
-          other.type == type &&
-          other.synonyms == synonyms &&
-          other.input == input &&
-          other.word == word &&
-          other.corrections == corrections &&
-          other.placeholder == placeholder &&
-          other.replacements == replacements;
+  bool operator ==(Object other) => identical(this, other) || other is SynonymHit &&
+     other.objectID == objectID &&
+     other.type == type &&
+     other.synonyms == synonyms &&
+     other.input == input &&
+     other.word == word &&
+     other.corrections == corrections &&
+     other.placeholder == placeholder &&
+     other.replacements == replacements
+    ;
 
   @override
   int get hashCode =>
-      objectID.hashCode +
-      type.hashCode +
-      synonyms.hashCode +
-      input.hashCode +
-      word.hashCode +
-      corrections.hashCode +
-      placeholder.hashCode +
-      replacements.hashCode;
+    objectID.hashCode +
+    type.hashCode +
+    synonyms.hashCode +
+    input.hashCode +
+    word.hashCode +
+    corrections.hashCode +
+    placeholder.hashCode +
+    replacements.hashCode
+    ;
 
-  factory SynonymHit.fromJson(Map<String, dynamic> json) =>
-      _$SynonymHitFromJson(json);
+  factory SynonymHit.fromJson(Map<String, dynamic> json) => _$SynonymHitFromJson(json);
 
   Map<String, dynamic> toJson() => _$SynonymHitToJson(this);
 
@@ -84,4 +99,7 @@ final class SynonymHit {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

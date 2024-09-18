@@ -5,6 +5,7 @@ import 'package:algolia_client_recommend/src/deserialize.dart';
 import 'package:algolia_client_recommend/src/version.dart';
 
 import 'package:algolia_client_recommend/src/model/deleted_at_response.dart';
+import 'package:algolia_client_recommend/src/model/error_base.dart';
 import 'package:algolia_client_recommend/src/model/get_recommend_task_response.dart';
 import 'package:algolia_client_recommend/src/model/get_recommendations_params.dart';
 import 'package:algolia_client_recommend/src/model/get_recommendations_response.dart';
@@ -14,8 +15,10 @@ import 'package:algolia_client_recommend/src/model/search_recommend_rules_params
 import 'package:algolia_client_recommend/src/model/search_recommend_rules_response.dart';
 
 final class RecommendClient implements ApiClient {
+
   @override
   final ClientOptions options;
+
 
   final RetryStrategy _retryStrategy;
 
@@ -24,21 +27,22 @@ final class RecommendClient implements ApiClient {
     required String apiKey,
     this.options = const ClientOptions(),
   }) : _retryStrategy = RetryStrategy.create(
-          segment: AgentSegment(value: "Recommend", version: packageVersion),
-          appId: appId,
-          apiKey: apiKey,
-          options: options,
-          defaultHosts: () =>
-              [
-                Host(url: '$appId-dsn.algolia.net', callType: CallType.read),
-                Host(url: '$appId.algolia.net', callType: CallType.write),
-              ] +
-              ([
-                Host(url: '$appId-1.algolianet.com'),
-                Host(url: '$appId-2.algolianet.com'),
-                Host(url: '$appId-3.algolianet.com'),
-              ]..shuffle()),
-        ) {
+            segment: AgentSegment(value: "Recommend", version: packageVersion),
+            appId: appId,
+            apiKey: apiKey,
+            options: options,
+            defaultHosts: () => [
+              Host(url: '$appId-dsn.algolia.net', callType: CallType.read),
+              Host(url: '$appId.algolia.net', callType: CallType.write),
+            ] +
+            (
+                [
+                  Host(url: '$appId-1.algolianet.com'),
+                  Host(url: '$appId-2.algolianet.com'),
+                  Host(url: '$appId-3.algolianet.com'),
+                ]..shuffle()
+            ),
+            ) {
     assert(appId.isNotEmpty, '`appId` is missing.');
     assert(apiKey.isNotEmpty, '`apiKey` is missing.');
   }
@@ -46,7 +50,7 @@ final class RecommendClient implements ApiClient {
   /// Allows to switch the API key used to authenticate requests.
   @override
   void setClientApiKey({required String apiKey}) {
-    _retryStrategy.requester.setClientApiKey(apiKey);
+    this._retryStrategy.requester.setClientApiKey(apiKey);
   }
 
   /// This method allow you to send requests to the Algolia REST API.
@@ -56,31 +60,24 @@ final class RecommendClient implements ApiClient {
   /// * [parameters] Query parameters to apply to the current query.
   /// * [requestOptions] additional request configuration.
   Future<Object> customDelete({
-    required String path,
-    Map<String, Object>? parameters,
+    required  String path, 
+    Map<String, Object>? parameters, 
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      path.isNotEmpty,
-      'Parameter `path` is required when calling `customDelete`.',
-    );
+    assert(path.isNotEmpty, 'Parameter `path` is required when calling `customDelete`.',);
     final request = ApiRequest(
-      method: RequestMethod.delete,
-      path: r'/{path}'.replaceAll('{' r'path' '}', path),
-      queryParams: {
-        ...?parameters,
-      },
-    );
+        method: RequestMethod.delete,
+        path: r'/{path}'.replaceAll('{' r'path' '}', path),
+        queryParams: {
+          ...?parameters,
+        },
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<Object, Object>(
-      response,
-      'Object',
-      growable: true,
-    );
-  }
+    return deserialize<Object, Object>(response, 'Object', growable: true,);
+  }  
 
   /// This method allow you to send requests to the Algolia REST API.
   ///
@@ -89,31 +86,24 @@ final class RecommendClient implements ApiClient {
   /// * [parameters] Query parameters to apply to the current query.
   /// * [requestOptions] additional request configuration.
   Future<Object> customGet({
-    required String path,
-    Map<String, Object>? parameters,
+    required  String path, 
+    Map<String, Object>? parameters, 
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      path.isNotEmpty,
-      'Parameter `path` is required when calling `customGet`.',
-    );
+    assert(path.isNotEmpty, 'Parameter `path` is required when calling `customGet`.',);
     final request = ApiRequest(
-      method: RequestMethod.get,
-      path: r'/{path}'.replaceAll('{' r'path' '}', path),
-      queryParams: {
-        ...?parameters,
-      },
-    );
+        method: RequestMethod.get,
+        path: r'/{path}'.replaceAll('{' r'path' '}', path),
+        queryParams: {
+          ...?parameters,
+        },
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<Object, Object>(
-      response,
-      'Object',
-      growable: true,
-    );
-  }
+    return deserialize<Object, Object>(response, 'Object', growable: true,);
+  }  
 
   /// This method allow you to send requests to the Algolia REST API.
   ///
@@ -123,33 +113,25 @@ final class RecommendClient implements ApiClient {
   /// * [body] Parameters to send with the custom request.
   /// * [requestOptions] additional request configuration.
   Future<Object> customPost({
-    required String path,
-    Map<String, Object>? parameters,
-    Object? body,
+    required  String path, 
+    Map<String, Object>? parameters, Object? body, 
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      path.isNotEmpty,
-      'Parameter `path` is required when calling `customPost`.',
-    );
+    assert(path.isNotEmpty, 'Parameter `path` is required when calling `customPost`.',);
     final request = ApiRequest(
-      method: RequestMethod.post,
-      path: r'/{path}'.replaceAll('{' r'path' '}', path),
-      queryParams: {
-        ...?parameters,
-      },
-      body: body,
-    );
+        method: RequestMethod.post,
+        path: r'/{path}'.replaceAll('{' r'path' '}', path),
+        queryParams: {
+          ...?parameters,
+        },
+        body: body,
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<Object, Object>(
-      response,
-      'Object',
-      growable: true,
-    );
-  }
+    return deserialize<Object, Object>(response, 'Object', growable: true,);
+  }  
 
   /// This method allow you to send requests to the Algolia REST API.
   ///
@@ -159,33 +141,25 @@ final class RecommendClient implements ApiClient {
   /// * [body] Parameters to send with the custom request.
   /// * [requestOptions] additional request configuration.
   Future<Object> customPut({
-    required String path,
-    Map<String, Object>? parameters,
-    Object? body,
+    required  String path, 
+    Map<String, Object>? parameters, Object? body, 
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      path.isNotEmpty,
-      'Parameter `path` is required when calling `customPut`.',
-    );
+    assert(path.isNotEmpty, 'Parameter `path` is required when calling `customPut`.',);
     final request = ApiRequest(
-      method: RequestMethod.put,
-      path: r'/{path}'.replaceAll('{' r'path' '}', path),
-      queryParams: {
-        ...?parameters,
-      },
-      body: body,
-    );
+        method: RequestMethod.put,
+        path: r'/{path}'.replaceAll('{' r'path' '}', path),
+        queryParams: {
+          ...?parameters,
+        },
+        body: body,
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<Object, Object>(
-      response,
-      'Object',
-      growable: true,
-    );
-  }
+    return deserialize<Object, Object>(response, 'Object', growable: true,);
+  }  
 
   /// Deletes a Recommend rule from a recommendation scenario.
   ///
@@ -194,42 +168,26 @@ final class RecommendClient implements ApiClient {
   ///
   /// Parameters:
   /// * [indexName] Name of the index on which to perform the operation.
-  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models).
+  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models). 
   /// * [objectID] Unique record identifier.
   /// * [requestOptions] additional request configuration.
   Future<DeletedAtResponse> deleteRecommendRule({
-    required String indexName,
-    required RecommendModels model,
-    required String objectID,
+    required  String indexName, required  RecommendModels model, required  String objectID, 
+    
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      indexName.isNotEmpty,
-      'Parameter `indexName` is required when calling `deleteRecommendRule`.',
-    );
-    assert(
-      objectID.isNotEmpty,
-      'Parameter `objectID` is required when calling `deleteRecommendRule`.',
-    );
+    assert(indexName.isNotEmpty, 'Parameter `indexName` is required when calling `deleteRecommendRule`.',);
+    assert(objectID.isNotEmpty, 'Parameter `objectID` is required when calling `deleteRecommendRule`.',);
     final request = ApiRequest(
-      method: RequestMethod.delete,
-      path: r'/1/indexes/{indexName}/{model}/recommend/rules/{objectID}'
-          .replaceAll(
-              '{' r'indexName' '}', Uri.encodeComponent(indexName.toString()))
-          .replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString()))
-          .replaceAll(
-              '{' r'objectID' '}', Uri.encodeComponent(objectID.toString())),
-    );
+        method: RequestMethod.delete,
+        path: r'/1/indexes/{indexName}/{model}/recommend/rules/{objectID}'.replaceAll('{' r'indexName' '}', Uri.encodeComponent(indexName.toString())).replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString())).replaceAll('{' r'objectID' '}', Uri.encodeComponent(objectID.toString())),
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<DeletedAtResponse, DeletedAtResponse>(
-      response,
-      'DeletedAtResponse',
-      growable: true,
-    );
-  }
+    return deserialize<DeletedAtResponse, DeletedAtResponse>(response, 'DeletedAtResponse', growable: true,);
+  }  
 
   /// Retrieves a Recommend rule that you previously created in the Algolia dashboard.
   ///
@@ -238,197 +196,145 @@ final class RecommendClient implements ApiClient {
   ///
   /// Parameters:
   /// * [indexName] Name of the index on which to perform the operation.
-  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models).
+  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models). 
   /// * [objectID] Unique record identifier.
   /// * [requestOptions] additional request configuration.
   Future<RecommendRule> getRecommendRule({
-    required String indexName,
-    required RecommendModels model,
-    required String objectID,
+    required  String indexName, required  RecommendModels model, required  String objectID, 
+    
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      indexName.isNotEmpty,
-      'Parameter `indexName` is required when calling `getRecommendRule`.',
-    );
-    assert(
-      objectID.isNotEmpty,
-      'Parameter `objectID` is required when calling `getRecommendRule`.',
-    );
+    assert(indexName.isNotEmpty, 'Parameter `indexName` is required when calling `getRecommendRule`.',);
+    assert(objectID.isNotEmpty, 'Parameter `objectID` is required when calling `getRecommendRule`.',);
     final request = ApiRequest(
-      method: RequestMethod.get,
-      path: r'/1/indexes/{indexName}/{model}/recommend/rules/{objectID}'
-          .replaceAll(
-              '{' r'indexName' '}', Uri.encodeComponent(indexName.toString()))
-          .replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString()))
-          .replaceAll(
-              '{' r'objectID' '}', Uri.encodeComponent(objectID.toString())),
-    );
+        method: RequestMethod.get,
+        path: r'/1/indexes/{indexName}/{model}/recommend/rules/{objectID}'.replaceAll('{' r'indexName' '}', Uri.encodeComponent(indexName.toString())).replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString())).replaceAll('{' r'objectID' '}', Uri.encodeComponent(objectID.toString())),
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<RecommendRule, RecommendRule>(
-      response,
-      'RecommendRule',
-      growable: true,
-    );
-  }
+    return deserialize<RecommendRule, RecommendRule>(response, 'RecommendRule', growable: true,);
+  }  
 
-  /// Checks the status of a given task.  Deleting a Recommend rule is asynchronous. When you delete a rule, a task is created on a queue and completed depending on the load on the server. The API response includes a task ID that you can use to check the status.
+  /// Checks the status of a given task.  Deleting a Recommend rule is asynchronous. When you delete a rule, a task is created on a queue and completed depending on the load on the server. The API response includes a task ID that you can use to check the status. 
   ///
   /// Required API Key ACLs:
   ///   - editSettings
   ///
   /// Parameters:
   /// * [indexName] Name of the index on which to perform the operation.
-  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models).
+  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models). 
   /// * [taskID] Unique task identifier.
   /// * [requestOptions] additional request configuration.
   Future<GetRecommendTaskResponse> getRecommendStatus({
-    required String indexName,
-    required RecommendModels model,
-    required int taskID,
+    required  String indexName, required  RecommendModels model, required  int taskID, 
+    
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      indexName.isNotEmpty,
-      'Parameter `indexName` is required when calling `getRecommendStatus`.',
-    );
+    assert(indexName.isNotEmpty, 'Parameter `indexName` is required when calling `getRecommendStatus`.',);
     final request = ApiRequest(
-      method: RequestMethod.get,
-      path: r'/1/indexes/{indexName}/{model}/task/{taskID}'
-          .replaceAll(
-              '{' r'indexName' '}', Uri.encodeComponent(indexName.toString()))
-          .replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString()))
-          .replaceAll(
-              '{' r'taskID' '}', Uri.encodeComponent(taskID.toString())),
-    );
+        method: RequestMethod.get,
+        path: r'/1/indexes/{indexName}/{model}/task/{taskID}'.replaceAll('{' r'indexName' '}', Uri.encodeComponent(indexName.toString())).replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString())).replaceAll('{' r'taskID' '}', Uri.encodeComponent(taskID.toString())),
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<GetRecommendTaskResponse, GetRecommendTaskResponse>(
-      response,
-      'GetRecommendTaskResponse',
-      growable: true,
-    );
-  }
+    return deserialize<GetRecommendTaskResponse, GetRecommendTaskResponse>(response, 'GetRecommendTaskResponse', growable: true,);
+  }  
 
-  /// Retrieves recommendations from selected AI models.
+  /// Retrieves recommendations from selected AI models. 
   ///
   /// Required API Key ACLs:
   ///   - search
   ///
   /// Parameters:
-  /// * [getRecommendationsParams]
+  /// * [getRecommendationsParams] 
   /// * [requestOptions] additional request configuration.
   Future<GetRecommendationsResponse> getRecommendations({
-    required GetRecommendationsParams getRecommendationsParams,
+    required  GetRecommendationsParams getRecommendationsParams, 
+    
     RequestOptions? requestOptions,
   }) async {
     final request = ApiRequest(
-      method: RequestMethod.post,
-      path: r'/1/indexes/*/recommendations',
-      isRead: true,
-      body: getRecommendationsParams.toJson(),
-    );
+        method: RequestMethod.post,
+        path: r'/1/indexes/*/recommendations',
+        isRead : true,
+        body: getRecommendationsParams?.toJson(),
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<GetRecommendationsResponse, GetRecommendationsResponse>(
-      response,
-      'GetRecommendationsResponse',
-      growable: true,
-    );
-  }
+    return deserialize<GetRecommendationsResponse, GetRecommendationsResponse>(response, 'GetRecommendationsResponse', growable: true,);
+  }  
 
-  /// Searches for Recommend rules.  Use an empty query to list all rules for this recommendation scenario.
+  /// Searches for Recommend rules.  Use an empty query to list all rules for this recommendation scenario. 
   ///
   /// Required API Key ACLs:
   ///   - settings
   ///
   /// Parameters:
   /// * [indexName] Name of the index on which to perform the operation.
-  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models).
-  /// * [searchRecommendRulesParams]
+  /// * [model] [Recommend model](https://www.algolia.com/doc/guides/algolia-recommend/overview/#recommend-models). 
+  /// * [searchRecommendRulesParams] 
   /// * [requestOptions] additional request configuration.
   Future<SearchRecommendRulesResponse> searchRecommendRules({
-    required String indexName,
-    required RecommendModels model,
-    SearchRecommendRulesParams? searchRecommendRulesParams,
+    required  String indexName, required  RecommendModels model, 
+    SearchRecommendRulesParams? searchRecommendRulesParams, 
     RequestOptions? requestOptions,
   }) async {
-    assert(
-      indexName.isNotEmpty,
-      'Parameter `indexName` is required when calling `searchRecommendRules`.',
-    );
+    assert(indexName.isNotEmpty, 'Parameter `indexName` is required when calling `searchRecommendRules`.',);
     final request = ApiRequest(
-      method: RequestMethod.post,
-      path: r'/1/indexes/{indexName}/{model}/recommend/rules/search'
-          .replaceAll(
-              '{' r'indexName' '}', Uri.encodeComponent(indexName.toString()))
-          .replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString())),
-      isRead: true,
-      body: searchRecommendRulesParams?.toJson(),
-    );
+        method: RequestMethod.post,
+        path: r'/1/indexes/{indexName}/{model}/recommend/rules/search'.replaceAll('{' r'indexName' '}', Uri.encodeComponent(indexName.toString())).replaceAll('{' r'model' '}', Uri.encodeComponent(model.toString())),
+        isRead : true,
+        body: searchRecommendRulesParams?.toJson(),
+    );  
     final response = await _retryStrategy.execute(
       request: request,
       options: requestOptions,
     );
-    return deserialize<SearchRecommendRulesResponse,
-        SearchRecommendRulesResponse>(
-      response,
-      'SearchRecommendRulesResponse',
-      growable: true,
-    );
-  }
+    return deserialize<SearchRecommendRulesResponse, SearchRecommendRulesResponse>(response, 'SearchRecommendRulesResponse', growable: true,);
+  }  
 
   @Deprecated('This operation has been deprecated, use `customPost` instead')
   Future<Object> post({
-    required String path,
-    Map<String, Object>? parameters,
-    Object? body,
+    required  String path,
+    Map<String, Object>? parameters, Object? body,
     RequestOptions? requestOptions,
   }) async {
-    return customPost(
-        path: path, parameters: parameters, requestOptions: requestOptions);
+    return this.customPost(path: path, parameters: parameters, requestOptions: requestOptions);
   }
 
   @Deprecated('This operation has been deprecated, use `customPut` instead')
   Future<Object> put({
-    required String path,
-    Map<String, Object>? parameters,
-    Object? body,
+    required  String path,
+    Map<String, Object>? parameters, Object? body,
     RequestOptions? requestOptions,
   }) async {
-    return customPut(
-        path: path, parameters: parameters, requestOptions: requestOptions);
+    return customPut(path: path, parameters: parameters, requestOptions: requestOptions);
   }
 
   @Deprecated('This operation has been deprecated, use `customGet` instead')
   Future<Object> get({
-    required String path,
-    Map<String, Object>? parameters,
-    Object? body,
+    required  String path,
+    Map<String, Object>? parameters, Object? body,
     RequestOptions? requestOptions,
   }) async {
-    return customGet(
-        path: path, parameters: parameters, requestOptions: requestOptions);
+    return this.customGet(path: path, parameters: parameters, requestOptions: requestOptions);
   }
 
   @Deprecated('This operation has been deprecated, use `customDelete` instead')
   Future<Object> del({
-    required String path,
-    Map<String, Object>? parameters,
-    Object? body,
+    required  String path,
+    Map<String, Object>? parameters, Object? body,
     RequestOptions? requestOptions,
   }) async {
-    return customDelete(
-        path: path, parameters: parameters, requestOptions: requestOptions);
+    return this.customDelete(path: path, parameters: parameters, requestOptions: requestOptions);
   }
 
   @override
-  void dispose() => _retryStrategy.dispose();
+  void dispose() => _retryStrategy.dispose(); 
 }

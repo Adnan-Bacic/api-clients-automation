@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch_request.g.dart';
 
 @JsonSerializable()
-final class BatchRequest {
+final class BatchRequest{
   /// Returns a new [BatchRequest] instance.
   const BatchRequest({
     required this.action,
@@ -17,20 +17,27 @@ final class BatchRequest {
   @JsonKey(name: r'action')
   final Action action;
 
-  /// Operation arguments (varies with specified `action`).
+
+
+      /// Operation arguments (varies with specified `action`).
   @JsonKey(name: r'body')
   final Object body;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BatchRequest && other.action == action && other.body == body;
+
 
   @override
-  int get hashCode => action.hashCode + body.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is BatchRequest &&
+     other.action == action &&
+     other.body == body
+    ;
 
-  factory BatchRequest.fromJson(Map<String, dynamic> json) =>
-      _$BatchRequestFromJson(json);
+  @override
+  int get hashCode =>
+    action.hashCode +
+    body.hashCode
+    ;
+
+  factory BatchRequest.fromJson(Map<String, dynamic> json) => _$BatchRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$BatchRequestToJson(this);
 
@@ -38,4 +45,7 @@ final class BatchRequest {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

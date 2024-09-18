@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user_id.g.dart';
 
 @JsonSerializable()
-final class UserId {
+final class UserId{
   /// Returns a new [UserId] instance.
   const UserId({
     required this.userID,
@@ -15,37 +15,45 @@ final class UserId {
     required this.dataSize,
   });
 
-  /// Unique identifier of the user who makes the search request.
+      /// Unique identifier of the user who makes the search request.
   @JsonKey(name: r'userID')
   final String userID;
 
-  /// Cluster to which the user is assigned.
+
+
+      /// Cluster to which the user is assigned.
   @JsonKey(name: r'clusterName')
   final String clusterName;
 
-  /// Number of records belonging to the user.
+
+
+      /// Number of records belonging to the user.
   @JsonKey(name: r'nbRecords')
   final int nbRecords;
 
-  /// Data size used by the user.
+
+
+      /// Data size used by the user.
   @JsonKey(name: r'dataSize')
   final int dataSize;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UserId &&
-          other.userID == userID &&
-          other.clusterName == clusterName &&
-          other.nbRecords == nbRecords &&
-          other.dataSize == dataSize;
+  bool operator ==(Object other) => identical(this, other) || other is UserId &&
+     other.userID == userID &&
+     other.clusterName == clusterName &&
+     other.nbRecords == nbRecords &&
+     other.dataSize == dataSize
+    ;
 
   @override
   int get hashCode =>
-      userID.hashCode +
-      clusterName.hashCode +
-      nbRecords.hashCode +
-      dataSize.hashCode;
+    userID.hashCode +
+    clusterName.hashCode +
+    nbRecords.hashCode +
+    dataSize.hashCode
+    ;
 
   factory UserId.fromJson(Map<String, dynamic> json) => _$UserIdFromJson(json);
 
@@ -55,4 +63,7 @@ final class UserId {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

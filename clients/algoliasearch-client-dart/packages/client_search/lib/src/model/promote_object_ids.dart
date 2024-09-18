@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'promote_object_ids.g.dart';
 
 @JsonSerializable()
-final class PromoteObjectIDs {
+final class PromoteObjectIDs{
   /// Returns a new [PromoteObjectIDs] instance.
   const PromoteObjectIDs({
     required this.objectIDs,
     required this.position,
   });
 
-  /// Object IDs of the records you want to promote.  The records are placed as a group at the `position`. For example, if you want to promote four records to position `0`, they will be the first four search results.
+      /// Object IDs of the records you want to promote.  The records are placed as a group at the `position`. For example, if you want to promote four records to position `0`, they will be the first four search results. 
   @JsonKey(name: r'objectIDs')
   final List<String> objectIDs;
 
-  /// Position in the search results where you want to show the promoted records.
+
+
+      /// Position in the search results where you want to show the promoted records.
   @JsonKey(name: r'position')
   final int position;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PromoteObjectIDs &&
-          other.objectIDs == objectIDs &&
-          other.position == position;
+
 
   @override
-  int get hashCode => objectIDs.hashCode + position.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is PromoteObjectIDs &&
+     other.objectIDs == objectIDs &&
+     other.position == position
+    ;
 
-  factory PromoteObjectIDs.fromJson(Map<String, dynamic> json) =>
-      _$PromoteObjectIDsFromJson(json);
+  @override
+  int get hashCode =>
+    objectIDs.hashCode +
+    position.hashCode
+    ;
+
+  factory PromoteObjectIDs.fromJson(Map<String, dynamic> json) => _$PromoteObjectIDsFromJson(json);
 
   Map<String, dynamic> toJson() => _$PromoteObjectIDsToJson(this);
 
@@ -40,4 +45,7 @@ final class PromoteObjectIDs {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

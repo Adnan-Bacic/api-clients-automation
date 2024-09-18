@@ -6,50 +6,60 @@ import 'package:json_annotation/json_annotation.dart';
 part 'object_data_after_search.g.dart';
 
 @JsonSerializable()
-final class ObjectDataAfterSearch {
+final class ObjectDataAfterSearch{
   /// Returns a new [ObjectDataAfterSearch] instance.
   const ObjectDataAfterSearch({
-    this.queryID,
-    this.price,
-    this.quantity,
-    this.discount,
+     this.queryID,
+     this.price,
+     this.quantity,
+     this.discount,
   });
 
-  /// Unique identifier for a search query, used to track purchase events with multiple records that originate from different searches.
+      /// Unique identifier for a search query, used to track purchase events with multiple records that originate from different searches.
   @JsonKey(name: r'queryID')
   final String? queryID;
 
-  /// One of types:
-  /// - [double]
-  /// - [String]
-  @JsonKey(name: r'price')
-  final dynamic price;
 
-  /// Quantity of a product that has been purchased or added to the cart. The total purchase value is the sum of `quantity` multiplied with the `price` for each purchased item.
+
+     /// One of types: 
+     /// - [double]
+     /// - [String]
+  @JsonKey(name: r'price')
+  final dynamic? price;
+
+
+
+      /// Quantity of a product that has been purchased or added to the cart. The total purchase value is the sum of `quantity` multiplied with the `price` for each purchased item. 
   @JsonKey(name: r'quantity')
   final int? quantity;
 
-  /// One of types:
-  /// - [double]
-  /// - [String]
+
+
+     /// One of types: 
+     /// - [double]
+     /// - [String]
   @JsonKey(name: r'discount')
-  final dynamic discount;
+  final dynamic? discount;
+
+
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ObjectDataAfterSearch &&
-          other.queryID == queryID &&
-          other.price == price &&
-          other.quantity == quantity &&
-          other.discount == discount;
+  bool operator ==(Object other) => identical(this, other) || other is ObjectDataAfterSearch &&
+     other.queryID == queryID &&
+     other.price == price &&
+     other.quantity == quantity &&
+     other.discount == discount
+    ;
 
   @override
   int get hashCode =>
-      queryID.hashCode + price.hashCode + quantity.hashCode + discount.hashCode;
+    queryID.hashCode +
+    price.hashCode +
+    quantity.hashCode +
+    discount.hashCode
+    ;
 
-  factory ObjectDataAfterSearch.fromJson(Map<String, dynamic> json) =>
-      _$ObjectDataAfterSearchFromJson(json);
+  factory ObjectDataAfterSearch.fromJson(Map<String, dynamic> json) => _$ObjectDataAfterSearchFromJson(json);
 
   Map<String, dynamic> toJson() => _$ObjectDataAfterSearchToJson(this);
 
@@ -57,4 +67,7 @@ final class ObjectDataAfterSearch {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

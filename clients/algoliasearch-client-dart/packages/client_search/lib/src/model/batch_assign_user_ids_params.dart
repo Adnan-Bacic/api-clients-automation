@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch_assign_user_ids_params.g.dart';
 
 @JsonSerializable()
-final class BatchAssignUserIdsParams {
+final class BatchAssignUserIdsParams{
   /// Returns a new [BatchAssignUserIdsParams] instance.
   const BatchAssignUserIdsParams({
     required this.cluster,
     required this.users,
   });
 
-  /// Cluster name.
+      /// Cluster name.
   @JsonKey(name: r'cluster')
   final String cluster;
 
-  /// User IDs to assign.
+
+
+      /// User IDs to assign.
   @JsonKey(name: r'users')
   final List<String> users;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BatchAssignUserIdsParams &&
-          other.cluster == cluster &&
-          other.users == users;
+
 
   @override
-  int get hashCode => cluster.hashCode + users.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is BatchAssignUserIdsParams &&
+     other.cluster == cluster &&
+     other.users == users
+    ;
 
-  factory BatchAssignUserIdsParams.fromJson(Map<String, dynamic> json) =>
-      _$BatchAssignUserIdsParamsFromJson(json);
+  @override
+  int get hashCode =>
+    cluster.hashCode +
+    users.hashCode
+    ;
+
+  factory BatchAssignUserIdsParams.fromJson(Map<String, dynamic> json) => _$BatchAssignUserIdsParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$BatchAssignUserIdsParamsToJson(this);
 
@@ -40,4 +45,7 @@ final class BatchAssignUserIdsParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

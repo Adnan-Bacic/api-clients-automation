@@ -8,7 +8,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'replace_all_objects_response.g.dart';
 
 @JsonSerializable()
-final class ReplaceAllObjectsResponse {
+final class ReplaceAllObjectsResponse{
   /// Returns a new [ReplaceAllObjectsResponse] instance.
   const ReplaceAllObjectsResponse({
     required this.copyOperationResponse,
@@ -19,29 +19,34 @@ final class ReplaceAllObjectsResponse {
   @JsonKey(name: r'copyOperationResponse')
   final UpdatedAtResponse copyOperationResponse;
 
-  /// The response of the `batch` request(s).
+
+
+      /// The response of the `batch` request(s).
   @JsonKey(name: r'batchResponses')
   final List<BatchResponse> batchResponses;
+
+
 
   @JsonKey(name: r'moveOperationResponse')
   final UpdatedAtResponse moveOperationResponse;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ReplaceAllObjectsResponse &&
-          other.copyOperationResponse == copyOperationResponse &&
-          other.batchResponses == batchResponses &&
-          other.moveOperationResponse == moveOperationResponse;
+  bool operator ==(Object other) => identical(this, other) || other is ReplaceAllObjectsResponse &&
+     other.copyOperationResponse == copyOperationResponse &&
+     other.batchResponses == batchResponses &&
+     other.moveOperationResponse == moveOperationResponse
+    ;
 
   @override
   int get hashCode =>
-      copyOperationResponse.hashCode +
-      batchResponses.hashCode +
-      moveOperationResponse.hashCode;
+    copyOperationResponse.hashCode +
+    batchResponses.hashCode +
+    moveOperationResponse.hashCode
+    ;
 
-  factory ReplaceAllObjectsResponse.fromJson(Map<String, dynamic> json) =>
-      _$ReplaceAllObjectsResponseFromJson(json);
+  factory ReplaceAllObjectsResponse.fromJson(Map<String, dynamic> json) => _$ReplaceAllObjectsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReplaceAllObjectsResponseToJson(this);
 
@@ -49,4 +54,7 @@ final class ReplaceAllObjectsResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

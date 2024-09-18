@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'frequently_bought_together.g.dart';
 
 @JsonSerializable()
-final class FrequentlyBoughtTogether {
+final class FrequentlyBoughtTogether{
   /// Returns a new [FrequentlyBoughtTogether] instance.
   const FrequentlyBoughtTogether({
     required this.model,
@@ -17,22 +17,27 @@ final class FrequentlyBoughtTogether {
   @JsonKey(name: r'model')
   final FbtModel model;
 
-  /// Unique record identifier.
+
+
+      /// Unique record identifier.
   @JsonKey(name: r'objectID')
   final String objectID;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FrequentlyBoughtTogether &&
-          other.model == model &&
-          other.objectID == objectID;
+
 
   @override
-  int get hashCode => model.hashCode + objectID.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is FrequentlyBoughtTogether &&
+     other.model == model &&
+     other.objectID == objectID
+    ;
 
-  factory FrequentlyBoughtTogether.fromJson(Map<String, dynamic> json) =>
-      _$FrequentlyBoughtTogetherFromJson(json);
+  @override
+  int get hashCode =>
+    model.hashCode +
+    objectID.hashCode
+    ;
+
+  factory FrequentlyBoughtTogether.fromJson(Map<String, dynamic> json) => _$FrequentlyBoughtTogetherFromJson(json);
 
   Map<String, dynamic> toJson() => _$FrequentlyBoughtTogetherToJson(this);
 
@@ -40,4 +45,7 @@ final class FrequentlyBoughtTogether {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

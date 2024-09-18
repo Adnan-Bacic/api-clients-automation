@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_logs_response.g.dart';
 
 @JsonSerializable()
-final class GetLogsResponse {
+final class GetLogsResponse{
   /// Returns a new [GetLogsResponse] instance.
   const GetLogsResponse({
     required this.logs,
@@ -16,15 +16,19 @@ final class GetLogsResponse {
   @JsonKey(name: r'logs')
   final List<Log> logs;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is GetLogsResponse && other.logs == logs;
+
 
   @override
-  int get hashCode => logs.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is GetLogsResponse &&
+     other.logs == logs
+    ;
 
-  factory GetLogsResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetLogsResponseFromJson(json);
+  @override
+  int get hashCode =>
+    logs.hashCode
+    ;
+
+  factory GetLogsResponse.fromJson(Map<String, dynamic> json) => _$GetLogsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetLogsResponseToJson(this);
 
@@ -32,4 +36,7 @@ final class GetLogsResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

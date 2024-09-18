@@ -7,38 +7,46 @@ import 'package:json_annotation/json_annotation.dart';
 part 'multiple_batch_request.g.dart';
 
 @JsonSerializable()
-final class MultipleBatchRequest {
+final class MultipleBatchRequest{
   /// Returns a new [MultipleBatchRequest] instance.
   const MultipleBatchRequest({
     required this.action,
-    this.body,
+     this.body,
     required this.indexName,
   });
 
   @JsonKey(name: r'action')
   final Action action;
 
-  /// Operation arguments (varies with specified `action`).
+
+
+      /// Operation arguments (varies with specified `action`).
   @JsonKey(name: r'body')
   final Object? body;
 
-  /// Index name (case-sensitive).
+
+
+      /// Index name (case-sensitive).
   @JsonKey(name: r'indexName')
   final String indexName;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MultipleBatchRequest &&
-          other.action == action &&
-          other.body == body &&
-          other.indexName == indexName;
+
 
   @override
-  int get hashCode => action.hashCode + body.hashCode + indexName.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is MultipleBatchRequest &&
+     other.action == action &&
+     other.body == body &&
+     other.indexName == indexName
+    ;
 
-  factory MultipleBatchRequest.fromJson(Map<String, dynamic> json) =>
-      _$MultipleBatchRequestFromJson(json);
+  @override
+  int get hashCode =>
+    action.hashCode +
+    body.hashCode +
+    indexName.hashCode
+    ;
+
+  factory MultipleBatchRequest.fromJson(Map<String, dynamic> json) => _$MultipleBatchRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$MultipleBatchRequestToJson(this);
 
@@ -46,4 +54,7 @@ final class MultipleBatchRequest {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

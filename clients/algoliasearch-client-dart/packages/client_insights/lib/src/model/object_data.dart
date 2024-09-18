@@ -6,43 +6,51 @@ import 'package:json_annotation/json_annotation.dart';
 part 'object_data.g.dart';
 
 @JsonSerializable()
-final class ObjectData {
+final class ObjectData{
   /// Returns a new [ObjectData] instance.
   const ObjectData({
-    this.price,
-    this.quantity,
-    this.discount,
+     this.price,
+     this.quantity,
+     this.discount,
   });
 
-  /// One of types:
-  /// - [double]
-  /// - [String]
+     /// One of types: 
+     /// - [double]
+     /// - [String]
   @JsonKey(name: r'price')
-  final dynamic price;
+  final dynamic? price;
 
-  /// Quantity of a product that has been purchased or added to the cart. The total purchase value is the sum of `quantity` multiplied with the `price` for each purchased item.
+
+
+      /// Quantity of a product that has been purchased or added to the cart. The total purchase value is the sum of `quantity` multiplied with the `price` for each purchased item. 
   @JsonKey(name: r'quantity')
   final int? quantity;
 
-  /// One of types:
-  /// - [double]
-  /// - [String]
+
+
+     /// One of types: 
+     /// - [double]
+     /// - [String]
   @JsonKey(name: r'discount')
-  final dynamic discount;
+  final dynamic? discount;
+
+
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ObjectData &&
-          other.price == price &&
-          other.quantity == quantity &&
-          other.discount == discount;
+  bool operator ==(Object other) => identical(this, other) || other is ObjectData &&
+     other.price == price &&
+     other.quantity == quantity &&
+     other.discount == discount
+    ;
 
   @override
-  int get hashCode => price.hashCode + quantity.hashCode + discount.hashCode;
+  int get hashCode =>
+    price.hashCode +
+    quantity.hashCode +
+    discount.hashCode
+    ;
 
-  factory ObjectData.fromJson(Map<String, dynamic> json) =>
-      _$ObjectDataFromJson(json);
+  factory ObjectData.fromJson(Map<String, dynamic> json) => _$ObjectDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$ObjectDataToJson(this);
 
@@ -50,4 +58,7 @@ final class ObjectData {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

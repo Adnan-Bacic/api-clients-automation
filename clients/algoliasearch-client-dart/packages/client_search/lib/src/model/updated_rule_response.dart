@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'updated_rule_response.g.dart';
 
 @JsonSerializable()
-final class UpdatedRuleResponse {
+final class UpdatedRuleResponse{
   /// Returns a new [UpdatedRuleResponse] instance.
   const UpdatedRuleResponse({
     required this.objectID,
@@ -14,31 +14,39 @@ final class UpdatedRuleResponse {
     required this.taskID,
   });
 
-  /// Unique identifier of a rule object.
+      /// Unique identifier of a rule object.
   @JsonKey(name: r'objectID')
   final String objectID;
 
-  /// Date and time when the object was updated, in RFC 3339 format.
+
+
+      /// Date and time when the object was updated, in RFC 3339 format.
   @JsonKey(name: r'updatedAt')
   final String updatedAt;
 
-  /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`.
+
+
+      /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`. 
   @JsonKey(name: r'taskID')
   final int taskID;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdatedRuleResponse &&
-          other.objectID == objectID &&
-          other.updatedAt == updatedAt &&
-          other.taskID == taskID;
+
 
   @override
-  int get hashCode => objectID.hashCode + updatedAt.hashCode + taskID.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is UpdatedRuleResponse &&
+     other.objectID == objectID &&
+     other.updatedAt == updatedAt &&
+     other.taskID == taskID
+    ;
 
-  factory UpdatedRuleResponse.fromJson(Map<String, dynamic> json) =>
-      _$UpdatedRuleResponseFromJson(json);
+  @override
+  int get hashCode =>
+    objectID.hashCode +
+    updatedAt.hashCode +
+    taskID.hashCode
+    ;
+
+  factory UpdatedRuleResponse.fromJson(Map<String, dynamic> json) => _$UpdatedRuleResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$UpdatedRuleResponseToJson(this);
 
@@ -46,4 +54,7 @@ final class UpdatedRuleResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

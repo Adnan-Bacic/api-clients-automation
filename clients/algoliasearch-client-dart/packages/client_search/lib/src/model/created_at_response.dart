@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'created_at_response.g.dart';
 
 @JsonSerializable()
-final class CreatedAtResponse {
+final class CreatedAtResponse{
   /// Returns a new [CreatedAtResponse] instance.
   const CreatedAtResponse({
     required this.createdAt,
   });
 
-  /// Date and time when the object was created, in RFC 3339 format.
+      /// Date and time when the object was created, in RFC 3339 format.
   @JsonKey(name: r'createdAt')
   final String createdAt;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CreatedAtResponse && other.createdAt == createdAt;
+
 
   @override
-  int get hashCode => createdAt.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is CreatedAtResponse &&
+     other.createdAt == createdAt
+    ;
 
-  factory CreatedAtResponse.fromJson(Map<String, dynamic> json) =>
-      _$CreatedAtResponseFromJson(json);
+  @override
+  int get hashCode =>
+    createdAt.hashCode
+    ;
+
+  factory CreatedAtResponse.fromJson(Map<String, dynamic> json) => _$CreatedAtResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$CreatedAtResponseToJson(this);
 
@@ -33,4 +36,7 @@ final class CreatedAtResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

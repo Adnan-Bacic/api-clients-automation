@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'replace_source_response.g.dart';
 
 @JsonSerializable()
-final class ReplaceSourceResponse {
+final class ReplaceSourceResponse{
   /// Returns a new [ReplaceSourceResponse] instance.
   const ReplaceSourceResponse({
     required this.updatedAt,
   });
 
-  /// Date and time when the object was updated, in RFC 3339 format.
+      /// Date and time when the object was updated, in RFC 3339 format.
   @JsonKey(name: r'updatedAt')
   final String updatedAt;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ReplaceSourceResponse && other.updatedAt == updatedAt;
+
 
   @override
-  int get hashCode => updatedAt.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is ReplaceSourceResponse &&
+     other.updatedAt == updatedAt
+    ;
 
-  factory ReplaceSourceResponse.fromJson(Map<String, dynamic> json) =>
-      _$ReplaceSourceResponseFromJson(json);
+  @override
+  int get hashCode =>
+    updatedAt.hashCode
+    ;
+
+  factory ReplaceSourceResponse.fromJson(Map<String, dynamic> json) => _$ReplaceSourceResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReplaceSourceResponseToJson(this);
 
@@ -33,4 +36,7 @@ final class ReplaceSourceResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

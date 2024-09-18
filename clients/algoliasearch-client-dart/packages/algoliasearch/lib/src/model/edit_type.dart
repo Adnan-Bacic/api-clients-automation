@@ -23,3 +23,4 @@ enum EditType {
   @override
   String toString() => raw.toString();
 }
+

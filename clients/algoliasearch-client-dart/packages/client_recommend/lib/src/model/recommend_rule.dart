@@ -9,60 +9,71 @@ import 'package:json_annotation/json_annotation.dart';
 part 'recommend_rule.g.dart';
 
 @JsonSerializable()
-final class RecommendRule {
+final class RecommendRule{
   /// Returns a new [RecommendRule] instance.
   const RecommendRule({
-    this.metadata,
-    this.objectID,
-    this.condition,
-    this.consequence,
-    this.description,
-    this.enabled,
+     this.metadata,
+     this.objectID,
+     this.condition,
+     this.consequence,
+     this.description,
+     this.enabled,
   });
 
   @JsonKey(name: r'_metadata')
   final RuleMetadata? metadata;
 
-  /// Unique identifier of a rule object.
+
+
+      /// Unique identifier of a rule object.
   @JsonKey(name: r'objectID')
   final String? objectID;
+
+
 
   @JsonKey(name: r'condition')
   final Condition? condition;
 
+
+
   @JsonKey(name: r'consequence')
   final Consequence? consequence;
 
-  /// Description of the rule's purpose. This can be helpful for display in the Algolia dashboard.
+
+
+      /// Description of the rule's purpose. This can be helpful for display in the Algolia dashboard.
   @JsonKey(name: r'description')
   final String? description;
 
-  /// Indicates whether to enable the rule. If it isn't enabled, it isn't applied at query time.
+
+
+      /// Indicates whether to enable the rule. If it isn't enabled, it isn't applied at query time.
   @JsonKey(name: r'enabled')
   final bool? enabled;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is RecommendRule &&
-          other.metadata == metadata &&
-          other.objectID == objectID &&
-          other.condition == condition &&
-          other.consequence == consequence &&
-          other.description == description &&
-          other.enabled == enabled;
+  bool operator ==(Object other) => identical(this, other) || other is RecommendRule &&
+     other.metadata == metadata &&
+     other.objectID == objectID &&
+     other.condition == condition &&
+     other.consequence == consequence &&
+     other.description == description &&
+     other.enabled == enabled
+    ;
 
   @override
   int get hashCode =>
-      metadata.hashCode +
-      objectID.hashCode +
-      condition.hashCode +
-      consequence.hashCode +
-      description.hashCode +
-      enabled.hashCode;
+    metadata.hashCode +
+    objectID.hashCode +
+    condition.hashCode +
+    consequence.hashCode +
+    description.hashCode +
+    enabled.hashCode
+    ;
 
-  factory RecommendRule.fromJson(Map<String, dynamic> json) =>
-      _$RecommendRuleFromJson(json);
+  factory RecommendRule.fromJson(Map<String, dynamic> json) => _$RecommendRuleFromJson(json);
 
   Map<String, dynamic> toJson() => _$RecommendRuleToJson(this);
 
@@ -70,4 +81,7 @@ final class RecommendRule {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

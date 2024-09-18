@@ -6,33 +6,36 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_recommendations_params.g.dart';
 
 @JsonSerializable()
-final class GetRecommendationsParams {
+final class GetRecommendationsParams{
   /// Returns a new [GetRecommendationsParams] instance.
   const GetRecommendationsParams({
     required this.requests,
   });
 
-  /// Recommendation request with parameters depending on the requested model.
-  /// One of types:
-  /// - [LookingSimilarQuery]
-  /// - [RelatedQuery]
-  /// - [TrendingItemsQuery]
-  /// - [RecommendedForYouQuery]
-  /// - [TrendingFacetsQuery]
-  /// - [BoughtTogetherQuery]
+      /// Recommendation request with parameters depending on the requested model.
+     /// One of types: 
+     /// - [LookingSimilarQuery]
+     /// - [RelatedQuery]
+     /// - [TrendingItemsQuery]
+     /// - [RecommendedForYouQuery]
+     /// - [TrendingFacetsQuery]
+     /// - [BoughtTogetherQuery]
   @JsonKey(name: r'requests')
   final Iterable<dynamic> requests;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetRecommendationsParams && other.requests == requests;
+
 
   @override
-  int get hashCode => requests.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is GetRecommendationsParams &&
+     other.requests == requests
+    ;
 
-  factory GetRecommendationsParams.fromJson(Map<String, dynamic> json) =>
-      _$GetRecommendationsParamsFromJson(json);
+  @override
+  int get hashCode =>
+    requests.hashCode
+    ;
+
+  factory GetRecommendationsParams.fromJson(Map<String, dynamic> json) => _$GetRecommendationsParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetRecommendationsParamsToJson(this);
 
@@ -40,4 +43,7 @@ final class GetRecommendationsParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

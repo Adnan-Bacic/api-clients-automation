@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'assign_user_id_params.g.dart';
 
 @JsonSerializable()
-final class AssignUserIdParams {
+final class AssignUserIdParams{
   /// Returns a new [AssignUserIdParams] instance.
   const AssignUserIdParams({
     required this.cluster,
   });
 
-  /// Cluster name.
+      /// Cluster name.
   @JsonKey(name: r'cluster')
   final String cluster;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AssignUserIdParams && other.cluster == cluster;
+
 
   @override
-  int get hashCode => cluster.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is AssignUserIdParams &&
+     other.cluster == cluster
+    ;
 
-  factory AssignUserIdParams.fromJson(Map<String, dynamic> json) =>
-      _$AssignUserIdParamsFromJson(json);
+  @override
+  int get hashCode =>
+    cluster.hashCode
+    ;
+
+  factory AssignUserIdParams.fromJson(Map<String, dynamic> json) => _$AssignUserIdParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AssignUserIdParamsToJson(this);
 
@@ -33,4 +36,7 @@ final class AssignUserIdParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

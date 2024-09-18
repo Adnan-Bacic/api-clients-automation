@@ -6,28 +6,36 @@ import 'package:json_annotation/json_annotation.dart';
 part 'range.g.dart';
 
 @JsonSerializable()
-final class Range {
+final class Range{
   /// Returns a new [Range] instance.
   const Range({
-    this.from,
-    this.value,
+     this.from,
+     this.value,
   });
 
-  /// Lower boundary of a range in meters. The Geo ranking criterion considers all records within the range to be equal.
+      /// Lower boundary of a range in meters. The Geo ranking criterion considers all records within the range to be equal.
   @JsonKey(name: r'from')
   final int? from;
 
-  /// Upper boundary of a range in meters. The Geo ranking criterion considers all records within the range to be equal.
+
+
+      /// Upper boundary of a range in meters. The Geo ranking criterion considers all records within the range to be equal.
   @JsonKey(name: r'value')
   final int? value;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Range && other.from == from && other.value == value;
+
 
   @override
-  int get hashCode => from.hashCode + value.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Range &&
+     other.from == from &&
+     other.value == value
+    ;
+
+  @override
+  int get hashCode =>
+    from.hashCode +
+    value.hashCode
+    ;
 
   factory Range.fromJson(Map<String, dynamic> json) => _$RangeFromJson(json);
 
@@ -37,4 +45,7 @@ final class Range {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

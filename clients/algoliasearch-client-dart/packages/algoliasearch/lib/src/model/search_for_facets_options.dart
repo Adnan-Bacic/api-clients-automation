@@ -7,56 +7,65 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_for_facets_options.g.dart';
 
 @JsonSerializable()
-final class SearchForFacetsOptions {
+final class SearchForFacetsOptions{
   /// Returns a new [SearchForFacetsOptions] instance.
   const SearchForFacetsOptions({
     required this.facet,
     required this.indexName,
-    this.facetQuery,
-    this.maxFacetHits,
+     this.facetQuery,
+     this.maxFacetHits,
     required this.type,
   });
 
-  /// Facet name.
+      /// Facet name.
   @JsonKey(name: r'facet')
   final String facet;
 
-  /// Index name (case-sensitive).
+
+
+      /// Index name (case-sensitive).
   @JsonKey(name: r'indexName')
   final String indexName;
 
-  /// Text to search inside the facet's values.
+
+
+      /// Text to search inside the facet's values.
   @JsonKey(name: r'facetQuery')
   final String? facetQuery;
 
-  /// Maximum number of facet values to return when [searching for facet values](https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/#search-for-facet-values).
-  // maximum: 100
+
+
+      /// Maximum number of facet values to return when [searching for facet values](https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/#search-for-facet-values).
+          // maximum: 100
   @JsonKey(name: r'maxFacetHits')
   final int? maxFacetHits;
+
+
 
   @JsonKey(name: r'type')
   final SearchTypeFacet type;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchForFacetsOptions &&
-          other.facet == facet &&
-          other.indexName == indexName &&
-          other.facetQuery == facetQuery &&
-          other.maxFacetHits == maxFacetHits &&
-          other.type == type;
+  bool operator ==(Object other) => identical(this, other) || other is SearchForFacetsOptions &&
+     other.facet == facet &&
+     other.indexName == indexName &&
+     other.facetQuery == facetQuery &&
+     other.maxFacetHits == maxFacetHits &&
+     other.type == type
+    ;
 
   @override
   int get hashCode =>
-      facet.hashCode +
-      indexName.hashCode +
-      facetQuery.hashCode +
-      maxFacetHits.hashCode +
-      type.hashCode;
+    facet.hashCode +
+    indexName.hashCode +
+    facetQuery.hashCode +
+    maxFacetHits.hashCode +
+    type.hashCode
+    ;
 
-  factory SearchForFacetsOptions.fromJson(Map<String, dynamic> json) =>
-      _$SearchForFacetsOptionsFromJson(json);
+  factory SearchForFacetsOptions.fromJson(Map<String, dynamic> json) => _$SearchForFacetsOptionsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchForFacetsOptionsToJson(this);
 
@@ -64,4 +73,7 @@ final class SearchForFacetsOptions {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

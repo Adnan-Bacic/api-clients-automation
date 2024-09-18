@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_params_query.g.dart';
 
 @JsonSerializable()
-final class SearchParamsQuery {
+final class SearchParamsQuery{
   /// Returns a new [SearchParamsQuery] instance.
   const SearchParamsQuery({
-    this.query,
+     this.query,
   });
 
-  /// Search query.
+      /// Search query.
   @JsonKey(name: r'query')
   final String? query;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchParamsQuery && other.query == query;
+
 
   @override
-  int get hashCode => query.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is SearchParamsQuery &&
+     other.query == query
+    ;
 
-  factory SearchParamsQuery.fromJson(Map<String, dynamic> json) =>
-      _$SearchParamsQueryFromJson(json);
+  @override
+  int get hashCode =>
+    query.hashCode
+    ;
+
+  factory SearchParamsQuery.fromJson(Map<String, dynamic> json) => _$SearchParamsQueryFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchParamsQueryToJson(this);
 
@@ -33,4 +36,7 @@ final class SearchParamsQuery {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

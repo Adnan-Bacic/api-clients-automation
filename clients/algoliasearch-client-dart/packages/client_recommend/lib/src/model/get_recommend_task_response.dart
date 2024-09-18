@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_recommend_task_response.g.dart';
 
 @JsonSerializable()
-final class GetRecommendTaskResponse {
+final class GetRecommendTaskResponse{
   /// Returns a new [GetRecommendTaskResponse] instance.
   const GetRecommendTaskResponse({
     required this.status,
@@ -16,16 +16,19 @@ final class GetRecommendTaskResponse {
   @JsonKey(name: r'status')
   final TaskStatus status;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetRecommendTaskResponse && other.status == status;
+
 
   @override
-  int get hashCode => status.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is GetRecommendTaskResponse &&
+     other.status == status
+    ;
 
-  factory GetRecommendTaskResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetRecommendTaskResponseFromJson(json);
+  @override
+  int get hashCode =>
+    status.hashCode
+    ;
+
+  factory GetRecommendTaskResponse.fromJson(Map<String, dynamic> json) => _$GetRecommendTaskResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetRecommendTaskResponseToJson(this);
 
@@ -33,4 +36,7 @@ final class GetRecommendTaskResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

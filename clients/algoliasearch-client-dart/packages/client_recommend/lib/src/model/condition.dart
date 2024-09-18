@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'condition.g.dart';
 
 @JsonSerializable()
-final class Condition {
+final class Condition{
   /// Returns a new [Condition] instance.
   const Condition({
-    this.filters,
-    this.context,
+     this.filters,
+     this.context,
   });
 
-  /// Filter expression to only include items that match the filter criteria in the response.  You can use these filter expressions:  - **Numeric filters.** `<facet> <op> <number>`, where `<op>` is one of `<`, `<=`, `=`, `!=`, `>`, `>=`. - **Ranges.** `<facet>:<lower> TO <upper>` where `<lower>` and `<upper>` are the lower and upper limits of the range (inclusive). - **Facet filters.** `<facet>:<value>` where `<facet>` is a facet attribute (case-sensitive) and `<value>` a facet value. - **Tag filters.** `_tags:<value>` or just `<value>` (case-sensitive). - **Boolean filters.** `<facet>: true | false`.  You can combine filters with `AND`, `OR`, and `NOT` operators with the following restrictions:  - You can only combine filters of the same type with `OR`.   **Not supported:** `facet:value OR num > 3`. - You can't use `NOT` with combinations of filters.   **Not supported:** `NOT(facet:value OR facet:value)` - You can't combine conjunctions (`AND`) with `OR`.   **Not supported:** `facet:value OR (facet:value AND facet:value)`  Use quotes around your filters, if the facet attribute name or facet value has spaces, keywords (`OR`, `AND`, `NOT`), or quotes. If a facet attribute is an array, the filter matches if it matches at least one element of the array.  For more information, see [Filters](https://www.algolia.com/doc/guides/managing-results/refine-results/filtering/).
+      /// Filter expression to only include items that match the filter criteria in the response.  You can use these filter expressions:  - **Numeric filters.** `<facet> <op> <number>`, where `<op>` is one of `<`, `<=`, `=`, `!=`, `>`, `>=`. - **Ranges.** `<facet>:<lower> TO <upper>` where `<lower>` and `<upper>` are the lower and upper limits of the range (inclusive). - **Facet filters.** `<facet>:<value>` where `<facet>` is a facet attribute (case-sensitive) and `<value>` a facet value. - **Tag filters.** `_tags:<value>` or just `<value>` (case-sensitive). - **Boolean filters.** `<facet>: true | false`.  You can combine filters with `AND`, `OR`, and `NOT` operators with the following restrictions:  - You can only combine filters of the same type with `OR`.   **Not supported:** `facet:value OR num > 3`. - You can't use `NOT` with combinations of filters.   **Not supported:** `NOT(facet:value OR facet:value)` - You can't combine conjunctions (`AND`) with `OR`.   **Not supported:** `facet:value OR (facet:value AND facet:value)`  Use quotes around your filters, if the facet attribute name or facet value has spaces, keywords (`OR`, `AND`, `NOT`), or quotes. If a facet attribute is an array, the filter matches if it matches at least one element of the array.  For more information, see [Filters](https://www.algolia.com/doc/guides/managing-results/refine-results/filtering/). 
   @JsonKey(name: r'filters')
   final String? filters;
 
-  /// An additional restriction that only triggers the rule, when the search has the same value as `ruleContexts` parameter. For example, if `context: mobile`, the rule is only triggered when the search request has a matching `ruleContexts: mobile`. A rule context must only contain alphanumeric characters.
+
+
+      /// An additional restriction that only triggers the rule, when the search has the same value as `ruleContexts` parameter. For example, if `context: mobile`, the rule is only triggered when the search request has a matching `ruleContexts: mobile`. A rule context must only contain alphanumeric characters. 
   @JsonKey(name: r'context')
   final String? context;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Condition &&
-          other.filters == filters &&
-          other.context == context;
+
 
   @override
-  int get hashCode => filters.hashCode + context.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Condition &&
+     other.filters == filters &&
+     other.context == context
+    ;
 
-  factory Condition.fromJson(Map<String, dynamic> json) =>
-      _$ConditionFromJson(json);
+  @override
+  int get hashCode =>
+    filters.hashCode +
+    context.hashCode
+    ;
+
+  factory Condition.fromJson(Map<String, dynamic> json) => _$ConditionFromJson(json);
 
   Map<String, dynamic> toJson() => _$ConditionToJson(this);
 
@@ -40,4 +45,7 @@ final class Condition {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

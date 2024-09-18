@@ -26,3 +26,4 @@ enum SynonymType {
   @override
   String toString() => raw.toString();
 }
+

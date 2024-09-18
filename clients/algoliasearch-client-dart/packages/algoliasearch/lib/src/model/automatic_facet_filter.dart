@@ -6,39 +6,47 @@ import 'package:json_annotation/json_annotation.dart';
 part 'automatic_facet_filter.g.dart';
 
 @JsonSerializable()
-final class AutomaticFacetFilter {
+final class AutomaticFacetFilter{
   /// Returns a new [AutomaticFacetFilter] instance.
   const AutomaticFacetFilter({
     required this.facet,
-    this.score,
-    this.disjunctive,
+     this.score,
+     this.disjunctive,
   });
 
-  /// Facet name to be applied as filter. The name must match placeholders in the `pattern` parameter. For example, with `pattern: {facet:genre}`, `automaticFacetFilters` must be `genre`.
+      /// Facet name to be applied as filter. The name must match placeholders in the `pattern` parameter. For example, with `pattern: {facet:genre}`, `automaticFacetFilters` must be `genre`. 
   @JsonKey(name: r'facet')
   final String facet;
 
-  /// Filter scores to give different weights to individual filters.
+
+
+      /// Filter scores to give different weights to individual filters.
   @JsonKey(name: r'score')
   final int? score;
 
-  /// Whether the filter is disjunctive or conjunctive.  If true the filter has multiple matches, multiple occurences are combined with the logical `OR` operation. If false, multiple occurences are combined with the logical `AND` operation.
+
+
+      /// Whether the filter is disjunctive or conjunctive.  If true the filter has multiple matches, multiple occurences are combined with the logical `OR` operation. If false, multiple occurences are combined with the logical `AND` operation. 
   @JsonKey(name: r'disjunctive')
   final bool? disjunctive;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AutomaticFacetFilter &&
-          other.facet == facet &&
-          other.score == score &&
-          other.disjunctive == disjunctive;
+
 
   @override
-  int get hashCode => facet.hashCode + score.hashCode + disjunctive.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is AutomaticFacetFilter &&
+     other.facet == facet &&
+     other.score == score &&
+     other.disjunctive == disjunctive
+    ;
 
-  factory AutomaticFacetFilter.fromJson(Map<String, dynamic> json) =>
-      _$AutomaticFacetFilterFromJson(json);
+  @override
+  int get hashCode =>
+    facet.hashCode +
+    score.hashCode +
+    disjunctive.hashCode
+    ;
+
+  factory AutomaticFacetFilter.fromJson(Map<String, dynamic> json) => _$AutomaticFacetFilterFromJson(json);
 
   Map<String, dynamic> toJson() => _$AutomaticFacetFilterToJson(this);
 
@@ -46,4 +54,7 @@ final class AutomaticFacetFilter {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

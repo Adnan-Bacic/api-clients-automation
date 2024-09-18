@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
-/// Trending items model.  Trending items are determined from the number of conversion events collected on them.
+/// Trending items model.  Trending items are determined from the number of conversion events collected on them. 
 @JsonEnum(valueField: 'raw')
 enum TrendingItemsModel {
   trendingItems(r'trending-items');
@@ -22,3 +22,4 @@ enum TrendingItemsModel {
   @override
   String toString() => raw.toString();
 }
+

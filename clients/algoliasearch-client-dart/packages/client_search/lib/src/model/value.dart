@@ -7,35 +7,44 @@ import 'package:json_annotation/json_annotation.dart';
 part 'value.g.dart';
 
 @JsonSerializable()
-final class Value {
+final class Value{
   /// Returns a new [Value] instance.
   const Value({
-    this.order,
-    this.sortRemainingBy,
-    this.hide,
+     this.order,
+     this.sortRemainingBy,
+     this.hide,
   });
 
-  /// Explicit order of facets or facet values.  This setting lets you always show specific facets or facet values at the top of the list.
+      /// Explicit order of facets or facet values.  This setting lets you always show specific facets or facet values at the top of the list. 
   @JsonKey(name: r'order')
   final List<String>? order;
+
+
 
   @JsonKey(name: r'sortRemainingBy')
   final SortRemainingBy? sortRemainingBy;
 
-  /// Hide facet values.
+
+
+      /// Hide facet values.
   @JsonKey(name: r'hide')
   final List<String>? hide;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Value &&
-          other.order == order &&
-          other.sortRemainingBy == sortRemainingBy &&
-          other.hide == hide;
+
 
   @override
-  int get hashCode => order.hashCode + sortRemainingBy.hashCode + hide.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Value &&
+     other.order == order &&
+     other.sortRemainingBy == sortRemainingBy &&
+     other.hide == hide
+    ;
+
+  @override
+  int get hashCode =>
+    order.hashCode +
+    sortRemainingBy.hashCode +
+    hide.hashCode
+    ;
 
   factory Value.fromJson(Map<String, dynamic> json) => _$ValueFromJson(json);
 
@@ -45,4 +54,7 @@ final class Value {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -7,33 +7,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'consequence_query_object.g.dart';
 
 @JsonSerializable()
-final class ConsequenceQueryObject {
+final class ConsequenceQueryObject{
   /// Returns a new [ConsequenceQueryObject] instance.
   const ConsequenceQueryObject({
-    this.remove,
-    this.edits,
+     this.remove,
+     this.edits,
   });
 
-  /// Words to remove from the search query.
+      /// Words to remove from the search query.
   @JsonKey(name: r'remove')
   final List<String>? remove;
 
-  /// Changes to make to the search query.
+
+
+      /// Changes to make to the search query.
   @JsonKey(name: r'edits')
   final List<Edit>? edits;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConsequenceQueryObject &&
-          other.remove == remove &&
-          other.edits == edits;
+
 
   @override
-  int get hashCode => remove.hashCode + edits.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is ConsequenceQueryObject &&
+     other.remove == remove &&
+     other.edits == edits
+    ;
 
-  factory ConsequenceQueryObject.fromJson(Map<String, dynamic> json) =>
-      _$ConsequenceQueryObjectFromJson(json);
+  @override
+  int get hashCode =>
+    remove.hashCode +
+    edits.hashCode
+    ;
+
+  factory ConsequenceQueryObject.fromJson(Map<String, dynamic> json) => _$ConsequenceQueryObjectFromJson(json);
 
   Map<String, dynamic> toJson() => _$ConsequenceQueryObjectToJson(this);
 
@@ -41,4 +46,7 @@ final class ConsequenceQueryObject {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

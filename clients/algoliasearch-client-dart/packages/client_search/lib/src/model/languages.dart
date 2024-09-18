@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'languages.g.dart';
 
 @JsonSerializable()
-final class Languages {
+final class Languages{
   /// Returns a new [Languages] instance.
   const Languages({
     required this.plurals,
@@ -18,28 +18,33 @@ final class Languages {
   @JsonKey(name: r'plurals')
   final DictionaryLanguage? plurals;
 
+
+
   @JsonKey(name: r'stopwords')
   final DictionaryLanguage? stopwords;
+
+
 
   @JsonKey(name: r'compounds')
   final DictionaryLanguage? compounds;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Languages &&
-          other.plurals == plurals &&
-          other.stopwords == stopwords &&
-          other.compounds == compounds;
+  bool operator ==(Object other) => identical(this, other) || other is Languages &&
+     other.plurals == plurals &&
+     other.stopwords == stopwords &&
+     other.compounds == compounds
+    ;
 
   @override
   int get hashCode =>
-      (plurals == null ? 0 : plurals.hashCode) +
-      (stopwords == null ? 0 : stopwords.hashCode) +
-      (compounds == null ? 0 : compounds.hashCode);
+    (plurals == null ? 0 : plurals.hashCode) +
+    (stopwords == null ? 0 : stopwords.hashCode) +
+    (compounds == null ? 0 : compounds.hashCode)
+    ;
 
-  factory Languages.fromJson(Map<String, dynamic> json) =>
-      _$LanguagesFromJson(json);
+  factory Languages.fromJson(Map<String, dynamic> json) => _$LanguagesFromJson(json);
 
   Map<String, dynamic> toJson() => _$LanguagesToJson(this);
 
@@ -47,4 +52,7 @@ final class Languages {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

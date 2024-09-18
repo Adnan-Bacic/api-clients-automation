@@ -7,34 +7,39 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_method_params.g.dart';
 
 @JsonSerializable()
-final class SearchMethodParams {
+final class SearchMethodParams{
   /// Returns a new [SearchMethodParams] instance.
   const SearchMethodParams({
     required this.requests,
-    this.strategy,
+     this.strategy,
   });
 
-  /// One of types:
-  /// - [SearchForHits]
-  /// - [SearchForFacets]
+     /// One of types: 
+     /// - [SearchForHits]
+     /// - [SearchForFacets]
   @JsonKey(name: r'requests')
   final Iterable<dynamic> requests;
+
+
 
   @JsonKey(name: r'strategy')
   final SearchStrategy? strategy;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchMethodParams &&
-          other.requests == requests &&
-          other.strategy == strategy;
+
 
   @override
-  int get hashCode => requests.hashCode + strategy.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is SearchMethodParams &&
+     other.requests == requests &&
+     other.strategy == strategy
+    ;
 
-  factory SearchMethodParams.fromJson(Map<String, dynamic> json) =>
-      _$SearchMethodParamsFromJson(json);
+  @override
+  int get hashCode =>
+    requests.hashCode +
+    strategy.hashCode
+    ;
+
+  factory SearchMethodParams.fromJson(Map<String, dynamic> json) => _$SearchMethodParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchMethodParamsToJson(this);
 
@@ -42,4 +47,7 @@ final class SearchMethodParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

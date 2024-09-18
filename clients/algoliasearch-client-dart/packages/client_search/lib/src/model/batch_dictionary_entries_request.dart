@@ -8,7 +8,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch_dictionary_entries_request.g.dart';
 
 @JsonSerializable()
-final class BatchDictionaryEntriesRequest {
+final class BatchDictionaryEntriesRequest{
   /// Returns a new [BatchDictionaryEntriesRequest] instance.
   const BatchDictionaryEntriesRequest({
     required this.action,
@@ -18,21 +18,26 @@ final class BatchDictionaryEntriesRequest {
   @JsonKey(name: r'action')
   final DictionaryAction action;
 
+
+
   @JsonKey(name: r'body')
   final DictionaryEntry body;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BatchDictionaryEntriesRequest &&
-          other.action == action &&
-          other.body == body;
+
 
   @override
-  int get hashCode => action.hashCode + body.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is BatchDictionaryEntriesRequest &&
+     other.action == action &&
+     other.body == body
+    ;
 
-  factory BatchDictionaryEntriesRequest.fromJson(Map<String, dynamic> json) =>
-      _$BatchDictionaryEntriesRequestFromJson(json);
+  @override
+  int get hashCode =>
+    action.hashCode +
+    body.hashCode
+    ;
+
+  factory BatchDictionaryEntriesRequest.fromJson(Map<String, dynamic> json) => _$BatchDictionaryEntriesRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$BatchDictionaryEntriesRequestToJson(this);
 
@@ -40,4 +45,7 @@ final class BatchDictionaryEntriesRequest {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
-/// Strategy for multiple search queries:  - `none`. Run all queries. - `stopIfEnoughMatches`. Run the queries one by one, stopping as soon as a query matches at least the `hitsPerPage` number of results.
+/// Strategy for multiple search queries:  - `none`. Run all queries. - `stopIfEnoughMatches`. Run the queries one by one, stopping as soon as a query matches at least the `hitsPerPage` number of results. 
 @JsonEnum(valueField: 'raw')
 enum SearchStrategy {
   none(r'none'),
@@ -23,3 +23,4 @@ enum SearchStrategy {
   @override
   String toString() => raw.toString();
 }
+

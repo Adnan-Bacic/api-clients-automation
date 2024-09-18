@@ -7,35 +7,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch_dictionary_entries_params.g.dart';
 
 @JsonSerializable()
-final class BatchDictionaryEntriesParams {
+final class BatchDictionaryEntriesParams{
   /// Returns a new [BatchDictionaryEntriesParams] instance.
   const BatchDictionaryEntriesParams({
-    this.clearExistingDictionaryEntries,
+     this.clearExistingDictionaryEntries,
     required this.requests,
   });
 
-  /// Whether to replace all custom entries in the dictionary with the ones sent with this request.
+      /// Whether to replace all custom entries in the dictionary with the ones sent with this request.
   @JsonKey(name: r'clearExistingDictionaryEntries')
   final bool? clearExistingDictionaryEntries;
 
-  /// List of additions and deletions to your dictionaries.
+
+
+      /// List of additions and deletions to your dictionaries.
   @JsonKey(name: r'requests')
   final List<BatchDictionaryEntriesRequest> requests;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BatchDictionaryEntriesParams &&
-          other.clearExistingDictionaryEntries ==
-              clearExistingDictionaryEntries &&
-          other.requests == requests;
+  bool operator ==(Object other) => identical(this, other) || other is BatchDictionaryEntriesParams &&
+     other.clearExistingDictionaryEntries == clearExistingDictionaryEntries &&
+     other.requests == requests
+    ;
 
   @override
   int get hashCode =>
-      clearExistingDictionaryEntries.hashCode + requests.hashCode;
+    clearExistingDictionaryEntries.hashCode +
+    requests.hashCode
+    ;
 
-  factory BatchDictionaryEntriesParams.fromJson(Map<String, dynamic> json) =>
-      _$BatchDictionaryEntriesParamsFromJson(json);
+  factory BatchDictionaryEntriesParams.fromJson(Map<String, dynamic> json) => _$BatchDictionaryEntriesParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$BatchDictionaryEntriesParamsToJson(this);
 
@@ -43,4 +46,7 @@ final class BatchDictionaryEntriesParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -24,3 +24,4 @@ enum MatchLevel {
   @override
   String toString() => raw.toString();
 }
+

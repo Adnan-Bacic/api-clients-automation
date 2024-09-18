@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
-/// Looking similar model.  This model recommends items that look similar to the item with the ID `objectID` based on image attributes in your index.
+/// Looking similar model.  This model recommends items that look similar to the item with the ID `objectID` based on image attributes in your index. 
 @JsonEnum(valueField: 'raw')
 enum LookingSimilarModel {
   lookingSimilar(r'looking-similar');
@@ -22,3 +22,4 @@ enum LookingSimilarModel {
   @override
   String toString() => raw.toString();
 }
+

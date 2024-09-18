@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
-/// Frequently bought together model.  This model recommends items that have been purchased within 1 day with the item with the ID `objectID`.
+/// Frequently bought together model.  This model recommends items that have been purchased within 1 day with the item with the ID `objectID`. 
 @JsonEnum(valueField: 'raw')
 enum FbtModel {
   boughtTogether(r'bought-together');
@@ -22,3 +22,4 @@ enum FbtModel {
   @override
   String toString() => raw.toString();
 }
+

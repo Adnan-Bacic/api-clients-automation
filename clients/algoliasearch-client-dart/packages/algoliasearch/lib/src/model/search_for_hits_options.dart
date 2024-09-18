@@ -7,32 +7,37 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_for_hits_options.g.dart';
 
 @JsonSerializable()
-final class SearchForHitsOptions {
+final class SearchForHitsOptions{
   /// Returns a new [SearchForHitsOptions] instance.
   const SearchForHitsOptions({
     required this.indexName,
-    this.type,
+     this.type,
   });
 
-  /// Index name (case-sensitive).
+      /// Index name (case-sensitive).
   @JsonKey(name: r'indexName')
   final String indexName;
+
+
 
   @JsonKey(name: r'type')
   final SearchTypeDefault? type;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchForHitsOptions &&
-          other.indexName == indexName &&
-          other.type == type;
+
 
   @override
-  int get hashCode => indexName.hashCode + type.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is SearchForHitsOptions &&
+     other.indexName == indexName &&
+     other.type == type
+    ;
 
-  factory SearchForHitsOptions.fromJson(Map<String, dynamic> json) =>
-      _$SearchForHitsOptionsFromJson(json);
+  @override
+  int get hashCode =>
+    indexName.hashCode +
+    type.hashCode
+    ;
+
+  factory SearchForHitsOptions.fromJson(Map<String, dynamic> json) => _$SearchForHitsOptionsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchForHitsOptionsToJson(this);
 
@@ -40,4 +45,7 @@ final class SearchForHitsOptions {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

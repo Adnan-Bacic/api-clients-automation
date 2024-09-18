@@ -6,30 +6,36 @@ import 'package:json_annotation/json_annotation.dart';
 part 'source.g.dart';
 
 @JsonSerializable()
-final class Source {
+final class Source{
   /// Returns a new [Source] instance.
   const Source({
     required this.source,
-    this.description,
+     this.description,
   });
 
-  /// IP address range of the source.
+      /// IP address range of the source.
   @JsonKey(name: r'source')
   final String source;
 
-  /// Source description.
+
+
+      /// Source description.
   @JsonKey(name: r'description')
   final String? description;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Source &&
-          other.source == source &&
-          other.description == description;
+
 
   @override
-  int get hashCode => source.hashCode + description.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Source &&
+     other.source == source &&
+     other.description == description
+    ;
+
+  @override
+  int get hashCode =>
+    source.hashCode +
+    description.hashCode
+    ;
 
   factory Source.fromJson(Map<String, dynamic> json) => _$SourceFromJson(json);
 
@@ -39,4 +45,7 @@ final class Source {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

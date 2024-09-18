@@ -28,3 +28,4 @@ enum BuiltInOperationType {
   @override
   String toString() => raw.toString();
 }
+

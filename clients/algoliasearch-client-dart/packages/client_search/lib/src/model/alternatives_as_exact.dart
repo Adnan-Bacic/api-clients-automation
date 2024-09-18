@@ -2,6 +2,7 @@
 // ignore_for_file: unused_element
 import 'package:json_annotation/json_annotation.dart';
 
+
 @JsonEnum(valueField: 'raw')
 enum AlternativesAsExact {
   ignorePlurals(r'ignorePlurals'),
@@ -23,3 +24,4 @@ enum AlternativesAsExact {
   @override
   String toString() => raw.toString();
 }
+

@@ -23,3 +23,4 @@ enum TaskStatus {
   @override
   String toString() => raw.toString();
 }
+

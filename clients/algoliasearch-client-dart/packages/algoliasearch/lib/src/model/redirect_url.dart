@@ -6,24 +6,28 @@ import 'package:json_annotation/json_annotation.dart';
 part 'redirect_url.g.dart';
 
 @JsonSerializable()
-final class RedirectURL {
+final class RedirectURL{
   /// Returns a new [RedirectURL] instance.
   const RedirectURL({
-    this.url,
+     this.url,
   });
 
   @JsonKey(name: r'url')
   final String? url;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is RedirectURL && other.url == url;
+
 
   @override
-  int get hashCode => url.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is RedirectURL &&
+     other.url == url
+    ;
 
-  factory RedirectURL.fromJson(Map<String, dynamic> json) =>
-      _$RedirectURLFromJson(json);
+  @override
+  int get hashCode =>
+    url.hashCode
+    ;
+
+  factory RedirectURL.fromJson(Map<String, dynamic> json) => _$RedirectURLFromJson(json);
 
   Map<String, dynamic> toJson() => _$RedirectURLToJson(this);
 
@@ -31,4 +35,7 @@ final class RedirectURL {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -23,3 +23,4 @@ enum DictionaryEntryType {
   @override
   String toString() => raw.toString();
 }
+

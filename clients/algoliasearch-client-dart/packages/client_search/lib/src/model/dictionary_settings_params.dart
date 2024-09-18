@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'dictionary_settings_params.g.dart';
 
 @JsonSerializable()
-final class DictionarySettingsParams {
+final class DictionarySettingsParams{
   /// Returns a new [DictionarySettingsParams] instance.
   const DictionarySettingsParams({
     required this.disableStandardEntries,
@@ -16,17 +16,19 @@ final class DictionarySettingsParams {
   @JsonKey(name: r'disableStandardEntries')
   final StandardEntries disableStandardEntries;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DictionarySettingsParams &&
-          other.disableStandardEntries == disableStandardEntries;
+
 
   @override
-  int get hashCode => disableStandardEntries.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is DictionarySettingsParams &&
+     other.disableStandardEntries == disableStandardEntries
+    ;
 
-  factory DictionarySettingsParams.fromJson(Map<String, dynamic> json) =>
-      _$DictionarySettingsParamsFromJson(json);
+  @override
+  int get hashCode =>
+    disableStandardEntries.hashCode
+    ;
+
+  factory DictionarySettingsParams.fromJson(Map<String, dynamic> json) => _$DictionarySettingsParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$DictionarySettingsParamsToJson(this);
 
@@ -34,4 +36,7 @@ final class DictionarySettingsParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -23,3 +23,4 @@ enum DictionaryAction {
   @override
   String toString() => raw.toString();
 }
+

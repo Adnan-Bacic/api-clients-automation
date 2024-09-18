@@ -7,33 +7,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'list_indices_response.g.dart';
 
 @JsonSerializable()
-final class ListIndicesResponse {
+final class ListIndicesResponse{
   /// Returns a new [ListIndicesResponse] instance.
   const ListIndicesResponse({
     required this.items,
-    this.nbPages,
+     this.nbPages,
   });
 
-  /// All indices in your Algolia application.
+      /// All indices in your Algolia application.
   @JsonKey(name: r'items')
   final List<FetchedIndex> items;
 
-  /// Number of pages.
+
+
+      /// Number of pages.
   @JsonKey(name: r'nbPages')
   final int? nbPages;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ListIndicesResponse &&
-          other.items == items &&
-          other.nbPages == nbPages;
+
 
   @override
-  int get hashCode => items.hashCode + nbPages.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is ListIndicesResponse &&
+     other.items == items &&
+     other.nbPages == nbPages
+    ;
 
-  factory ListIndicesResponse.fromJson(Map<String, dynamic> json) =>
-      _$ListIndicesResponseFromJson(json);
+  @override
+  int get hashCode =>
+    items.hashCode +
+    nbPages.hashCode
+    ;
+
+  factory ListIndicesResponse.fromJson(Map<String, dynamic> json) => _$ListIndicesResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ListIndicesResponseToJson(this);
 
@@ -41,4 +46,7 @@ final class ListIndicesResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

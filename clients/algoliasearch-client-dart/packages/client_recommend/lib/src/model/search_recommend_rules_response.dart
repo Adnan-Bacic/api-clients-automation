@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_recommend_rules_response.g.dart';
 
 @JsonSerializable()
-final class SearchRecommendRulesResponse {
+final class SearchRecommendRulesResponse{
   /// Returns a new [SearchRecommendRulesResponse] instance.
   const SearchRecommendRulesResponse({
     required this.hits,
@@ -16,38 +16,48 @@ final class SearchRecommendRulesResponse {
     required this.nbPages,
   });
 
-  /// Recommend rules that match the search criteria.
+      /// Recommend rules that match the search criteria.
   @JsonKey(name: r'hits')
   final List<RecommendRule> hits;
 
-  /// Number of results (hits).
+
+
+      /// Number of results (hits).
   @JsonKey(name: r'nbHits')
   final int nbHits;
 
-  /// Page of search results to retrieve.
-  // minimum: 0
+
+
+      /// Page of search results to retrieve.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int page;
 
-  /// Number of pages of results.
+
+
+      /// Number of pages of results.
   @JsonKey(name: r'nbPages')
   final int nbPages;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchRecommendRulesResponse &&
-          other.hits == hits &&
-          other.nbHits == nbHits &&
-          other.page == page &&
-          other.nbPages == nbPages;
+  bool operator ==(Object other) => identical(this, other) || other is SearchRecommendRulesResponse &&
+     other.hits == hits &&
+     other.nbHits == nbHits &&
+     other.page == page &&
+     other.nbPages == nbPages
+    ;
 
   @override
   int get hashCode =>
-      hits.hashCode + nbHits.hashCode + page.hashCode + nbPages.hashCode;
+    hits.hashCode +
+    nbHits.hashCode +
+    page.hashCode +
+    nbPages.hashCode
+    ;
 
-  factory SearchRecommendRulesResponse.fromJson(Map<String, dynamic> json) =>
-      _$SearchRecommendRulesResponseFromJson(json);
+  factory SearchRecommendRulesResponse.fromJson(Map<String, dynamic> json) => _$SearchRecommendRulesResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchRecommendRulesResponseToJson(this);
 
@@ -55,4 +65,7 @@ final class SearchRecommendRulesResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

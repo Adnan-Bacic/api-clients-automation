@@ -7,32 +7,37 @@ import 'package:json_annotation/json_annotation.dart';
 part 'snippet_result_option.g.dart';
 
 @JsonSerializable()
-final class SnippetResultOption {
+final class SnippetResultOption{
   /// Returns a new [SnippetResultOption] instance.
   const SnippetResultOption({
     required this.value,
     required this.matchLevel,
   });
 
-  /// Highlighted attribute value, including HTML tags.
+      /// Highlighted attribute value, including HTML tags.
   @JsonKey(name: r'value')
   final String value;
+
+
 
   @JsonKey(name: r'matchLevel')
   final MatchLevel matchLevel;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SnippetResultOption &&
-          other.value == value &&
-          other.matchLevel == matchLevel;
+
 
   @override
-  int get hashCode => value.hashCode + matchLevel.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is SnippetResultOption &&
+     other.value == value &&
+     other.matchLevel == matchLevel
+    ;
 
-  factory SnippetResultOption.fromJson(Map<String, dynamic> json) =>
-      _$SnippetResultOptionFromJson(json);
+  @override
+  int get hashCode =>
+    value.hashCode +
+    matchLevel.hashCode
+    ;
+
+  factory SnippetResultOption.fromJson(Map<String, dynamic> json) => _$SnippetResultOptionFromJson(json);
 
   Map<String, dynamic> toJson() => _$SnippetResultOptionToJson(this);
 
@@ -40,4 +45,7 @@ final class SnippetResultOption {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

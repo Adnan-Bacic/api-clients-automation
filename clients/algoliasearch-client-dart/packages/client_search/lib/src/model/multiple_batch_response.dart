@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'multiple_batch_response.g.dart';
 
 @JsonSerializable()
-final class MultipleBatchResponse {
+final class MultipleBatchResponse{
   /// Returns a new [MultipleBatchResponse] instance.
   const MultipleBatchResponse({
     required this.taskID,
     required this.objectIDs,
   });
 
-  /// Task IDs. One for each index.
+      /// Task IDs. One for each index.
   @JsonKey(name: r'taskID')
   final Map<String, int> taskID;
 
-  /// Unique record identifiers.
+
+
+      /// Unique record identifiers.
   @JsonKey(name: r'objectIDs')
   final List<String> objectIDs;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MultipleBatchResponse &&
-          other.taskID == taskID &&
-          other.objectIDs == objectIDs;
+
 
   @override
-  int get hashCode => taskID.hashCode + objectIDs.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is MultipleBatchResponse &&
+     other.taskID == taskID &&
+     other.objectIDs == objectIDs
+    ;
 
-  factory MultipleBatchResponse.fromJson(Map<String, dynamic> json) =>
-      _$MultipleBatchResponseFromJson(json);
+  @override
+  int get hashCode =>
+    taskID.hashCode +
+    objectIDs.hashCode
+    ;
+
+  factory MultipleBatchResponse.fromJson(Map<String, dynamic> json) => _$MultipleBatchResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$MultipleBatchResponseToJson(this);
 
@@ -40,4 +45,7 @@ final class MultipleBatchResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

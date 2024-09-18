@@ -15,46 +15,45 @@ final class SearchHits extends DelegatingMap<String, dynamic> {
     required this.query,
     required this.params,
     Map<String, dynamic> additionalProperties = const {},
-  }) : super(additionalProperties);
+  }): super(additionalProperties);
 
-  /// Search results (hits).  Hits are records from your index that match the search criteria, augmented with additional attributes, such as, for highlighting.
-  @JsonKey(name: r'hits')
-  final List<Hit> hits;
+        /// Search results (hits).  Hits are records from your index that match the search criteria, augmented with additional attributes, such as, for highlighting. 
+    @JsonKey(name: r'hits')
+    final List<Hit> hits;
 
-  /// Search query.
-  @JsonKey(name: r'query')
-  final String query;
+        /// Search query.
+    @JsonKey(name: r'query')
+    final String query;
 
-  /// URL-encoded string of all search parameters.
-  @JsonKey(name: r'params')
-  final String params;
+        /// URL-encoded string of all search parameters.
+    @JsonKey(name: r'params')
+    final String params;
+
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchHits &&
-          other.hits == hits &&
-          other.query == query &&
-          other.params == params &&
-          const MapEquality<String, dynamic>().equals(this, this);
+  bool operator ==(Object other) => identical(this, other) || other is SearchHits &&
+     other.hits == hits &&
+     other.query == query &&
+     other.params == params &&
+     const MapEquality<String, dynamic>().equals(this, this); 
 
   @override
   int get hashCode =>
-      hits.hashCode +
-      query.hashCode +
-      params.hashCode +
-      const MapEquality<String, dynamic>().hash(this);
+    hits.hashCode +
+    query.hashCode +
+    params.hashCode +
+    const MapEquality<String, dynamic>().hash(this);
 
   factory SearchHits.fromJson(Map<String, dynamic> json) {
-    final instance = _$SearchHitsFromJson(json);
-    final additionalProperties = Map<String, dynamic>.from(json)
+     final instance = _$SearchHitsFromJson(json);
+     final additionalProperties = Map<String, dynamic>.from(json)
       ..removeWhere((key, value) => _$SearchHitsFieldMap.containsKey(key));
-    return SearchHits(
-      hits: instance.hits,
-      query: instance.query,
-      params: instance.params,
-      additionalProperties: additionalProperties,
-    );
+     return SearchHits (
+          hits: instance.hits,
+          query: instance.query,
+          params: instance.params,
+       additionalProperties: additionalProperties,
+     );
   }
 
   Map<String, dynamic> toJson() => _$SearchHitsToJson(this)..addAll(this);
@@ -64,3 +63,5 @@ final class SearchHits extends DelegatingMap<String, dynamic> {
     return toJson().toString();
   }
 }
+
+

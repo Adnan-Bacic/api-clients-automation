@@ -6,41 +6,48 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_for_facet_values_request.g.dart';
 
 @JsonSerializable()
-final class SearchForFacetValuesRequest {
+final class SearchForFacetValuesRequest{
   /// Returns a new [SearchForFacetValuesRequest] instance.
   const SearchForFacetValuesRequest({
-    this.params,
-    this.facetQuery,
-    this.maxFacetHits,
+     this.params,
+     this.facetQuery,
+     this.maxFacetHits,
   });
 
-  /// Search parameters as a URL-encoded query string.
+      /// Search parameters as a URL-encoded query string.
   @JsonKey(name: r'params')
   final String? params;
 
-  /// Text to search inside the facet's values.
+
+
+      /// Text to search inside the facet's values.
   @JsonKey(name: r'facetQuery')
   final String? facetQuery;
 
-  /// Maximum number of facet values to return when [searching for facet values](https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/#search-for-facet-values).
-  // maximum: 100
+
+
+      /// Maximum number of facet values to return when [searching for facet values](https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/#search-for-facet-values).
+          // maximum: 100
   @JsonKey(name: r'maxFacetHits')
   final int? maxFacetHits;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchForFacetValuesRequest &&
-          other.params == params &&
-          other.facetQuery == facetQuery &&
-          other.maxFacetHits == maxFacetHits;
+  bool operator ==(Object other) => identical(this, other) || other is SearchForFacetValuesRequest &&
+     other.params == params &&
+     other.facetQuery == facetQuery &&
+     other.maxFacetHits == maxFacetHits
+    ;
 
   @override
   int get hashCode =>
-      params.hashCode + facetQuery.hashCode + maxFacetHits.hashCode;
+    params.hashCode +
+    facetQuery.hashCode +
+    maxFacetHits.hashCode
+    ;
 
-  factory SearchForFacetValuesRequest.fromJson(Map<String, dynamic> json) =>
-      _$SearchForFacetValuesRequestFromJson(json);
+  factory SearchForFacetValuesRequest.fromJson(Map<String, dynamic> json) => _$SearchForFacetValuesRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchForFacetValuesRequestToJson(this);
 
@@ -48,4 +55,7 @@ final class SearchForFacetValuesRequest {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

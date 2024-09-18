@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'built_in_operation.g.dart';
 
 @JsonSerializable()
-final class BuiltInOperation {
+final class BuiltInOperation{
   /// Returns a new [BuiltInOperation] instance.
   const BuiltInOperation({
     required this.operation,
@@ -17,24 +17,29 @@ final class BuiltInOperation {
   @JsonKey(name: r'_operation')
   final BuiltInOperationType operation;
 
-  /// One of types:
-  /// - [String]
-  /// - [int]
+
+
+     /// One of types: 
+     /// - [String]
+     /// - [int]
   @JsonKey(name: r'value')
   final dynamic value;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BuiltInOperation &&
-          other.operation == operation &&
-          other.value == value;
+
 
   @override
-  int get hashCode => operation.hashCode + value.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is BuiltInOperation &&
+     other.operation == operation &&
+     other.value == value
+    ;
 
-  factory BuiltInOperation.fromJson(Map<String, dynamic> json) =>
-      _$BuiltInOperationFromJson(json);
+  @override
+  int get hashCode =>
+    operation.hashCode +
+    value.hashCode
+    ;
+
+  factory BuiltInOperation.fromJson(Map<String, dynamic> json) => _$BuiltInOperationFromJson(json);
 
   Map<String, dynamic> toJson() => _$BuiltInOperationToJson(this);
 
@@ -42,4 +47,7 @@ final class BuiltInOperation {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

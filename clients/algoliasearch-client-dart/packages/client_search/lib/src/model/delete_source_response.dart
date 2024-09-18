@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'delete_source_response.g.dart';
 
 @JsonSerializable()
-final class DeleteSourceResponse {
+final class DeleteSourceResponse{
   /// Returns a new [DeleteSourceResponse] instance.
   const DeleteSourceResponse({
     required this.deletedAt,
   });
 
-  /// Date and time when the object was deleted, in RFC 3339 format.
+      /// Date and time when the object was deleted, in RFC 3339 format.
   @JsonKey(name: r'deletedAt')
   final String deletedAt;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DeleteSourceResponse && other.deletedAt == deletedAt;
+
 
   @override
-  int get hashCode => deletedAt.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is DeleteSourceResponse &&
+     other.deletedAt == deletedAt
+    ;
 
-  factory DeleteSourceResponse.fromJson(Map<String, dynamic> json) =>
-      _$DeleteSourceResponseFromJson(json);
+  @override
+  int get hashCode =>
+    deletedAt.hashCode
+    ;
+
+  factory DeleteSourceResponse.fromJson(Map<String, dynamic> json) => _$DeleteSourceResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$DeleteSourceResponseToJson(this);
 
@@ -33,4 +36,7 @@ final class DeleteSourceResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

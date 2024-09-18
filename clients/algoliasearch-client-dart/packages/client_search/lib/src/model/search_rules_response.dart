@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_rules_response.g.dart';
 
 @JsonSerializable()
-final class SearchRulesResponse {
+final class SearchRulesResponse{
   /// Returns a new [SearchRulesResponse] instance.
   const SearchRulesResponse({
     required this.hits,
@@ -16,37 +16,47 @@ final class SearchRulesResponse {
     required this.nbPages,
   });
 
-  /// Rules that matched the search criteria.
+      /// Rules that matched the search criteria.
   @JsonKey(name: r'hits')
   final List<Rule> hits;
 
-  /// Number of rules that matched the search criteria.
+
+
+      /// Number of rules that matched the search criteria.
   @JsonKey(name: r'nbHits')
   final int nbHits;
 
-  /// Current page.
+
+
+      /// Current page.
   @JsonKey(name: r'page')
   final int page;
 
-  /// Number of pages.
+
+
+      /// Number of pages.
   @JsonKey(name: r'nbPages')
   final int nbPages;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchRulesResponse &&
-          other.hits == hits &&
-          other.nbHits == nbHits &&
-          other.page == page &&
-          other.nbPages == nbPages;
+  bool operator ==(Object other) => identical(this, other) || other is SearchRulesResponse &&
+     other.hits == hits &&
+     other.nbHits == nbHits &&
+     other.page == page &&
+     other.nbPages == nbPages
+    ;
 
   @override
   int get hashCode =>
-      hits.hashCode + nbHits.hashCode + page.hashCode + nbPages.hashCode;
+    hits.hashCode +
+    nbHits.hashCode +
+    page.hashCode +
+    nbPages.hashCode
+    ;
 
-  factory SearchRulesResponse.fromJson(Map<String, dynamic> json) =>
-      _$SearchRulesResponseFromJson(json);
+  factory SearchRulesResponse.fromJson(Map<String, dynamic> json) => _$SearchRulesResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchRulesResponseToJson(this);
 
@@ -54,4 +64,7 @@ final class SearchRulesResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

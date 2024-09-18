@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'semantic_search.g.dart';
 
 @JsonSerializable()
-final class SemanticSearch {
+final class SemanticSearch{
   /// Returns a new [SemanticSearch] instance.
   const SemanticSearch({
-    this.eventSources,
+     this.eventSources,
   });
 
-  /// Indices from which to collect click and conversion events.  If null, the current index and all its replicas are used.
+      /// Indices from which to collect click and conversion events.  If null, the current index and all its replicas are used. 
   @JsonKey(name: r'eventSources')
   final List<String>? eventSources;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SemanticSearch && other.eventSources == eventSources;
+
 
   @override
-  int get hashCode => (eventSources == null ? 0 : eventSources.hashCode);
+  bool operator ==(Object other) => identical(this, other) || other is SemanticSearch &&
+     other.eventSources == eventSources
+    ;
 
-  factory SemanticSearch.fromJson(Map<String, dynamic> json) =>
-      _$SemanticSearchFromJson(json);
+  @override
+  int get hashCode =>
+    (eventSources == null ? 0 : eventSources.hashCode)
+    ;
+
+  factory SemanticSearch.fromJson(Map<String, dynamic> json) => _$SemanticSearchFromJson(json);
 
   Map<String, dynamic> toJson() => _$SemanticSearchToJson(this);
 
@@ -33,4 +36,7 @@ final class SemanticSearch {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -7,26 +7,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_top_user_ids_response.g.dart';
 
 @JsonSerializable()
-final class GetTopUserIdsResponse {
+final class GetTopUserIdsResponse{
   /// Returns a new [GetTopUserIdsResponse] instance.
   const GetTopUserIdsResponse({
     required this.topUsers,
   });
 
-  /// Key-value pairs with cluster names as keys and lists of users with the highest number of records per cluster as values.
+      /// Key-value pairs with cluster names as keys and lists of users with the highest number of records per cluster as values.
   @JsonKey(name: r'topUsers')
   final List<Map<String, List<UserId>>> topUsers;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetTopUserIdsResponse && other.topUsers == topUsers;
+
 
   @override
-  int get hashCode => topUsers.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is GetTopUserIdsResponse &&
+     other.topUsers == topUsers
+    ;
 
-  factory GetTopUserIdsResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetTopUserIdsResponseFromJson(json);
+  @override
+  int get hashCode =>
+    topUsers.hashCode
+    ;
+
+  factory GetTopUserIdsResponse.fromJson(Map<String, dynamic> json) => _$GetTopUserIdsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetTopUserIdsResponseToJson(this);
 
@@ -34,4 +37,7 @@ final class GetTopUserIdsResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

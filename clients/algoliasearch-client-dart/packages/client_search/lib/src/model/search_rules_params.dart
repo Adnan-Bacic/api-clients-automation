@@ -7,65 +7,76 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_rules_params.g.dart';
 
 @JsonSerializable()
-final class SearchRulesParams {
+final class SearchRulesParams{
   /// Returns a new [SearchRulesParams] instance.
   const SearchRulesParams({
-    this.query,
-    this.anchoring,
-    this.context,
-    this.page,
-    this.hitsPerPage,
-    this.enabled,
+     this.query,
+     this.anchoring,
+     this.context,
+     this.page,
+     this.hitsPerPage,
+     this.enabled,
   });
 
-  /// Search query for rules.
+      /// Search query for rules.
   @JsonKey(name: r'query')
   final String? query;
+
+
 
   @JsonKey(name: r'anchoring')
   final Anchoring? anchoring;
 
-  /// Only return rules that match the context (exact match).
+
+
+      /// Only return rules that match the context (exact match).
   @JsonKey(name: r'context')
   final String? context;
 
-  /// Requested page of the API response.
-  // minimum: 0
+
+
+      /// Requested page of the API response.
+          // minimum: 0
   @JsonKey(name: r'page')
   final int? page;
 
-  /// Maximum number of hits per page.
-  // minimum: 1
-  // maximum: 1000
+
+
+      /// Maximum number of hits per page.
+          // minimum: 1
+          // maximum: 1000
   @JsonKey(name: r'hitsPerPage')
   final int? hitsPerPage;
 
-  /// If `true`, return only enabled rules. If `false`, return only inactive rules. By default, _all_ rules are returned.
+
+
+      /// If `true`, return only enabled rules. If `false`, return only inactive rules. By default, _all_ rules are returned. 
   @JsonKey(name: r'enabled')
   final bool? enabled;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchRulesParams &&
-          other.query == query &&
-          other.anchoring == anchoring &&
-          other.context == context &&
-          other.page == page &&
-          other.hitsPerPage == hitsPerPage &&
-          other.enabled == enabled;
+  bool operator ==(Object other) => identical(this, other) || other is SearchRulesParams &&
+     other.query == query &&
+     other.anchoring == anchoring &&
+     other.context == context &&
+     other.page == page &&
+     other.hitsPerPage == hitsPerPage &&
+     other.enabled == enabled
+    ;
 
   @override
   int get hashCode =>
-      query.hashCode +
-      anchoring.hashCode +
-      context.hashCode +
-      page.hashCode +
-      hitsPerPage.hashCode +
-      (enabled == null ? 0 : enabled.hashCode);
+    query.hashCode +
+    anchoring.hashCode +
+    context.hashCode +
+    page.hashCode +
+    hitsPerPage.hashCode +
+    (enabled == null ? 0 : enabled.hashCode)
+    ;
 
-  factory SearchRulesParams.fromJson(Map<String, dynamic> json) =>
-      _$SearchRulesParamsFromJson(json);
+  factory SearchRulesParams.fromJson(Map<String, dynamic> json) => _$SearchRulesParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchRulesParamsToJson(this);
 
@@ -73,4 +84,7 @@ final class SearchRulesParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

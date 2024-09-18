@@ -7,24 +7,28 @@ import 'package:json_annotation/json_annotation.dart';
 part 'redirect.g.dart';
 
 @JsonSerializable()
-final class Redirect {
+final class Redirect{
   /// Returns a new [Redirect] instance.
   const Redirect({
-    this.index,
+     this.index,
   });
 
   @JsonKey(name: r'index')
   final List<RedirectRuleIndexMetadata>? index;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is Redirect && other.index == index;
+
 
   @override
-  int get hashCode => index.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Redirect &&
+     other.index == index
+    ;
 
-  factory Redirect.fromJson(Map<String, dynamic> json) =>
-      _$RedirectFromJson(json);
+  @override
+  int get hashCode =>
+    index.hashCode
+    ;
+
+  factory Redirect.fromJson(Map<String, dynamic> json) => _$RedirectFromJson(json);
 
   Map<String, dynamic> toJson() => _$RedirectToJson(this);
 
@@ -32,4 +36,7 @@ final class Redirect {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

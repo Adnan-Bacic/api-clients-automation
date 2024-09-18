@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'batch_write_params.g.dart';
 
 @JsonSerializable()
-final class BatchWriteParams {
+final class BatchWriteParams{
   /// Returns a new [BatchWriteParams] instance.
   const BatchWriteParams({
     required this.requests,
@@ -16,16 +16,19 @@ final class BatchWriteParams {
   @JsonKey(name: r'requests')
   final List<BatchRequest> requests;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BatchWriteParams && other.requests == requests;
+
 
   @override
-  int get hashCode => requests.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is BatchWriteParams &&
+     other.requests == requests
+    ;
 
-  factory BatchWriteParams.fromJson(Map<String, dynamic> json) =>
-      _$BatchWriteParamsFromJson(json);
+  @override
+  int get hashCode =>
+    requests.hashCode
+    ;
+
+  factory BatchWriteParams.fromJson(Map<String, dynamic> json) => _$BatchWriteParamsFromJson(json);
 
   Map<String, dynamic> toJson() => _$BatchWriteParamsToJson(this);
 
@@ -33,4 +36,7 @@ final class BatchWriteParams {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

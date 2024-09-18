@@ -6,22 +6,27 @@ import 'package:json_annotation/json_annotation.dart';
 part 'facets.g.dart';
 
 @JsonSerializable()
-final class Facets {
+final class Facets{
   /// Returns a new [Facets] instance.
   const Facets({
-    this.order,
+     this.order,
   });
 
-  /// Explicit order of facets or facet values.  This setting lets you always show specific facets or facet values at the top of the list.
+      /// Explicit order of facets or facet values.  This setting lets you always show specific facets or facet values at the top of the list. 
   @JsonKey(name: r'order')
   final List<String>? order;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is Facets && other.order == order;
+
 
   @override
-  int get hashCode => order.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Facets &&
+     other.order == order
+    ;
+
+  @override
+  int get hashCode =>
+    order.hashCode
+    ;
 
   factory Facets.fromJson(Map<String, dynamic> json) => _$FacetsFromJson(json);
 
@@ -31,4 +36,7 @@ final class Facets {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

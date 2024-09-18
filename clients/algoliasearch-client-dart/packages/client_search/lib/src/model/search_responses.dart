@@ -6,28 +6,31 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_responses.g.dart';
 
 @JsonSerializable()
-final class SearchResponses {
+final class SearchResponses{
   /// Returns a new [SearchResponses] instance.
   const SearchResponses({
     required this.results,
   });
 
-  /// One of types:
-  /// - [SearchForFacetValuesResponse]
-  /// - [SearchResponse]
+     /// One of types: 
+     /// - [SearchForFacetValuesResponse]
+     /// - [SearchResponse]
   @JsonKey(name: r'results')
   final Iterable<dynamic> results;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchResponses && other.results == results;
+
 
   @override
-  int get hashCode => results.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is SearchResponses &&
+     other.results == results
+    ;
 
-  factory SearchResponses.fromJson(Map<String, dynamic> json) =>
-      _$SearchResponsesFromJson(json);
+  @override
+  int get hashCode =>
+    results.hashCode
+    ;
+
+  factory SearchResponses.fromJson(Map<String, dynamic> json) => _$SearchResponsesFromJson(json);
 
   Map<String, dynamic> toJson() => _$SearchResponsesToJson(this);
 
@@ -35,4 +38,7 @@ final class SearchResponses {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -10,32 +10,32 @@ part 'error_base.g.dart';
 final class ErrorBase extends DelegatingMap<String, dynamic> {
   /// Returns a new [ErrorBase] instance.
   const ErrorBase({
-    this.message,
+     this.message,
     Map<String, dynamic> additionalProperties = const {},
-  }) : super(additionalProperties);
+  }): super(additionalProperties);
 
-  @JsonKey(name: r'message')
-  final String? message;
+    @JsonKey(name: r'message')
+    final String? message;
+
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ErrorBase &&
-          other.message == message &&
-          const MapEquality<String, dynamic>().equals(this, this);
+  bool operator ==(Object other) => identical(this, other) || other is ErrorBase &&
+     other.message == message &&
+     const MapEquality<String, dynamic>().equals(this, this); 
 
   @override
   int get hashCode =>
-      message.hashCode + const MapEquality<String, dynamic>().hash(this);
+    message.hashCode +
+    const MapEquality<String, dynamic>().hash(this);
 
   factory ErrorBase.fromJson(Map<String, dynamic> json) {
-    final instance = _$ErrorBaseFromJson(json);
-    final additionalProperties = Map<String, dynamic>.from(json)
+     final instance = _$ErrorBaseFromJson(json);
+     final additionalProperties = Map<String, dynamic>.from(json)
       ..removeWhere((key, value) => _$ErrorBaseFieldMap.containsKey(key));
-    return ErrorBase(
-      message: instance.message,
-      additionalProperties: additionalProperties,
-    );
+     return ErrorBase (
+          message: instance.message,
+       additionalProperties: additionalProperties,
+     );
   }
 
   Map<String, dynamic> toJson() => _$ErrorBaseToJson(this)..addAll(this);
@@ -45,3 +45,5 @@ final class ErrorBase extends DelegatingMap<String, dynamic> {
     return toJson().toString();
   }
 }
+
+

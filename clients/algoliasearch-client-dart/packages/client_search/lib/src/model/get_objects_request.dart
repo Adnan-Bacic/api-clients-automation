@@ -6,40 +6,47 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_objects_request.g.dart';
 
 @JsonSerializable()
-final class GetObjectsRequest {
+final class GetObjectsRequest{
   /// Returns a new [GetObjectsRequest] instance.
   const GetObjectsRequest({
-    this.attributesToRetrieve,
+     this.attributesToRetrieve,
     required this.objectID,
     required this.indexName,
   });
 
-  /// Attributes to retrieve. If not specified, all retrievable attributes are returned.
+      /// Attributes to retrieve. If not specified, all retrievable attributes are returned. 
   @JsonKey(name: r'attributesToRetrieve')
   final List<String>? attributesToRetrieve;
 
-  /// Object ID for the record to retrieve.
+
+
+      /// Object ID for the record to retrieve.
   @JsonKey(name: r'objectID')
   final String objectID;
 
-  /// Index from which to retrieve the records.
+
+
+      /// Index from which to retrieve the records.
   @JsonKey(name: r'indexName')
   final String indexName;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetObjectsRequest &&
-          other.attributesToRetrieve == attributesToRetrieve &&
-          other.objectID == objectID &&
-          other.indexName == indexName;
+  bool operator ==(Object other) => identical(this, other) || other is GetObjectsRequest &&
+     other.attributesToRetrieve == attributesToRetrieve &&
+     other.objectID == objectID &&
+     other.indexName == indexName
+    ;
 
   @override
   int get hashCode =>
-      attributesToRetrieve.hashCode + objectID.hashCode + indexName.hashCode;
+    attributesToRetrieve.hashCode +
+    objectID.hashCode +
+    indexName.hashCode
+    ;
 
-  factory GetObjectsRequest.fromJson(Map<String, dynamic> json) =>
-      _$GetObjectsRequestFromJson(json);
+  factory GetObjectsRequest.fromJson(Map<String, dynamic> json) => _$GetObjectsRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetObjectsRequestToJson(this);
 
@@ -47,4 +54,7 @@ final class GetObjectsRequest {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

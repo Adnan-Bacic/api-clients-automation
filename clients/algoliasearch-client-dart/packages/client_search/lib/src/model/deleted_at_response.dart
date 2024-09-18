@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'deleted_at_response.g.dart';
 
 @JsonSerializable()
-final class DeletedAtResponse {
+final class DeletedAtResponse{
   /// Returns a new [DeletedAtResponse] instance.
   const DeletedAtResponse({
     required this.taskID,
     required this.deletedAt,
   });
 
-  /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`.
+      /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`. 
   @JsonKey(name: r'taskID')
   final int taskID;
 
-  /// Date and time when the object was deleted, in RFC 3339 format.
+
+
+      /// Date and time when the object was deleted, in RFC 3339 format.
   @JsonKey(name: r'deletedAt')
   final String deletedAt;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DeletedAtResponse &&
-          other.taskID == taskID &&
-          other.deletedAt == deletedAt;
+
 
   @override
-  int get hashCode => taskID.hashCode + deletedAt.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is DeletedAtResponse &&
+     other.taskID == taskID &&
+     other.deletedAt == deletedAt
+    ;
 
-  factory DeletedAtResponse.fromJson(Map<String, dynamic> json) =>
-      _$DeletedAtResponseFromJson(json);
+  @override
+  int get hashCode =>
+    taskID.hashCode +
+    deletedAt.hashCode
+    ;
+
+  factory DeletedAtResponse.fromJson(Map<String, dynamic> json) => _$DeletedAtResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$DeletedAtResponseToJson(this);
 
@@ -40,4 +45,7 @@ final class DeletedAtResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

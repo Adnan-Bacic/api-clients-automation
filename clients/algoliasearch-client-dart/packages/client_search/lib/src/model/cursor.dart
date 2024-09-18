@@ -6,22 +6,27 @@ import 'package:json_annotation/json_annotation.dart';
 part 'cursor.g.dart';
 
 @JsonSerializable()
-final class Cursor {
+final class Cursor{
   /// Returns a new [Cursor] instance.
   const Cursor({
-    this.cursor,
+     this.cursor,
   });
 
-  /// Cursor to get the next page of the response.  The parameter must match the value returned in the response of a previous request. The last page of the response does not return a `cursor` attribute.
+      /// Cursor to get the next page of the response.  The parameter must match the value returned in the response of a previous request. The last page of the response does not return a `cursor` attribute. 
   @JsonKey(name: r'cursor')
   final String? cursor;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is Cursor && other.cursor == cursor;
+
 
   @override
-  int get hashCode => cursor.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Cursor &&
+     other.cursor == cursor
+    ;
+
+  @override
+  int get hashCode =>
+    cursor.hashCode
+    ;
 
   factory Cursor.fromJson(Map<String, dynamic> json) => _$CursorFromJson(json);
 
@@ -31,4 +36,7 @@ final class Cursor {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

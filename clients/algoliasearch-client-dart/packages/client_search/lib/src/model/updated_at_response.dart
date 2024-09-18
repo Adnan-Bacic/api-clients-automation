@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'updated_at_response.g.dart';
 
 @JsonSerializable()
-final class UpdatedAtResponse {
+final class UpdatedAtResponse{
   /// Returns a new [UpdatedAtResponse] instance.
   const UpdatedAtResponse({
     required this.taskID,
     required this.updatedAt,
   });
 
-  /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`.
+      /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`. 
   @JsonKey(name: r'taskID')
   final int taskID;
 
-  /// Date and time when the object was updated, in RFC 3339 format.
+
+
+      /// Date and time when the object was updated, in RFC 3339 format.
   @JsonKey(name: r'updatedAt')
   final String updatedAt;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdatedAtResponse &&
-          other.taskID == taskID &&
-          other.updatedAt == updatedAt;
+
 
   @override
-  int get hashCode => taskID.hashCode + updatedAt.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is UpdatedAtResponse &&
+     other.taskID == taskID &&
+     other.updatedAt == updatedAt
+    ;
 
-  factory UpdatedAtResponse.fromJson(Map<String, dynamic> json) =>
-      _$UpdatedAtResponseFromJson(json);
+  @override
+  int get hashCode =>
+    taskID.hashCode +
+    updatedAt.hashCode
+    ;
+
+  factory UpdatedAtResponse.fromJson(Map<String, dynamic> json) => _$UpdatedAtResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$UpdatedAtResponseToJson(this);
 
@@ -40,4 +45,7 @@ final class UpdatedAtResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

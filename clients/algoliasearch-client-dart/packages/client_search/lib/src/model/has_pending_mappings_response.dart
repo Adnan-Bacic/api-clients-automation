@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'has_pending_mappings_response.g.dart';
 
 @JsonSerializable()
-final class HasPendingMappingsResponse {
+final class HasPendingMappingsResponse{
   /// Returns a new [HasPendingMappingsResponse] instance.
   const HasPendingMappingsResponse({
     required this.pending,
-    this.clusters,
+     this.clusters,
   });
 
-  /// Whether there are clusters undergoing migration, creation, or deletion.
+      /// Whether there are clusters undergoing migration, creation, or deletion.
   @JsonKey(name: r'pending')
   final bool pending;
 
-  /// Cluster pending mapping state: migrating, creating, deleting.
+
+
+      /// Cluster pending mapping state: migrating, creating, deleting. 
   @JsonKey(name: r'clusters')
   final Map<String, List<String>>? clusters;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HasPendingMappingsResponse &&
-          other.pending == pending &&
-          other.clusters == clusters;
+
 
   @override
-  int get hashCode => pending.hashCode + clusters.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is HasPendingMappingsResponse &&
+     other.pending == pending &&
+     other.clusters == clusters
+    ;
 
-  factory HasPendingMappingsResponse.fromJson(Map<String, dynamic> json) =>
-      _$HasPendingMappingsResponseFromJson(json);
+  @override
+  int get hashCode =>
+    pending.hashCode +
+    clusters.hashCode
+    ;
+
+  factory HasPendingMappingsResponse.fromJson(Map<String, dynamic> json) => _$HasPendingMappingsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$HasPendingMappingsResponseToJson(this);
 
@@ -40,4 +45,7 @@ final class HasPendingMappingsResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

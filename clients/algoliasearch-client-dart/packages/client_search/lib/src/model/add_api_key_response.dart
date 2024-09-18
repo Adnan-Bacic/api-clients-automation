@@ -6,33 +6,38 @@ import 'package:json_annotation/json_annotation.dart';
 part 'add_api_key_response.g.dart';
 
 @JsonSerializable()
-final class AddApiKeyResponse {
+final class AddApiKeyResponse{
   /// Returns a new [AddApiKeyResponse] instance.
   const AddApiKeyResponse({
     required this.key,
     required this.createdAt,
   });
 
-  /// API key.
+      /// API key.
   @JsonKey(name: r'key')
   final String key;
 
-  /// Date and time when the object was created, in RFC 3339 format.
+
+
+      /// Date and time when the object was created, in RFC 3339 format.
   @JsonKey(name: r'createdAt')
   final String createdAt;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AddApiKeyResponse &&
-          other.key == key &&
-          other.createdAt == createdAt;
+
 
   @override
-  int get hashCode => key.hashCode + createdAt.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is AddApiKeyResponse &&
+     other.key == key &&
+     other.createdAt == createdAt
+    ;
 
-  factory AddApiKeyResponse.fromJson(Map<String, dynamic> json) =>
-      _$AddApiKeyResponseFromJson(json);
+  @override
+  int get hashCode =>
+    key.hashCode +
+    createdAt.hashCode
+    ;
+
+  factory AddApiKeyResponse.fromJson(Map<String, dynamic> json) => _$AddApiKeyResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$AddApiKeyResponseToJson(this);
 
@@ -40,4 +45,7 @@ final class AddApiKeyResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

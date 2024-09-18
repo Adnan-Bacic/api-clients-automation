@@ -6,40 +6,47 @@ import 'package:json_annotation/json_annotation.dart';
 part 'log_query.g.dart';
 
 @JsonSerializable()
-final class LogQuery {
+final class LogQuery{
   /// Returns a new [LogQuery] instance.
   const LogQuery({
-    this.indexName,
-    this.userToken,
-    this.queryId,
+     this.indexName,
+     this.userToken,
+     this.queryId,
   });
 
-  /// Index targeted by the query.
+      /// Index targeted by the query.
   @JsonKey(name: r'index_name')
   final String? indexName;
 
-  /// A user identifier.
+
+
+      /// A user identifier.
   @JsonKey(name: r'user_token')
   final String? userToken;
 
-  /// Unique query identifier.
+
+
+      /// Unique query identifier.
   @JsonKey(name: r'query_id')
   final String? queryId;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is LogQuery &&
-          other.indexName == indexName &&
-          other.userToken == userToken &&
-          other.queryId == queryId;
+  bool operator ==(Object other) => identical(this, other) || other is LogQuery &&
+     other.indexName == indexName &&
+     other.userToken == userToken &&
+     other.queryId == queryId
+    ;
 
   @override
   int get hashCode =>
-      indexName.hashCode + userToken.hashCode + queryId.hashCode;
+    indexName.hashCode +
+    userToken.hashCode +
+    queryId.hashCode
+    ;
 
-  factory LogQuery.fromJson(Map<String, dynamic> json) =>
-      _$LogQueryFromJson(json);
+  factory LogQuery.fromJson(Map<String, dynamic> json) => _$LogQueryFromJson(json);
 
   Map<String, dynamic> toJson() => _$LogQueryToJson(this);
 
@@ -47,4 +54,7 @@ final class LogQuery {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

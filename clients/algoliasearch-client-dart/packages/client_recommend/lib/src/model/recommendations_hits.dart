@@ -6,28 +6,31 @@ import 'package:json_annotation/json_annotation.dart';
 part 'recommendations_hits.g.dart';
 
 @JsonSerializable()
-final class RecommendationsHits {
+final class RecommendationsHits{
   /// Returns a new [RecommendationsHits] instance.
   const RecommendationsHits({
     required this.hits,
   });
 
-  /// One of types:
-  /// - [RecommendHit]
-  /// - [TrendingFacetHit]
+     /// One of types: 
+     /// - [RecommendHit]
+     /// - [TrendingFacetHit]
   @JsonKey(name: r'hits')
   final Iterable<dynamic> hits;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is RecommendationsHits && other.hits == hits;
+
 
   @override
-  int get hashCode => hits.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is RecommendationsHits &&
+     other.hits == hits
+    ;
 
-  factory RecommendationsHits.fromJson(Map<String, dynamic> json) =>
-      _$RecommendationsHitsFromJson(json);
+  @override
+  int get hashCode =>
+    hits.hashCode
+    ;
+
+  factory RecommendationsHits.fromJson(Map<String, dynamic> json) => _$RecommendationsHitsFromJson(json);
 
   Map<String, dynamic> toJson() => _$RecommendationsHitsToJson(this);
 
@@ -35,4 +38,7 @@ final class RecommendationsHits {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

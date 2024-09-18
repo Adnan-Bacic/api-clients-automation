@@ -150,453 +150,356 @@ import 'package:algolia_client_search/src/model/user_hit.dart';
 import 'package:algolia_client_search/src/model/user_id.dart';
 import 'package:algolia_client_search/src/model/value.dart';
 import 'package:algolia_client_search/src/model/with_primary.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 final _regList = RegExp(r'^List<(.*)>$');
 final _regSet = RegExp(r'^Set<(.*)>$');
 final _regMap = RegExp(r'^Map<String,(.*)>$');
 
-ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
-    {bool growable = true}) {
-  switch (targetType) {
-    case 'String':
-      return '$value' as ReturnType;
-    case 'int':
-      return (value is int ? value : int.parse('$value')) as ReturnType;
-    case 'bool':
-      if (value is bool) {
-        return value as ReturnType;
-      }
-      final valueString = '$value'.toLowerCase();
-      return (valueString == 'true' || valueString == '1') as ReturnType;
-    case 'double':
-      return (value is double ? value : double.parse('$value')) as ReturnType;
-    case 'Acl':
-      return Acl.fromJson(value) as ReturnType;
-    case 'Action':
-      return Action.fromJson(value) as ReturnType;
-    case 'AddApiKeyResponse':
-      return AddApiKeyResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'AdvancedSyntaxFeatures':
-      return AdvancedSyntaxFeatures.fromJson(value) as ReturnType;
-    case 'AlternativesAsExact':
-      return AlternativesAsExact.fromJson(value) as ReturnType;
-    case 'Anchoring':
-      return Anchoring.fromJson(value) as ReturnType;
-    case 'ApiKey':
-      return ApiKey.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'ApiKeyOperation':
-      return ApiKeyOperation.fromJson(value) as ReturnType;
-    case 'AroundRadiusAll':
-      return AroundRadiusAll.fromJson(value) as ReturnType;
-    case 'AssignUserIdParams':
-      return AssignUserIdParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'AutomaticFacetFilter':
-      return AutomaticFacetFilter.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BaseGetApiKeyResponse':
-      return BaseGetApiKeyResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BaseIndexSettings':
-      return BaseIndexSettings.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BaseSearchParams':
-      return BaseSearchParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BaseSearchParamsWithoutQuery':
-      return BaseSearchParamsWithoutQuery.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'BaseSearchResponse':
-      return BaseSearchResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BatchAssignUserIdsParams':
-      return BatchAssignUserIdsParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BatchDictionaryEntriesParams':
-      return BatchDictionaryEntriesParams.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'BatchDictionaryEntriesRequest':
-      return BatchDictionaryEntriesRequest.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'BatchParams':
-      return BatchParams.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'BatchRequest':
-      return BatchRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'BatchResponse':
-      return BatchResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BatchWriteParams':
-      return BatchWriteParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BooleanString':
-      return BooleanString.fromJson(value) as ReturnType;
-    case 'BrowsePagination':
-      return BrowsePagination.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BrowseParamsObject':
-      return BrowseParamsObject.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BrowseResponse':
-      return BrowseResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BuiltInOperation':
-      return BuiltInOperation.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'BuiltInOperationType':
-      return BuiltInOperationType.fromJson(value) as ReturnType;
-    case 'Condition':
-      return Condition.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Consequence':
-      return Consequence.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'ConsequenceHide':
-      return ConsequenceHide.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ConsequenceParams':
-      return ConsequenceParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ConsequenceQueryObject':
-      return ConsequenceQueryObject.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'CreatedAtResponse':
-      return CreatedAtResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'Cursor':
-      return Cursor.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'DeleteApiKeyResponse':
-      return DeleteApiKeyResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'DeleteByParams':
-      return DeleteByParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'DeleteSourceResponse':
-      return DeleteSourceResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'DeletedAtResponse':
-      return DeletedAtResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'DictionaryAction':
-      return DictionaryAction.fromJson(value) as ReturnType;
-    case 'DictionaryEntry':
-      return DictionaryEntry.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'DictionaryEntryState':
-      return DictionaryEntryState.fromJson(value) as ReturnType;
-    case 'DictionaryEntryType':
-      return DictionaryEntryType.fromJson(value) as ReturnType;
-    case 'DictionaryLanguage':
-      return DictionaryLanguage.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'DictionarySettingsParams':
-      return DictionarySettingsParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'DictionaryType':
-      return DictionaryType.fromJson(value) as ReturnType;
-    case 'Edit':
-      return Edit.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'EditType':
-      return EditType.fromJson(value) as ReturnType;
-    case 'ErrorBase':
-      return ErrorBase.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'ExactOnSingleWordQuery':
-      return ExactOnSingleWordQuery.fromJson(value) as ReturnType;
-    case 'Exhaustive':
-      return Exhaustive.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'FacetHits':
-      return FacetHits.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'FacetOrdering':
-      return FacetOrdering.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'FacetStats':
-      return FacetStats.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Facets':
-      return Facets.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'FetchedIndex':
-      return FetchedIndex.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'GetApiKeyResponse':
-      return GetApiKeyResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'GetDictionarySettingsResponse':
-      return GetDictionarySettingsResponse.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'GetLogsResponse':
-      return GetLogsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'GetObjectsParams':
-      return GetObjectsParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'GetObjectsRequest':
-      return GetObjectsRequest.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'GetObjectsResponse':
-      return GetObjectsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'GetTaskResponse':
-      return GetTaskResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'GetTopUserIdsResponse':
-      return GetTopUserIdsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'HasPendingMappingsResponse':
-      return HasPendingMappingsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'HighlightResultOption':
-      return HighlightResultOption.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'Hit':
-      return Hit.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'IndexSettings':
-      return IndexSettings.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'IndexSettingsAsSearchParams':
-      return IndexSettingsAsSearchParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'Languages':
-      return Languages.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'ListApiKeysResponse':
-      return ListApiKeysResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ListClustersResponse':
-      return ListClustersResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ListIndicesResponse':
-      return ListIndicesResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ListUserIdsResponse':
-      return ListUserIdsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'Log':
-      return Log.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'LogQuery':
-      return LogQuery.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'LogType':
-      return LogType.fromJson(value) as ReturnType;
-    case 'MatchLevel':
-      return MatchLevel.fromJson(value) as ReturnType;
-    case 'MatchedGeoLocation':
-      return MatchedGeoLocation.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'Mode':
-      return Mode.fromJson(value) as ReturnType;
-    case 'MultipleBatchRequest':
-      return MultipleBatchRequest.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'MultipleBatchResponse':
-      return MultipleBatchResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'OperationIndexParams':
-      return OperationIndexParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'OperationType':
-      return OperationType.fromJson(value) as ReturnType;
-    case 'Params':
-      return Params.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Personalization':
-      return Personalization.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'PromoteObjectID':
-      return PromoteObjectID.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'PromoteObjectIDs':
-      return PromoteObjectIDs.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'QueryType':
-      return QueryType.fromJson(value) as ReturnType;
-    case 'Range':
-      return Range.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'RankingInfo':
-      return RankingInfo.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Redirect':
-      return Redirect.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'RedirectRuleIndexData':
-      return RedirectRuleIndexData.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'RedirectRuleIndexMetadata':
-      return RedirectRuleIndexMetadata.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'RedirectURL':
-      return RedirectURL.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'RemoveUserIdResponse':
-      return RemoveUserIdResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'RemoveWordsIfNoResults':
-      return RemoveWordsIfNoResults.fromJson(value) as ReturnType;
-    case 'RenderingContent':
-      return RenderingContent.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ReplaceAllObjectsResponse':
-      return ReplaceAllObjectsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ReplaceSourceResponse':
-      return ReplaceSourceResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'Rule':
-      return Rule.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'SaveObjectResponse':
-      return SaveObjectResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SaveSynonymResponse':
-      return SaveSynonymResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'ScopeType':
-      return ScopeType.fromJson(value) as ReturnType;
-    case 'SearchDictionaryEntriesParams':
-      return SearchDictionaryEntriesParams.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'SearchDictionaryEntriesResponse':
-      return SearchDictionaryEntriesResponse.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'SearchForFacetValuesRequest':
-      return SearchForFacetValuesRequest.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchForFacetValuesResponse':
-      return SearchForFacetValuesResponse.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'SearchForFacets':
-      return SearchForFacets.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchForFacetsOptions':
-      return SearchForFacetsOptions.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchForHits':
-      return SearchForHits.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchForHitsOptions':
-      return SearchForHitsOptions.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchHits':
-      return SearchHits.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'SearchMethodParams':
-      return SearchMethodParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchPagination':
-      return SearchPagination.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchParamsObject':
-      return SearchParamsObject.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchParamsQuery':
-      return SearchParamsQuery.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchParamsString':
-      return SearchParamsString.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchResponse':
-      return SearchResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchResponses':
-      return SearchResponses.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchRulesParams':
-      return SearchRulesParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchRulesResponse':
-      return SearchRulesResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchStrategy':
-      return SearchStrategy.fromJson(value) as ReturnType;
-    case 'SearchSynonymsParams':
-      return SearchSynonymsParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchSynonymsResponse':
-      return SearchSynonymsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchTypeDefault':
-      return SearchTypeDefault.fromJson(value) as ReturnType;
-    case 'SearchTypeFacet':
-      return SearchTypeFacet.fromJson(value) as ReturnType;
-    case 'SearchUserIdsParams':
-      return SearchUserIdsParams.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SearchUserIdsResponse':
-      return SearchUserIdsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SecuredApiKeyRestrictions':
-      return SecuredApiKeyRestrictions.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SemanticSearch':
-      return SemanticSearch.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SettingsResponse':
-      return SettingsResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SnippetResultOption':
-      return SnippetResultOption.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SortRemainingBy':
-      return SortRemainingBy.fromJson(value) as ReturnType;
-    case 'Source':
-      return Source.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'StandardEntries':
-      return StandardEntries.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'SupportedLanguage':
-      return SupportedLanguage.fromJson(value) as ReturnType;
-    case 'SynonymHit':
-      return SynonymHit.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'SynonymType':
-      return SynonymType.fromJson(value) as ReturnType;
-    case 'TaskStatus':
-      return TaskStatus.fromJson(value) as ReturnType;
-    case 'TimeRange':
-      return TimeRange.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'TypoToleranceEnum':
-      return TypoToleranceEnum.fromJson(value) as ReturnType;
-    case 'UpdateApiKeyResponse':
-      return UpdateApiKeyResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'UpdatedAtResponse':
-      return UpdatedAtResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'UpdatedAtWithObjectIdResponse':
-      return UpdatedAtWithObjectIdResponse.fromJson(
-          value as Map<String, dynamic>) as ReturnType;
-    case 'UpdatedRuleResponse':
-      return UpdatedRuleResponse.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'UserHighlightResult':
-      return UserHighlightResult.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'UserHit':
-      return UserHit.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'UserId':
-      return UserId.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Value':
-      return Value.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'WithPrimary':
-      return WithPrimary.fromJson(value as Map<String, dynamic>) as ReturnType;
-    default:
-      RegExpMatch? match;
+  ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType, {bool growable= true}) {
+      switch (targetType) {
+        case 'String':
+          return '$value' as ReturnType;
+        case 'int':
+          return (value is int ? value : int.parse('$value')) as ReturnType;
+        case 'bool':
+          if (value is bool) {
+            return value as ReturnType;
+          }
+          final valueString = '$value'.toLowerCase();
+          return (valueString == 'true' || valueString == '1') as ReturnType;
+        case 'double':
+          return (value is double ? value : double.parse('$value')) as ReturnType;
+        case 'Acl':
+          return Acl.fromJson(value) as ReturnType;
+        case 'Action':
+          return Action.fromJson(value) as ReturnType;
+        case 'AddApiKeyResponse':
+          return AddApiKeyResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'AdvancedSyntaxFeatures':
+          return AdvancedSyntaxFeatures.fromJson(value) as ReturnType;
+        case 'AlternativesAsExact':
+          return AlternativesAsExact.fromJson(value) as ReturnType;
+        case 'Anchoring':
+          return Anchoring.fromJson(value) as ReturnType;
+        case 'ApiKey':
+          return ApiKey.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ApiKeyOperation':
+          return ApiKeyOperation.fromJson(value) as ReturnType;
+        case 'AroundRadiusAll':
+          return AroundRadiusAll.fromJson(value) as ReturnType;
+        case 'AssignUserIdParams':
+          return AssignUserIdParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'AutomaticFacetFilter':
+          return AutomaticFacetFilter.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BaseGetApiKeyResponse':
+          return BaseGetApiKeyResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BaseIndexSettings':
+          return BaseIndexSettings.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BaseSearchParams':
+          return BaseSearchParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BaseSearchParamsWithoutQuery':
+          return BaseSearchParamsWithoutQuery.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BaseSearchResponse':
+          return BaseSearchResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BatchAssignUserIdsParams':
+          return BatchAssignUserIdsParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BatchDictionaryEntriesParams':
+          return BatchDictionaryEntriesParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BatchDictionaryEntriesRequest':
+          return BatchDictionaryEntriesRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BatchParams':
+          return BatchParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BatchRequest':
+          return BatchRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BatchResponse':
+          return BatchResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BatchWriteParams':
+          return BatchWriteParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BooleanString':
+          return BooleanString.fromJson(value) as ReturnType;
+        case 'BrowsePagination':
+          return BrowsePagination.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BrowseParamsObject':
+          return BrowseParamsObject.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BrowseResponse':
+          return BrowseResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BuiltInOperation':
+          return BuiltInOperation.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'BuiltInOperationType':
+          return BuiltInOperationType.fromJson(value) as ReturnType;
+        case 'Condition':
+          return Condition.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Consequence':
+          return Consequence.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ConsequenceHide':
+          return ConsequenceHide.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ConsequenceParams':
+          return ConsequenceParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ConsequenceQueryObject':
+          return ConsequenceQueryObject.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'CreatedAtResponse':
+          return CreatedAtResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Cursor':
+          return Cursor.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DeleteApiKeyResponse':
+          return DeleteApiKeyResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DeleteByParams':
+          return DeleteByParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DeleteSourceResponse':
+          return DeleteSourceResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DeletedAtResponse':
+          return DeletedAtResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DictionaryAction':
+          return DictionaryAction.fromJson(value) as ReturnType;
+        case 'DictionaryEntry':
+          return DictionaryEntry.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DictionaryEntryState':
+          return DictionaryEntryState.fromJson(value) as ReturnType;
+        case 'DictionaryEntryType':
+          return DictionaryEntryType.fromJson(value) as ReturnType;
+        case 'DictionaryLanguage':
+          return DictionaryLanguage.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DictionarySettingsParams':
+          return DictionarySettingsParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'DictionaryType':
+          return DictionaryType.fromJson(value) as ReturnType;
+        case 'Edit':
+          return Edit.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'EditType':
+          return EditType.fromJson(value) as ReturnType;
+        case 'ErrorBase':
+          return ErrorBase.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ExactOnSingleWordQuery':
+          return ExactOnSingleWordQuery.fromJson(value) as ReturnType;
+        case 'Exhaustive':
+          return Exhaustive.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'FacetHits':
+          return FacetHits.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'FacetOrdering':
+          return FacetOrdering.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'FacetStats':
+          return FacetStats.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Facets':
+          return Facets.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'FetchedIndex':
+          return FetchedIndex.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetApiKeyResponse':
+          return GetApiKeyResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetDictionarySettingsResponse':
+          return GetDictionarySettingsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetLogsResponse':
+          return GetLogsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetObjectsParams':
+          return GetObjectsParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetObjectsRequest':
+          return GetObjectsRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetObjectsResponse':
+          return GetObjectsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetTaskResponse':
+          return GetTaskResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'GetTopUserIdsResponse':
+          return GetTopUserIdsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'HasPendingMappingsResponse':
+          return HasPendingMappingsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'HighlightResultOption':
+          return HighlightResultOption.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Hit':
+          return Hit.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'IndexSettings':
+          return IndexSettings.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'IndexSettingsAsSearchParams':
+          return IndexSettingsAsSearchParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Languages':
+          return Languages.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ListApiKeysResponse':
+          return ListApiKeysResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ListClustersResponse':
+          return ListClustersResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ListIndicesResponse':
+          return ListIndicesResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ListUserIdsResponse':
+          return ListUserIdsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Log':
+          return Log.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'LogQuery':
+          return LogQuery.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'LogType':
+          return LogType.fromJson(value) as ReturnType;
+        case 'MatchLevel':
+          return MatchLevel.fromJson(value) as ReturnType;
+        case 'MatchedGeoLocation':
+          return MatchedGeoLocation.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Mode':
+          return Mode.fromJson(value) as ReturnType;
+        case 'MultipleBatchRequest':
+          return MultipleBatchRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'MultipleBatchResponse':
+          return MultipleBatchResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'OperationIndexParams':
+          return OperationIndexParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'OperationType':
+          return OperationType.fromJson(value) as ReturnType;
+        case 'Params':
+          return Params.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Personalization':
+          return Personalization.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'PromoteObjectID':
+          return PromoteObjectID.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'PromoteObjectIDs':
+          return PromoteObjectIDs.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'QueryType':
+          return QueryType.fromJson(value) as ReturnType;
+        case 'Range':
+          return Range.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'RankingInfo':
+          return RankingInfo.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Redirect':
+          return Redirect.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'RedirectRuleIndexData':
+          return RedirectRuleIndexData.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'RedirectRuleIndexMetadata':
+          return RedirectRuleIndexMetadata.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'RedirectURL':
+          return RedirectURL.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'RemoveUserIdResponse':
+          return RemoveUserIdResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'RemoveWordsIfNoResults':
+          return RemoveWordsIfNoResults.fromJson(value) as ReturnType;
+        case 'RenderingContent':
+          return RenderingContent.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ReplaceAllObjectsResponse':
+          return ReplaceAllObjectsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ReplaceSourceResponse':
+          return ReplaceSourceResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Rule':
+          return Rule.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SaveObjectResponse':
+          return SaveObjectResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SaveSynonymResponse':
+          return SaveSynonymResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'ScopeType':
+          return ScopeType.fromJson(value) as ReturnType;
+        case 'SearchDictionaryEntriesParams':
+          return SearchDictionaryEntriesParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchDictionaryEntriesResponse':
+          return SearchDictionaryEntriesResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchForFacetValuesRequest':
+          return SearchForFacetValuesRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchForFacetValuesResponse':
+          return SearchForFacetValuesResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchForFacets':
+          return SearchForFacets.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchForFacetsOptions':
+          return SearchForFacetsOptions.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchForHits':
+          return SearchForHits.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchForHitsOptions':
+          return SearchForHitsOptions.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchHits':
+          return SearchHits.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchMethodParams':
+          return SearchMethodParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchPagination':
+          return SearchPagination.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchParamsObject':
+          return SearchParamsObject.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchParamsQuery':
+          return SearchParamsQuery.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchParamsString':
+          return SearchParamsString.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchResponse':
+          return SearchResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchResponses':
+          return SearchResponses.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchRulesParams':
+          return SearchRulesParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchRulesResponse':
+          return SearchRulesResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchStrategy':
+          return SearchStrategy.fromJson(value) as ReturnType;
+        case 'SearchSynonymsParams':
+          return SearchSynonymsParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchSynonymsResponse':
+          return SearchSynonymsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchTypeDefault':
+          return SearchTypeDefault.fromJson(value) as ReturnType;
+        case 'SearchTypeFacet':
+          return SearchTypeFacet.fromJson(value) as ReturnType;
+        case 'SearchUserIdsParams':
+          return SearchUserIdsParams.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SearchUserIdsResponse':
+          return SearchUserIdsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SecuredApiKeyRestrictions':
+          return SecuredApiKeyRestrictions.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SemanticSearch':
+          return SemanticSearch.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SettingsResponse':
+          return SettingsResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SnippetResultOption':
+          return SnippetResultOption.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SortRemainingBy':
+          return SortRemainingBy.fromJson(value) as ReturnType;
+        case 'Source':
+          return Source.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'StandardEntries':
+          return StandardEntries.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SupportedLanguage':
+          return SupportedLanguage.fromJson(value) as ReturnType;
+        case 'SynonymHit':
+          return SynonymHit.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'SynonymType':
+          return SynonymType.fromJson(value) as ReturnType;
+        case 'TaskStatus':
+          return TaskStatus.fromJson(value) as ReturnType;
+        case 'TimeRange':
+          return TimeRange.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'TypoToleranceEnum':
+          return TypoToleranceEnum.fromJson(value) as ReturnType;
+        case 'UpdateApiKeyResponse':
+          return UpdateApiKeyResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UpdatedAtResponse':
+          return UpdatedAtResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UpdatedAtWithObjectIdResponse':
+          return UpdatedAtWithObjectIdResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UpdatedRuleResponse':
+          return UpdatedRuleResponse.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UserHighlightResult':
+          return UserHighlightResult.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UserHit':
+          return UserHit.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'UserId':
+          return UserId.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'Value':
+          return Value.fromJson(value as Map<String, dynamic>) as ReturnType;
+        case 'WithPrimary':
+          return WithPrimary.fromJson(value as Map<String, dynamic>) as ReturnType;
+        default:
+          RegExpMatch? match;
 
-      if (value is List && (match = _regList.firstMatch(targetType)) != null) {
-        targetType = match![1]!; // ignore: parameter_assignments
-        return value
-            .map<BaseType>((dynamic v) => deserialize<BaseType, BaseType>(
-                v, targetType,
-                growable: growable))
-            .toList(growable: growable) as ReturnType;
-      }
-      if (value is Set && (match = _regSet.firstMatch(targetType)) != null) {
-        targetType = match![1]!; // ignore: parameter_assignments
-        return value
-            .map<BaseType>((dynamic v) => deserialize<BaseType, BaseType>(
-                v, targetType,
-                growable: growable))
-            .toSet() as ReturnType;
-      }
-      if (value is Map && (match = _regMap.firstMatch(targetType)) != null) {
-        targetType = match![1]!; // ignore: parameter_assignments
-        return Map<dynamic, BaseType>.fromIterables(
-          value.keys,
-          value.values.map((dynamic v) => deserialize<BaseType, BaseType>(
-              v, targetType,
-              growable: growable)),
-        ) as ReturnType;
-      }
-      if (targetType == 'Object') {
-        return value;
-      }
-      break;
+          if (value is List && (match = _regList.firstMatch(targetType)) != null) {
+            targetType = match![1]!; // ignore: parameter_assignments
+            return value
+              .map<BaseType>((dynamic v) => deserialize<BaseType, BaseType>(v, targetType, growable: growable))
+              .toList(growable: growable) as ReturnType;
+          }
+          if (value is Set && (match = _regSet.firstMatch(targetType)) != null) {
+            targetType = match![1]!; // ignore: parameter_assignments
+            return value
+              .map<BaseType>((dynamic v) => deserialize<BaseType, BaseType>(v, targetType, growable: growable))
+              .toSet() as ReturnType;
+          }
+          if (value is Map && (match = _regMap.firstMatch(targetType)) != null) {
+            targetType = match![1]!; // ignore: parameter_assignments
+            return Map<dynamic, BaseType>.fromIterables(
+              value.keys,
+              value.values.map((dynamic v) => deserialize<BaseType, BaseType>(v, targetType, growable: growable)),
+            ) as ReturnType;
+          }
+          if (targetType == 'Object') {
+            return value;
+          }
+          break;
+    } 
+    throw Exception('Cannot deserialize');
   }
-  throw Exception('Cannot deserialize');
-}

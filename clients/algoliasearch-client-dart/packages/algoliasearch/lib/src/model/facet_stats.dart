@@ -6,45 +6,56 @@ import 'package:json_annotation/json_annotation.dart';
 part 'facet_stats.g.dart';
 
 @JsonSerializable()
-final class FacetStats {
+final class FacetStats{
   /// Returns a new [FacetStats] instance.
   const FacetStats({
-    this.min,
-    this.max,
-    this.avg,
-    this.sum,
+     this.min,
+     this.max,
+     this.avg,
+     this.sum,
   });
 
-  /// Minimum value in the results.
+      /// Minimum value in the results.
   @JsonKey(name: r'min')
   final double? min;
 
-  /// Maximum value in the results.
+
+
+      /// Maximum value in the results.
   @JsonKey(name: r'max')
   final double? max;
 
-  /// Average facet value in the results.
+
+
+      /// Average facet value in the results.
   @JsonKey(name: r'avg')
   final double? avg;
 
-  /// Sum of all values in the results.
+
+
+      /// Sum of all values in the results.
   @JsonKey(name: r'sum')
   final double? sum;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FacetStats &&
-          other.min == min &&
-          other.max == max &&
-          other.avg == avg &&
-          other.sum == sum;
+
 
   @override
-  int get hashCode => min.hashCode + max.hashCode + avg.hashCode + sum.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is FacetStats &&
+     other.min == min &&
+     other.max == max &&
+     other.avg == avg &&
+     other.sum == sum
+    ;
 
-  factory FacetStats.fromJson(Map<String, dynamic> json) =>
-      _$FacetStatsFromJson(json);
+  @override
+  int get hashCode =>
+    min.hashCode +
+    max.hashCode +
+    avg.hashCode +
+    sum.hashCode
+    ;
+
+  factory FacetStats.fromJson(Map<String, dynamic> json) => _$FacetStatsFromJson(json);
 
   Map<String, dynamic> toJson() => _$FacetStatsToJson(this);
 
@@ -52,4 +63,7 @@ final class FacetStats {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

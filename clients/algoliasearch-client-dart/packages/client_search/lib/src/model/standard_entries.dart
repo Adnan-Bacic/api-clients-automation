@@ -6,42 +6,47 @@ import 'package:json_annotation/json_annotation.dart';
 part 'standard_entries.g.dart';
 
 @JsonSerializable()
-final class StandardEntries {
+final class StandardEntries{
   /// Returns a new [StandardEntries] instance.
   const StandardEntries({
-    this.plurals,
-    this.stopwords,
-    this.compounds,
+     this.plurals,
+     this.stopwords,
+     this.compounds,
   });
 
-  /// Key-value pair of a language ISO code and a boolean value.
+      /// Key-value pair of a language ISO code and a boolean value.
   @JsonKey(name: r'plurals')
   final Map<String, bool>? plurals;
 
-  /// Key-value pair of a language ISO code and a boolean value.
+
+
+      /// Key-value pair of a language ISO code and a boolean value.
   @JsonKey(name: r'stopwords')
   final Map<String, bool>? stopwords;
 
-  /// Key-value pair of a language ISO code and a boolean value.
+
+
+      /// Key-value pair of a language ISO code and a boolean value.
   @JsonKey(name: r'compounds')
   final Map<String, bool>? compounds;
 
+
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StandardEntries &&
-          other.plurals == plurals &&
-          other.stopwords == stopwords &&
-          other.compounds == compounds;
+  bool operator ==(Object other) => identical(this, other) || other is StandardEntries &&
+     other.plurals == plurals &&
+     other.stopwords == stopwords &&
+     other.compounds == compounds
+    ;
 
   @override
   int get hashCode =>
-      (plurals == null ? 0 : plurals.hashCode) +
-      (stopwords == null ? 0 : stopwords.hashCode) +
-      (compounds == null ? 0 : compounds.hashCode);
+    (plurals == null ? 0 : plurals.hashCode) +
+    (stopwords == null ? 0 : stopwords.hashCode) +
+    (compounds == null ? 0 : compounds.hashCode)
+    ;
 
-  factory StandardEntries.fromJson(Map<String, dynamic> json) =>
-      _$StandardEntriesFromJson(json);
+  factory StandardEntries.fromJson(Map<String, dynamic> json) => _$StandardEntriesFromJson(json);
 
   Map<String, dynamic> toJson() => _$StandardEntriesToJson(this);
 
@@ -49,4 +54,7 @@ final class StandardEntries {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

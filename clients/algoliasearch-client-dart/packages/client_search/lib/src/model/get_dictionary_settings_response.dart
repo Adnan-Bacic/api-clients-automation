@@ -7,7 +7,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_dictionary_settings_response.g.dart';
 
 @JsonSerializable()
-final class GetDictionarySettingsResponse {
+final class GetDictionarySettingsResponse{
   /// Returns a new [GetDictionarySettingsResponse] instance.
   const GetDictionarySettingsResponse({
     required this.disableStandardEntries,
@@ -16,17 +16,19 @@ final class GetDictionarySettingsResponse {
   @JsonKey(name: r'disableStandardEntries')
   final StandardEntries disableStandardEntries;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetDictionarySettingsResponse &&
-          other.disableStandardEntries == disableStandardEntries;
+
 
   @override
-  int get hashCode => disableStandardEntries.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is GetDictionarySettingsResponse &&
+     other.disableStandardEntries == disableStandardEntries
+    ;
 
-  factory GetDictionarySettingsResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetDictionarySettingsResponseFromJson(json);
+  @override
+  int get hashCode =>
+    disableStandardEntries.hashCode
+    ;
+
+  factory GetDictionarySettingsResponse.fromJson(Map<String, dynamic> json) => _$GetDictionarySettingsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetDictionarySettingsResponseToJson(this);
 
@@ -34,4 +36,7 @@ final class GetDictionarySettingsResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'save_synonym_response.g.dart';
 
 @JsonSerializable()
-final class SaveSynonymResponse {
+final class SaveSynonymResponse{
   /// Returns a new [SaveSynonymResponse] instance.
   const SaveSynonymResponse({
     required this.taskID,
@@ -14,31 +14,39 @@ final class SaveSynonymResponse {
     required this.id,
   });
 
-  /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`.
+      /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`. 
   @JsonKey(name: r'taskID')
   final int taskID;
 
-  /// Date and time when the object was updated, in RFC 3339 format.
+
+
+      /// Date and time when the object was updated, in RFC 3339 format.
   @JsonKey(name: r'updatedAt')
   final String updatedAt;
 
-  /// Unique identifier of a synonym object.
+
+
+      /// Unique identifier of a synonym object.
   @JsonKey(name: r'id')
   final String id;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SaveSynonymResponse &&
-          other.taskID == taskID &&
-          other.updatedAt == updatedAt &&
-          other.id == id;
+
 
   @override
-  int get hashCode => taskID.hashCode + updatedAt.hashCode + id.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is SaveSynonymResponse &&
+     other.taskID == taskID &&
+     other.updatedAt == updatedAt &&
+     other.id == id
+    ;
 
-  factory SaveSynonymResponse.fromJson(Map<String, dynamic> json) =>
-      _$SaveSynonymResponseFromJson(json);
+  @override
+  int get hashCode =>
+    taskID.hashCode +
+    updatedAt.hashCode +
+    id.hashCode
+    ;
+
+  factory SaveSynonymResponse.fromJson(Map<String, dynamic> json) => _$SaveSynonymResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SaveSynonymResponseToJson(this);
 
@@ -46,4 +54,7 @@ final class SaveSynonymResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

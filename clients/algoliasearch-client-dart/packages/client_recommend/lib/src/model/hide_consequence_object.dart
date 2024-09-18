@@ -6,26 +6,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'hide_consequence_object.g.dart';
 
 @JsonSerializable()
-final class HideConsequenceObject {
+final class HideConsequenceObject{
   /// Returns a new [HideConsequenceObject] instance.
   const HideConsequenceObject({
-    this.objectID,
+     this.objectID,
   });
 
-  /// Unique record identifier.
+      /// Unique record identifier.
   @JsonKey(name: r'objectID')
   final String? objectID;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HideConsequenceObject && other.objectID == objectID;
+
 
   @override
-  int get hashCode => objectID.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is HideConsequenceObject &&
+     other.objectID == objectID
+    ;
 
-  factory HideConsequenceObject.fromJson(Map<String, dynamic> json) =>
-      _$HideConsequenceObjectFromJson(json);
+  @override
+  int get hashCode =>
+    objectID.hashCode
+    ;
+
+  factory HideConsequenceObject.fromJson(Map<String, dynamic> json) => _$HideConsequenceObjectFromJson(json);
 
   Map<String, dynamic> toJson() => _$HideConsequenceObjectToJson(this);
 
@@ -33,4 +36,7 @@ final class HideConsequenceObject {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

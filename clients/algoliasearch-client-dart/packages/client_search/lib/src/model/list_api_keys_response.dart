@@ -7,26 +7,29 @@ import 'package:json_annotation/json_annotation.dart';
 part 'list_api_keys_response.g.dart';
 
 @JsonSerializable()
-final class ListApiKeysResponse {
+final class ListApiKeysResponse{
   /// Returns a new [ListApiKeysResponse] instance.
   const ListApiKeysResponse({
     required this.keys,
   });
 
-  /// API keys.
+      /// API keys.
   @JsonKey(name: r'keys')
   final List<GetApiKeyResponse> keys;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ListApiKeysResponse && other.keys == keys;
+
 
   @override
-  int get hashCode => keys.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is ListApiKeysResponse &&
+     other.keys == keys
+    ;
 
-  factory ListApiKeysResponse.fromJson(Map<String, dynamic> json) =>
-      _$ListApiKeysResponseFromJson(json);
+  @override
+  int get hashCode =>
+    keys.hashCode
+    ;
+
+  factory ListApiKeysResponse.fromJson(Map<String, dynamic> json) => _$ListApiKeysResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ListApiKeysResponseToJson(this);
 
@@ -34,4 +37,7 @@ final class ListApiKeysResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

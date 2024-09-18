@@ -6,39 +6,47 @@ import 'package:json_annotation/json_annotation.dart';
 part 'save_object_response.g.dart';
 
 @JsonSerializable()
-final class SaveObjectResponse {
+final class SaveObjectResponse{
   /// Returns a new [SaveObjectResponse] instance.
   const SaveObjectResponse({
     required this.createdAt,
     required this.taskID,
-    this.objectID,
+     this.objectID,
   });
 
-  /// Date and time when the object was created, in RFC 3339 format.
+      /// Date and time when the object was created, in RFC 3339 format.
   @JsonKey(name: r'createdAt')
   final String createdAt;
 
-  /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`.
+
+
+      /// Unique identifier of a task.  A successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`. 
   @JsonKey(name: r'taskID')
   final int taskID;
 
-  /// Unique record identifier.
+
+
+      /// Unique record identifier.
   @JsonKey(name: r'objectID')
   final String? objectID;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SaveObjectResponse &&
-          other.createdAt == createdAt &&
-          other.taskID == taskID &&
-          other.objectID == objectID;
+
 
   @override
-  int get hashCode => createdAt.hashCode + taskID.hashCode + objectID.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is SaveObjectResponse &&
+     other.createdAt == createdAt &&
+     other.taskID == taskID &&
+     other.objectID == objectID
+    ;
 
-  factory SaveObjectResponse.fromJson(Map<String, dynamic> json) =>
-      _$SaveObjectResponseFromJson(json);
+  @override
+  int get hashCode =>
+    createdAt.hashCode +
+    taskID.hashCode +
+    objectID.hashCode
+    ;
+
+  factory SaveObjectResponse.fromJson(Map<String, dynamic> json) => _$SaveObjectResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SaveObjectResponseToJson(this);
 
@@ -46,4 +54,7 @@ final class SaveObjectResponse {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

@@ -6,39 +6,47 @@ import 'package:json_annotation/json_annotation.dart';
 part 'matched_geo_location.g.dart';
 
 @JsonSerializable()
-final class MatchedGeoLocation {
+final class MatchedGeoLocation{
   /// Returns a new [MatchedGeoLocation] instance.
   const MatchedGeoLocation({
-    this.lat,
-    this.lng,
-    this.distance,
+     this.lat,
+     this.lng,
+     this.distance,
   });
 
-  /// Latitude of the matched location.
+      /// Latitude of the matched location.
   @JsonKey(name: r'lat')
   final double? lat;
 
-  /// Longitude of the matched location.
+
+
+      /// Longitude of the matched location.
   @JsonKey(name: r'lng')
   final double? lng;
 
-  /// Distance between the matched location and the search location (in meters).
+
+
+      /// Distance between the matched location and the search location (in meters).
   @JsonKey(name: r'distance')
   final int? distance;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MatchedGeoLocation &&
-          other.lat == lat &&
-          other.lng == lng &&
-          other.distance == distance;
+
 
   @override
-  int get hashCode => lat.hashCode + lng.hashCode + distance.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is MatchedGeoLocation &&
+     other.lat == lat &&
+     other.lng == lng &&
+     other.distance == distance
+    ;
 
-  factory MatchedGeoLocation.fromJson(Map<String, dynamic> json) =>
-      _$MatchedGeoLocationFromJson(json);
+  @override
+  int get hashCode =>
+    lat.hashCode +
+    lng.hashCode +
+    distance.hashCode
+    ;
+
+  factory MatchedGeoLocation.fromJson(Map<String, dynamic> json) => _$MatchedGeoLocationFromJson(json);
 
   Map<String, dynamic> toJson() => _$MatchedGeoLocationToJson(this);
 
@@ -46,4 +54,7 @@ final class MatchedGeoLocation {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+

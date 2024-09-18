@@ -7,35 +7,44 @@ import 'package:json_annotation/json_annotation.dart';
 part 'edit.g.dart';
 
 @JsonSerializable()
-final class Edit {
+final class Edit{
   /// Returns a new [Edit] instance.
   const Edit({
-    this.type,
-    this.delete,
-    this.insert,
+     this.type,
+     this.delete,
+     this.insert,
   });
 
   @JsonKey(name: r'type')
   final EditType? type;
 
-  /// Text or patterns to remove from the query string.
+
+
+      /// Text or patterns to remove from the query string.
   @JsonKey(name: r'delete')
   final String? delete;
 
-  /// Text to be added in place of the deleted text inside the query string.
+
+
+      /// Text to be added in place of the deleted text inside the query string.
   @JsonKey(name: r'insert')
   final String? insert;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Edit &&
-          other.type == type &&
-          other.delete == delete &&
-          other.insert == insert;
+
 
   @override
-  int get hashCode => type.hashCode + delete.hashCode + insert.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is Edit &&
+     other.type == type &&
+     other.delete == delete &&
+     other.insert == insert
+    ;
+
+  @override
+  int get hashCode =>
+    type.hashCode +
+    delete.hashCode +
+    insert.hashCode
+    ;
 
   factory Edit.fromJson(Map<String, dynamic> json) => _$EditFromJson(json);
 
@@ -45,4 +54,7 @@ final class Edit {
   String toString() {
     return toJson().toString();
   }
+
 }
+
+
