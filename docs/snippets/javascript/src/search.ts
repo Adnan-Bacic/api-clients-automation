@@ -1200,7 +1200,7 @@ export async function snippetForPartialUpdateObject(): Promise<void> {
 //
 // call partialUpdateObjects with createIfNotExists=true
 export async function snippetForPartialUpdateObjects(): Promise<void> {
-  // >SEPARATOR partialUpdateObjects call partialUpdateObjects with createIfNotExists&#x3D;true
+  // >SEPARATOR partialUpdateObjects call partialUpdateObjects with createIfNotExists=true
   // Initialize the client
   //
   const client = searchClient('ALGOLIA_APPLICATION_ID', 'ALGOLIA_API_KEY');
@@ -1225,7 +1225,7 @@ export async function snippetForPartialUpdateObjects(): Promise<void> {
 //
 // call partialUpdateObjects with createIfNotExists=false
 export async function snippetForPartialUpdateObjects1(): Promise<void> {
-  // >SEPARATOR partialUpdateObjects call partialUpdateObjects with createIfNotExists&#x3D;false
+  // >SEPARATOR partialUpdateObjects call partialUpdateObjects with createIfNotExists=false
   // Initialize the client
   //
   const client = searchClient('ALGOLIA_APPLICATION_ID', 'ALGOLIA_API_KEY');
@@ -1681,7 +1681,7 @@ export async function snippetForSearchRules(): Promise<void> {
 
 // Snippet for the searchSingleIndex method.
 //
-// search with minimal parameters
+// search with searchParams
 export async function snippetForSearchSingleIndex(): Promise<void> {
   // >SEPARATOR searchSingleIndex default
   // Initialize the client
@@ -1689,7 +1689,10 @@ export async function snippetForSearchSingleIndex(): Promise<void> {
   const client = searchClient('ALGOLIA_APPLICATION_ID', 'ALGOLIA_API_KEY');
 
   // Call the API
-  const response = await client.searchSingleIndex({ indexName: 'indexName' });
+  const response = await client.searchSingleIndex({
+    indexName: 'indexName',
+    searchParams: { query: 'myQuery', facetFilters: ['tags:algolia'] },
+  });
 
   // >LOG
   // use typed response

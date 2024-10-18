@@ -23,10 +23,10 @@ public data class Hit(
   val objectID: String,
 
   /** Surround words that match the query with HTML tags for highlighting. */
-  val highlightResult: Map<kotlin.String, HighlightResult>? = null,
+  val highlightResult: JsonObject? = null,
 
   /** Snippets that show the context around a matching search query. */
-  val snippetResult: Map<kotlin.String, SnippetResult>? = null,
+  val snippetResult: JsonObject? = null,
 
   val rankingInfo: RankingInfo? = null,
 

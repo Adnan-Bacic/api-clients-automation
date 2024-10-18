@@ -11,11 +11,11 @@ type Hit struct {
 	// Unique record identifier.
 	ObjectID string `json:"objectID"`
 	// Surround words that match the query with HTML tags for highlighting.
-	HighlightResult *map[string]HighlightResult `json:"_highlightResult,omitempty"`
+	HighlightResult map[string]HighlightResult `json:"_highlightResult,omitempty"`
 	// Snippets that show the context around a matching search query.
-	SnippetResult        *map[string]SnippetResult `json:"_snippetResult,omitempty"`
-	RankingInfo          *RankingInfo              `json:"_rankingInfo,omitempty"`
-	DistinctSeqID        *int32                    `json:"_distinctSeqID,omitempty"`
+	SnippetResult        map[string]SnippetResult `json:"_snippetResult,omitempty"`
+	RankingInfo          *RankingInfo             `json:"_rankingInfo,omitempty"`
+	DistinctSeqID        *int32                   `json:"_distinctSeqID,omitempty"`
 	AdditionalProperties map[string]any
 }
 
@@ -25,13 +25,13 @@ type HitOption func(f *Hit)
 
 func WithHitHighlightResult(val map[string]HighlightResult) HitOption {
 	return func(f *Hit) {
-		f.HighlightResult = &val
+		f.HighlightResult = val
 	}
 }
 
 func WithHitSnippetResult(val map[string]SnippetResult) HitOption {
 	return func(f *Hit) {
-		f.SnippetResult = &val
+		f.SnippetResult = val
 	}
 }
 
@@ -96,12 +96,12 @@ func (o *Hit) GetHighlightResult() map[string]HighlightResult {
 		var ret map[string]HighlightResult
 		return ret
 	}
-	return *o.HighlightResult
+	return o.HighlightResult
 }
 
 // GetHighlightResultOk returns a tuple with the HighlightResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Hit) GetHighlightResultOk() (*map[string]HighlightResult, bool) {
+func (o *Hit) GetHighlightResultOk() (map[string]HighlightResult, bool) {
 	if o == nil || o.HighlightResult == nil {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *Hit) HasHighlightResult() bool {
 
 // SetHighlightResult gets a reference to the given map[string]HighlightResult and assigns it to the HighlightResult field.
 func (o *Hit) SetHighlightResult(v map[string]HighlightResult) *Hit {
-	o.HighlightResult = &v
+	o.HighlightResult = v
 	return o
 }
 
@@ -129,12 +129,12 @@ func (o *Hit) GetSnippetResult() map[string]SnippetResult {
 		var ret map[string]SnippetResult
 		return ret
 	}
-	return *o.SnippetResult
+	return o.SnippetResult
 }
 
 // GetSnippetResultOk returns a tuple with the SnippetResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Hit) GetSnippetResultOk() (*map[string]SnippetResult, bool) {
+func (o *Hit) GetSnippetResultOk() (map[string]SnippetResult, bool) {
 	if o == nil || o.SnippetResult == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *Hit) HasSnippetResult() bool {
 
 // SetSnippetResult gets a reference to the given map[string]SnippetResult and assigns it to the SnippetResult field.
 func (o *Hit) SetSnippetResult(v map[string]SnippetResult) *Hit {
-	o.SnippetResult = &v
+	o.SnippetResult = v
 	return o
 }
 

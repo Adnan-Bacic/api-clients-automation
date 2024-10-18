@@ -54,9 +54,6 @@ info:
 
     Response bodies are JSON objects.
 
-    Deleting a user token returns an empty response body with rate-limiting
-    information as headers.
-
 
     Successful responses return a `2xx` status. Client errors return a `4xx`
     status. Server errors are indicated by a `5xx` status.
@@ -3112,10 +3109,6 @@ components:
           $ref: '#/components/schemas/eventID'
         runID:
           $ref: '#/components/schemas/runID'
-        parentID:
-          type: string
-          description: The parent event, the cause of this event.
-          example: 6c02aeb1-775e-418e-870b-1faccd4b2c0f
         status:
           $ref: '#/components/schemas/EventStatus'
         type:
