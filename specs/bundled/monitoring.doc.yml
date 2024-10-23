@@ -96,6 +96,7 @@ paths:
           content:
             application/json:
               schema:
+                x-is-generic: true
                 type: object
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -327,6 +328,7 @@ paths:
           content:
             application/json:
               schema:
+                x-is-generic: true
                 type: object
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -558,6 +560,7 @@ paths:
           content:
             application/json:
               schema:
+                x-is-generic: true
                 type: object
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -783,6 +786,7 @@ paths:
           content:
             application/json:
               schema:
+                x-is-generic: true
                 type: object
         '400':
           $ref: '#/components/responses/BadRequest'
