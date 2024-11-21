@@ -8,46 +8,1707 @@
       "default": "import { compositionClient } from '@algolia/client-composition';"
     },
     "customDelete": {
-      "default": "const response = await client.customDelete({ path: 'test/minimal' });"
+      "default": "const response = await client.customDelete({ path: 'test/minimal' });",
+      "parameters": [
+        {
+          "name": "path",
+          "in": "path",
+          "description": "Path of the endpoint, anything after \"/1\" must be specified.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "/keys"
+          }
+        },
+        {
+          "name": "parameters",
+          "in": "query",
+          "description": "Query parameters to apply to the current query.",
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "customGet": {
-      "default": "const response = await client.customGet({ path: 'test/minimal' });"
+      "default": "const response = await client.customGet({ path: 'test/minimal' });",
+      "parameters": [
+        {
+          "name": "path",
+          "in": "path",
+          "description": "Path of the endpoint, anything after \"/1\" must be specified.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "/keys"
+          }
+        },
+        {
+          "name": "parameters",
+          "in": "query",
+          "description": "Query parameters to apply to the current query.",
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "customPost": {
-      "default": "const response = await client.customPost({ path: 'test/minimal' });"
+      "default": "const response = await client.customPost({ path: 'test/minimal' });",
+      "parameters": [
+        {
+          "name": "path",
+          "in": "path",
+          "description": "Path of the endpoint, anything after \"/1\" must be specified.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "/keys"
+          }
+        },
+        {
+          "name": "parameters",
+          "in": "query",
+          "description": "Query parameters to apply to the current query.",
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "customPut": {
-      "default": "const response = await client.customPut({ path: 'test/minimal' });"
+      "default": "const response = await client.customPut({ path: 'test/minimal' });",
+      "parameters": [
+        {
+          "name": "path",
+          "in": "path",
+          "description": "Path of the endpoint, anything after \"/1\" must be specified.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "/keys"
+          }
+        },
+        {
+          "name": "parameters",
+          "in": "query",
+          "description": "Query parameters to apply to the current query.",
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "getComposition": {
-      "default": "const response = await client.getComposition({ compositionID: 'foo' });"
+      "default": "const response = await client.getComposition({ compositionID: 'foo' });",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "compositionID",
+          "description": "Unique Composition ObjectID.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Unique Composition ObjectID."
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/composition"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Composition not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "getRule": {
-      "default": "const response = await client.getRule({ compositionID: 'foo', objectID: '123' });"
+      "default": "const response = await client.getRule({ compositionID: 'foo', objectID: '123' });",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "compositionID",
+          "description": "Unique Composition ObjectID.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Unique Composition ObjectID."
+          }
+        },
+        {
+          "in": "path",
+          "name": "objectID",
+          "description": "Unique identifier of a rule object.",
+          "required": true,
+          "schema": {
+            "title": "objectID",
+            "type": "string",
+            "description": "Unique identifier of a rule object."
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/compositionRule"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "getTask": {
-      "default": "const response = await client.getTask({ compositionID: 'foo', taskID: 42 });"
+      "default": "const response = await client.getTask({ compositionID: 'foo', taskID: 42 });",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "compositionID",
+          "description": "Unique Composition ObjectID.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Unique Composition ObjectID."
+          }
+        },
+        {
+          "name": "taskID",
+          "in": "path",
+          "description": "Unique task identifier.",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1506303845001
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "getTaskResponse",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "published",
+                      "notPublished"
+                    ],
+                    "description": "Task status, `published` if the task is completed, `notPublished` otherwise."
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "listCompositions": {
-      "default": "const response = await client.listCompositions();"
+      "default": "const response = await client.listCompositions();",
+      "parameters": [
+        {
+          "in": "query",
+          "name": "page",
+          "description": "Requested page of the API response.\nIf `null`, the API response is not paginated.\n",
+          "required": false,
+          "schema": {
+            "oneOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        {
+          "in": "query",
+          "name": "hitsPerPage",
+          "description": "Number of hits per page.",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "default": 100
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/listCompositionsResponse"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Composition not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "multipleBatch": {
-      "default": "const response = await client.multipleBatch({\n  requests: [\n    {\n      action: 'upsert',\n      body: {\n        objectID: 'foo',\n        behavior: { injection: { main: { source: { search: { index: 'bar' } } }, insets: [] } },\n      },\n    },\n    { action: 'delete', body: { objectID: 'baz' } },\n  ],\n});"
+      "default": "const response = await client.multipleBatch({\n  requests: [\n    {\n      action: 'upsert',\n      body: {\n        objectID: 'foo',\n        behavior: { injection: { main: { source: { search: { index: 'bar' } } }, insets: [] } },\n      },\n    },\n    { action: 'delete', body: { objectID: 'baz' } },\n  ],\n});",
+      "parameters": [
+        {
+          "requests": {
+            "type": "array",
+            "items": {
+              "title": "multipleBatchRequest",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "upsert",
+                    "delete"
+                  ],
+                  "description": "Type of Composition Batch operation."
+                },
+                "body": {
+                  "$ref": "#/components/schemas/batchCompositionAction"
+                }
+              },
+              "required": [
+                "action",
+                "body"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "multipleBatchResponse",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "taskID": {
+                    "type": "object",
+                    "description": "Task IDs. One for each index.",
+                    "additionalProperties": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 1514562690001,
+                      "description": "Unique identifier of a task.\n\nA successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`.\n"
+                    }
+                  }
+                },
+                "required": [
+                  "taskID"
+                ]
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "saveRules": {
-      "default": "const response = await client.saveRules({\n  compositionID: 'foo',\n  rules: {\n    requests: [\n      {\n        action: 'upsert',\n        body: {\n          objectID: '123',\n          conditions: [{ pattern: 'a' }],\n          consequence: { behavior: { injection: { main: { source: { search: { index: '<YOUR_INDEX_NAME>' } } } } } },\n        },\n      },\n    ],\n  },\n});"
+      "default": "const response = await client.saveRules({\n  compositionID: 'foo',\n  rules: {\n    requests: [\n      {\n        action: 'upsert',\n        body: {\n          objectID: '123',\n          conditions: [{ pattern: 'a' }],\n          consequence: { behavior: { injection: { main: { source: { search: { index: '<YOUR_INDEX_NAME>' } } } } } },\n        },\n      },\n    ],\n  },\n});",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "compositionID",
+          "description": "Unique Composition ObjectID.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Unique Composition ObjectID."
+          }
+        },
+        {
+          "requests": {
+            "type": "array",
+            "items": {
+              "title": "rulesMultipleBatchRequest",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "upsert",
+                    "delete"
+                  ],
+                  "description": "Type of Composition Batch operation."
+                },
+                "body": {
+                  "$ref": "#/components/schemas/rulesBatchCompositionAction"
+                }
+              },
+              "required": [
+                "action",
+                "body"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "rulesMultipleBatchResponse",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "taskID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1514562690001,
+                    "description": "Unique identifier of a task.\n\nA successful API response means that a task was added to a queue. It might not run immediately. You can check the task's progress with the [`task` operation](#tag/Indices/operation/getTask) and this `taskID`.\n"
+                  }
+                },
+                "required": [
+                  "taskID"
+                ]
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "search": {
-      "default": "const response = await client.search({ compositionID: 'foo', requestBody: { params: { query: 'batman' } } });"
+      "default": "const response = await client.search({ compositionID: 'foo', requestBody: { params: { query: 'batman' } } });",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "compositionID",
+          "description": "Unique Composition ObjectID.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Unique Composition ObjectID."
+          }
+        },
+        {
+          "params": {
+            "$ref": "#/components/schemas/params"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchResponse"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "searchCompositionRules": {
-      "default": "const response = await client.searchCompositionRules({\n  compositionID: 'foo',\n  searchCompositionRulesParams: { query: 'batman' },\n});"
+      "default": "const response = await client.searchCompositionRules({\n  compositionID: 'foo',\n  searchCompositionRulesParams: { query: 'batman' },\n});",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "compositionID",
+          "description": "Unique Composition ObjectID.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Unique Composition ObjectID."
+          }
+        },
+        {
+          "query": {
+            "type": "string",
+            "description": "Search query for rules.",
+            "default": ""
+          },
+          "anchoring": {
+            "type": "string",
+            "description": "Which part of the search query the pattern should match:\n\n- `startsWith`. The pattern must match the beginning of the query.\n- `endsWith`. The pattern must match the end of the query.\n- `is`. The pattern must match the query exactly.\n- `contains`. The pattern must match anywhere in the query.\n\nEmpty queries are only allowed as patterns with `anchoring: is`.\n",
+            "enum": [
+              "is",
+              "startsWith",
+              "endsWith",
+              "contains"
+            ]
+          },
+          "context": {
+            "type": "string",
+            "description": "Only return composition rules that match the context (exact match).",
+            "example": "mobile"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Requested page of the API response.\n\nAlgolia uses `page` and `hitsPerPage` to control how search results are displayed ([paginated](https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/pagination/js/)).\n\n- `hitsPerPage`: sets the number of search results (_hits_) displayed per page.\n- `page`: specifies the page number of the search results you want to retrieve. Page numbering starts at 0, so the first page is `page=0`, the second is `page=1`, and so on.\n\nFor example, to display 10 results per page starting from the third page, set `hitsPerPage` to 10 and `page` to 2.\n"
+          },
+          "hitsPerPage": {
+            "type": "integer",
+            "default": 20,
+            "minimum": 1,
+            "maximum": 1000,
+            "description": "Maximum number of hits per page.\n\nAlgolia uses `page` and `hitsPerPage` to control how search results are displayed ([paginated](https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/pagination/js/)).\n\n- `hitsPerPage`: sets the number of search results (_hits_) displayed per page.\n- `page`: specifies the page number of the search results you want to retrieve. Page numbering starts at 0, so the first page is `page=0`, the second is `page=1`, and so on.\n\nFor example, to display 10 results per page starting from the third page, set `hitsPerPage` to 10 and `page` to 2.\n"
+          },
+          "enabled": {
+            "oneOf": [
+              {
+                "type": "boolean",
+                "description": "If `true`, return only enabled composition rules.\nIf `false`, return only inactive composition rules.\nBy default, _all_ composition rules are returned.\n"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "searchCompositionRulesResponse",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "hits",
+                  "nbHits",
+                  "page",
+                  "nbPages"
+                ],
+                "properties": {
+                  "hits": {
+                    "type": "array",
+                    "description": "Composition rules that matched the search criteria.",
+                    "items": {
+                      "$ref": "#/components/schemas/compositionRule"
+                    }
+                  },
+                  "nbHits": {
+                    "type": "integer",
+                    "description": "Number of composition rules that matched the search criteria."
+                  },
+                  "page": {
+                    "type": "integer",
+                    "description": "Current page."
+                  },
+                  "nbPages": {
+                    "type": "integer",
+                    "description": "Number of pages."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "searchForFacetValues": {
-      "default": "const response = await client.searchForFacetValues({\n  compositionID: 'foo',\n  facetName: 'brand',\n  searchForFacetValuesRequest: { params: { maxFacetHits: 10 } },\n});"
+      "default": "const response = await client.searchForFacetValues({\n  compositionID: 'foo',\n  facetName: 'brand',\n  searchForFacetValuesRequest: { params: { maxFacetHits: 10 } },\n});",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "compositionID",
+          "description": "Unique Composition ObjectID.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Unique Composition ObjectID."
+          }
+        },
+        {
+          "name": "facetName",
+          "description": "Facet attribute in which to search for values.\n\nThis attribute must be included in the `attributesForFaceting` index setting with the `searchable()` modifier.\n",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "params": {
+            "title": "searchForFacetValuesParams",
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Search query.",
+                "default": "",
+                "x-categories": [
+                  "Search"
+                ]
+              },
+              "maxFacetHits": {
+                "type": "integer",
+                "description": "Maximum number of facet values to return when [searching for facet values](https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/#search-for-facet-values).",
+                "maximum": 100,
+                "default": 10,
+                "x-categories": [
+                  "Advanced"
+                ]
+              },
+              "searchQuery": {
+                "$ref": "#/components/schemas/params"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results": {
+                    "type": "array",
+                    "description": "Search for facet values results.",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "facetHits",
+                        "exhaustiveFacetsCount",
+                        "indexName"
+                      ],
+                      "x-discriminator-fields": [
+                        "facetHits"
+                      ],
+                      "properties": {
+                        "indexName": {
+                          "type": "string"
+                        },
+                        "facetHits": {
+                          "type": "array",
+                          "description": "Matching facet values.",
+                          "items": {
+                            "title": "facetHits",
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "value",
+                              "highlighted",
+                              "count"
+                            ],
+                            "properties": {
+                              "value": {
+                                "description": "Facet value.",
+                                "example": "Mobile phone",
+                                "type": "string"
+                              },
+                              "highlighted": {
+                                "type": "string",
+                                "description": "Highlighted attribute value, including HTML tags.",
+                                "example": "<em>George</em> <em>Clo</em>oney"
+                              },
+                              "count": {
+                                "description": "Number of records with this facet value. [The count may be approximated](https://support.algolia.com/hc/en-us/articles/4406975248145-Why-are-my-facet-and-hit-counts-not-accurate-).",
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        },
+                        "exhaustiveFacetsCount": {
+                          "type": "boolean",
+                          "description": "Whether the facet count is exhaustive (true) or approximate (false).\nFor more information, see [Why are my facet and hit counts not accurate](https://support.algolia.com/hc/en-us/articles/4406975248145-Why-are-my-facet-and-hit-counts-not-accurate-).\n"
+                        },
+                        "processingTimeMS": {
+                          "type": "integer",
+                          "description": "Time the server took to process the request, in milliseconds.",
+                          "example": 20
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request or request arguments.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "402": {
+          "description": "This feature is not enabled on your Algolia account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Method not allowed with this API key.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Index not found.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Error.",
+                "type": "object",
+                "x-keep-model": true,
+                "additionalProperties": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Invalid Application-Id or API-Key"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "setClientApiKey": {
-      "default": "client.setClientApiKey({ apiKey: 'updated-api-key' });"
+      "default": "client.setClientApiKey({ apiKey: 'updated-api-key' });",
+      "parameters": [
+        {
+          "in": "query",
+          "name": "apiKey",
+          "description": "API key to be used from now on.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No content."
+        }
+      }
     },
     "init": {
       "default": "//\nconst client = compositionClient('ALGOLIA_APPLICATION_ID', 'ALGOLIA_API_KEY');"
