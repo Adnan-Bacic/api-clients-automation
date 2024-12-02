@@ -13,7 +13,6 @@ void main() async {
 
   if (datasetRequest.statusCode == 200) {
     final moviesData = jsonDecode(datasetRequest.body);
-
     final batchRequests = <BatchRequest>[];
 
     for (final movie in moviesData) {
